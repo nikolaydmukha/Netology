@@ -30,7 +30,6 @@ while True:
             elif len(split_str) > 3:
                 print("Введены слишком много данных!")
             else:
-#                if split_str[0] not in operators:
                 assert(split_str[0] in operators), "Вы ввели недопустимые оператор! Завершаем работу прораммы!"
                 #     print("Вы ввели недопустимые оператор! Повторите ввод!")
                 # else:
