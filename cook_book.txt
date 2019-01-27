@@ -1,0 +1,33 @@
+Omlet
+3
+Eggs | 2 | unit
+Milk | 100 | ml
+Tomato | 2 | unit
+
+Ytka po-pekinski
+4
+Duck | 1 | unit
+Water | 2 | l
+Honey | 3 | spoon
+soy sauce | 60 | ml
+
+Zapechenyi cartofel
+3
+Potato | 1 | kg
+Garlic | 3 | unit
+Cheese Gauda | 100 | g
+
+Fahitos
+5
+Meat | 500 | g
+Pepper | 1 | unit
+Bread | 2 | unit
+Wine | 1 | spoon
+Tomato | 2 | unit
+
+Lenivaya ovsianka
+4
+Oats | 150 | gr
+Greek joghurt | 300 | ml
+Nuts | 20 | gr
+Strawberry | 100 | gr
