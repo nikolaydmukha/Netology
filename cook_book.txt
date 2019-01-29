@@ -9,7 +9,7 @@ Ytka po-pekinski
 Duck | 1 | unit
 Water | 2 | l
 Honey | 3 | spoon
-soy sauce | 60 | ml
+Soy sauce | 60 | ml
 
 Zapechenyi cartofel
 3
