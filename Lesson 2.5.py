@@ -12,8 +12,6 @@ import datetime
 import time
 import random
 
-
-
 class ContextManagerShowTime:
     def __init__(self, path_to_file):
         print("Вход в менеджер контекста")
@@ -34,8 +32,8 @@ class ContextManagerShowTime:
         duration = round(self.end_sec - self.start_sec)
         print(f"Окончание работы {self.end}")
         print(f"Общее время выполнения программы {duration} секунд")
-        self.file.close()
         print("Выходим из менеджера контекста!")
+        self.file.close()
 
 # Задача 1, 2
 path_to_file = "matrix.txt"
