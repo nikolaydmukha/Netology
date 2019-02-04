@@ -26,7 +26,7 @@ def read_json():
         for new in articles:
             list_articles = new['description'].split(" ")
             for word in list_articles:
-                list_desc.append(word)
+                list_desc.append(word.lower())
     make_dict(list_desc, "json")
 
 
@@ -38,7 +38,8 @@ def read_xml():
     list_desc = []
     for desc in descriptions:
         for word in desc.text.split(" "):
-            list_desc.append(word)
+            list_desc.append(word.lower())
+    print(list_desc)
     make_dict(list_desc, "xml")
 
 
