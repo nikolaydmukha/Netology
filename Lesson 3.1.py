@@ -39,7 +39,6 @@ def read_xml():
     for desc in descriptions:
         for word in desc.text.split(" "):
             list_desc.append(word.lower())
-    print(list_desc)
     make_dict(list_desc, "xml")
 
 
