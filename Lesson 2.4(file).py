@@ -26,7 +26,7 @@ def read_file(path_to_file):
 
 # Формируем списко покупок
 def get_shop_list_by_dishes(dishes_list, count):
-    path_to_file = "D:\Python\\Netology\\Netology\cook_book.txt"
+    path_to_file = "D:\Python\\Netology\\Netology\\files\cook_book.txt"
     cook_book = read_file(path_to_file)
     shopping_list = {}
     for dish in dishes_list:

@@ -19,7 +19,7 @@ from pprint import pprint
 
 # Чтение данных из файла .json
 def read_json():
-    with open('D:\Python\\Netology\\Netology\\newsafr.json', encoding='utf-8') as js:
+    with open('D:\Python\\Netology\\Netology\\files\\newsafr.json', encoding='utf-8') as js:
         js_data = json.load(js)
         articles = js_data['rss']['channel']['items']
         list_desc = []
@@ -32,7 +32,7 @@ def read_json():
 
 # Чтение данных из .xml
 def read_xml():
-    tree = ET.parse('D:\Python\\Netology\\Netology\\newsafr.xml')
+    tree = ET.parse('D:\Python\\Netology\\Netology\\files\\newsafr.xml')
     root = tree.getroot()
     descriptions = root.findall('channel/item/description')
     list_desc = []
