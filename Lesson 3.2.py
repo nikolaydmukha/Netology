@@ -44,6 +44,7 @@ def make_translate():
         "ES.txt": "fromES.txt",
         "FR.txt": "fromFR.txt",
     }
+    # Подготовим имя файла-источника, файла-назначения, язык, с которого переводим
     for fr, to in dict_files.items():
         path_file_from = file_dir + fr
         path_file_to = file_dir + to
