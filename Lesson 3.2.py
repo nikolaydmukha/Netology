@@ -40,9 +40,9 @@ def translate_it(path_file_from, path_file_to, from_lang, to_lang="ru"):
 def make_translate():
     file_dir = 'D:\Python\\Netology\\Netology\\files\\'
     dict_files = {
-        "DE.txt": "toDE.txt",
-        "ES.txt": "toES.txt",
-        "FR.txt": "toFR.txt",
+        "DE.txt": "fromDE.txt",
+        "ES.txt": "fromES.txt",
+        "FR.txt": "fromFR.txt",
     }
     for fr, to in dict_files.items():
         path_file_from = file_dir + fr
