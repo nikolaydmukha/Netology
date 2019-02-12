@@ -17,7 +17,7 @@ from urllib.parse import urlencode
 
 
 REQUEST_URL = "https://api.vk.com/method/"
-ACCESS_TOKEN = "d0a42ed8431c168ba2a748d6796c9077e0e175b0acc059d22454816456426204973e74cbeb5549f618237"
+ACCESS_TOKEN = "b32e666359b816b4af0a75ae33b79856efc7b0a15bf17ff346820f0a50d3ea8296c1fd3e05b1da7f6d975"
 
 
 class VKUser:
@@ -50,20 +50,36 @@ class VKUser:
         data = response.json()
         return data['response']['items']
 
+    def __and__(self, other):
+        me = self.get_friends_list()
+        friend = other.get_friends_list()
+        set_me = set(me)
+        set_friend = set(friend)
+        common_friends = set_me & set_friend
+        common_friends_dict = {}
+        common_friends_list = []
+        for friend in common_friends:
+            common_friends_list.append(VKUser(friend))  # список бщих друзей(каждый - экземпляр класса VKUser)
+            name = VKUser(friend).get_name()
+            common_friends_dict[name] = {'id': friend, 'url': 'https://vk.com/id' + str(friend)}
+        print("Найдено {} обших друзей".format(len(common_friends_list)))
+        for item in common_friends_list:
+            print("{} <-> cсылка на профиль: {}".format(item.get_name(), common_friends_dict[item.get_name()]['url']))
 
-def find_common_friends(list1, list2):
-    set_me = set(list1)
-    set_friend = set(list2)
-    common_friends = set_me & set_friend
-    common_friends_dict = {}
-    common_friends_list = []
-    for friend in common_friends:
-        common_friends_list.append(VKUser(friend)) #список бщих друзей(каждый - экземпляр класса VKUser)
-        name = VKUser(friend).get_name()
-        common_friends_dict[name] = {'id': friend, 'url': 'https://vk.com/id' + str(friend)}
-    print("Найдено {} обших друзей".format(len(common_friends_list)))
-    for item in common_friends_list:
-        print("{} <-> cсылка на профиль: {}".format(item.get_name(), common_friends_dict[item.get_name()]['url']))
+
+# def find_common_friends(list1, list2):
+#     set_me = set(list1)
+#     set_friend = set(list2)
+#     common_friends = set_me & set_friend
+#     common_friends_dict = {}
+#     common_friends_list = []
+#     for friend in common_friends:
+#         common_friends_list.append(VKUser(friend)) #список бщих друзей(каждый - экземпляр класса VKUser)
+#         name = VKUser(friend).get_name()
+#         common_friends_dict[name] = {'id': friend, 'url': 'https://vk.com/id' + str(friend)}
+#     print("Найдено {} обших друзей".format(len(common_friends_list)))
+#     for item in common_friends_list:
+#         print("{} <-> cсылка на профиль: {}".format(item.get_name(), common_friends_dict[item.get_name()]['url']))
 
 
 # Функция получения ссылки для access_token
@@ -80,11 +96,11 @@ def get_token():
     }
     print("?".join((AUTH_URL, urlencode(params))))
 
-
 Me = VKUser("dmukha")
 Friend = VKUser("jdmukha")
 print('Список id друзей пользователя {}(всего друзей {}):\n{}'.format(Me.get_name(), len(Me.get_friends_list()),
                                                                       Me.get_friends_list()))
 print('Список id друзей пользователя {}(всего друзей {}):\n{}'.format(Friend.get_name(), len(Friend.get_friends_list()),
                                                                       Friend.get_friends_list()))
-find_common_friends(Me.get_friends_list(), Friend.get_friends_list())
+#find_common_friends(Me.get_friends_list(), Friend.get_friends_list())
+Me&Friend
