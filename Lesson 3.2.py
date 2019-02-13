@@ -10,6 +10,7 @@
 
 
 import requests
+import os
 from pprint import pprint
 
 API_KEY = 'trnsl.1.1.20161025T233221Z.47834a66fd7895d0.a95fd4bfde5c1794fa433453956bd261eae80152'
@@ -20,9 +21,10 @@ URL = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
 def translate_it(path_file_from, path_file_to, from_lang, to_lang="ru"):
     # Я читаю файл построчно, чтобы получить текст в типе str(а не список) для передачи переводчику
     with open(path_file_from, encoding="utf-8") as file:
-        text = ""
-        for line in file:
-            text += line
+        # text = ""
+        # for line in file:
+        #     text += line
+        text = file.read()
     params = {
         'key': API_KEY,
         'text': text,
@@ -33,12 +35,10 @@ def translate_it(path_file_from, path_file_to, from_lang, to_lang="ru"):
     # Запись в файл: переводчик возвращает текст в виде списка. В файл надо записать каждый элемент списка
     with open(path_file_to, "w", encoding='utf-8') as f:
         for member in json_["text"]:
-            f.write(member)
-
+            f.write(''.join(json_['text']))
 
 # Функция подготавливает необходимые для работы функции перевода данные
 def make_translate():
-    file_dir = 'D:\Python\\Netology\\Netology\\files\\'
     dict_files = {
         "DE.txt": "fromDE.txt",
         "ES.txt": "fromES.txt",
@@ -46,11 +46,10 @@ def make_translate():
     }
     # Подготовим имя файла-источника, файла-назначения, язык, с которого переводим
     for fr, to in dict_files.items():
-        path_file_from = file_dir + fr
-        path_file_to = file_dir + to
+        path_file_from = os.path.join(os.path.abspath('files'), fr)
+        path_file_to = os.path.join(os.path.abspath('files'), to)
         from_lang = fr.split(".")
         translate_it(path_file_from, path_file_to, from_lang[0].lower())
 
 
 make_translate()
-
