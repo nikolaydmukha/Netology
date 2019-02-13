@@ -19,11 +19,7 @@ URL = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
 
 # Функция перевода текста, читаемого из файла. Результат перевода записывается в файл
 def translate_it(path_file_from, path_file_to, from_lang, to_lang="ru"):
-    # Я читаю файл построчно, чтобы получить текст в типе str(а не список) для передачи переводчику
     with open(path_file_from, encoding="utf-8") as file:
-        # text = ""
-        # for line in file:
-        #     text += line
         text = file.read()
     params = {
         'key': API_KEY,
