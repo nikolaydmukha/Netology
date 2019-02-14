@@ -31,7 +31,7 @@ def translate_it(path_file_from, path_file_to, from_lang, to_lang="ru"):
     # Запись в файл: переводчик возвращает текст в виде списка. В файл надо записать каждый элемент списка
     with open(path_file_to, "w", encoding='utf-8') as f:
         for member in json_["text"]:
-            f.write(''.join(json_['text']))
+            f.write(''.join(member))
 
 # Функция подготавливает необходимые для работы функции перевода данные
 def make_translate():
