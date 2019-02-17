@@ -28,23 +28,23 @@ def get_token():
 class VKUser:
     def __init__(self, user_id):
         self.user_id = user_id
+        self.account_id = None
         self.params = {
             'access_token': ACCESS_TOKEN,
             'v': '5.92',
             'user_ids': self.user_id,
         }
 
-    @property
     def get_name(self):
         time.sleep(1) #сделал задержку в 1 сек, т.к. получал ошибку от ВК, что слишком много запросов в сек
         method = "users.get"
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
+        print(data)
         self.account_id = data['response'][0]['id'] # цифровой id пользователя
         name = " ".join((data['response'][0]['first_name'], data['response'][0]['last_name']))
         return name
 
-    @property
     def get_friends_list(self):
         time.sleep(1) #сделал задержку, т.к. получал ошибку от ВК, что слишком много запросов в сек
         method = "friends.get"
@@ -95,7 +95,7 @@ def get_group_member(g_id):
 User = VKUser(sys.argv[1])
 print('Привет! Сейчас мы выведем список групп, в которых не состоит никто из друзей введённого тобой человека '
       'с идентификатором соцсети VK "{}"'.format(sys.argv[1]))
-print(f'Ты ввёл пользователя: {User.get_name}\nЧисло друзей пользователя {len(User.get_friends_list)}.'
+print(f'Ты ввёл пользователя: {User.get_name()}\nЧисло друзей пользователя {len(User.get_friends_list())}.'
       f'\nПользователь состоит в таких группах: {User.get_groups_by_id(User.get_groups())}')
 print('Проверяем, состоят ли друзья в группах ввёдёного пользвателя..')
 # Список всех друзей
@@ -107,8 +107,7 @@ for group_id in User.get_groups():
 pbar = progressbar.ProgressBar()
 unique = []
 for key, value in pbar(groups_members.items()):
-    if not set(User.get_friends_list).intersection(set(value)):
-        print("ПОЛУЧАЕМ ИМЯ", str(key))
+    if not set(User.get_friends_list()).intersection(set(value)):
         unique.append(key)
 unique_name = User.get_groups_by_id(unique)
 print(unique_name)
