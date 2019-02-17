@@ -52,7 +52,7 @@ class VKUser:
 
     def __and__(self, other):
         me = self.get_friends_list()
-        friend = other.get_friends_list()
+        friend = other.get_friends_list
         set_me = set(me)
         set_friend = set(friend)
         common_friends = set_me & set_friend
