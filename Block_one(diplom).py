@@ -41,7 +41,6 @@ class VKUser:
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
         self.account_id = data['response'][0]['id'] # цифровой id пользователя
-        print(self.account_id)
         name = " ".join((data['response'][0]['first_name'], data['response'][0]['last_name']))
         return name
 
@@ -59,18 +58,14 @@ class VKUser:
         method = 'groups.get'
         self.params['count'] = 500
         self.params['user_id'] = self.account_id
-        #print(self.params)
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
-        #print(data)
         return data['response']['items']
 
     def get_groups_by_id(self, list_groups):
         time.sleep(1)  # сделал задержку, т.к. получал ошибку от ВК, что слишком много запросов в сек
         method = 'groups.getById'
-        print("ПОЛУЧАЕМ ИМЕНЯ ГРУПП", list_groups)
         self.params['group_ids'] = ','.join(map(str, list_groups))
-        #print(self.params['group_ids'])
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
         names = ''
@@ -91,7 +86,6 @@ def get_group_member(g_id):
         response = requests.get(REQUEST_URL + method, params)
         data = response.json()
         if 'error' not in data.keys():
-            print(data.keys())
             return data['response']['items']
 
 
@@ -101,27 +95,21 @@ print('Привет! Сейчас мы выведем список групп, �
       'с идентификатором соцсети VK "{}"'.format(sys.argv[1]))
 print(f'Ты ввёл пользователя: {User.get_name()}\nЧисло друзей пользователя {len(User.get_friends_list())}.'
       f'\nПользователь состоит в таких группах: {User.get_groups_by_id(User.get_groups())}')
-print('Проверяем, состоят ли друзья в группах ввёдёного пользвателя..')
+print('Получаем списки участников каждой группы, в которой состоит искомый пользователь ...')
 # Список всех друзей
 # Список всех групп
 # Список участников каждой группы groups.getMembers
-groups_members = {}
-for group_id in User.get_groups():
-    groups_members[group_id] = get_group_member(group_id) # словарь, в котором ключ - id группы, а значение - список участникв(id пользователей)
-pprint(groups_members.keys())
 pbar = progressbar.ProgressBar()
+groups_members = {}
+for group_id in pbar(User.get_groups()):
+    groups_members[group_id] = get_group_member(group_id) # словарь, в котором ключ - id группы, а значение - список участникв(id пользователей)
+pbar = progressbar.ProgressBar()
+print('Получаем группы, в которых нет ни одного друга искомого пользователя ...')
 unique = []
 for key, value in pbar(groups_members.items()):
     if value:
-        print("KEY", key)
-        print("VALUE", value)
         check = set(value)&set(User.get_friends_list())
-    #print("МОИ ДРУЗЬЯ", User.get_friends_list())
-    #print("ДРУЗЬЯ ГРУППЫ", value)
-    #print("Нашли общих друзей", check)
         if not check:
             unique.append(key)
 unique_name = User.get_groups_by_id(unique)
-print(unique_name)
-print(f"Группы, где нет друзкй: {unique}")
-    #print(key, value)
+print(f"Группы, где нет друзей: {unique_name}")
