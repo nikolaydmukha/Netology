@@ -2,6 +2,8 @@ import time
 import requests
 import sys
 import progressbar
+import json
+import os
 from pprint import pprint
 from urllib.parse import urlencode
 
@@ -49,6 +51,7 @@ class VKUser:
         method = "friends.get"
         self.params["count"] = 5000
         self.params["user_id"] = self.account_id
+        self.params['fields'] = ''
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
         return data['response']['items']
@@ -66,12 +69,22 @@ class VKUser:
         time.sleep(1)  # сделал задержку, т.к. получал ошибку от ВК, что слишком много запросов в сек
         method = 'groups.getById'
         self.params['group_ids'] = ','.join(map(str, list_groups))
+        self.params['fields'] = 'members_count'
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
+        #print("222222222",data)
         names = ''
+        to_file = []
+        to_file_dict = {}
         for list_dict in data['response']:
             names += list_dict['name'] + ', '
-        return names.rstrip(', ')
+            to_file_dict['name'] = list_dict['name']
+            to_file_dict['gid'] = list_dict['id']
+            to_file_dict['members_count'] = list_dict['members_count']
+            to_file.append(to_file_dict)
+            to_file_dict = {}
+        #return names.rstrip(', ')
+        return to_file
 
 
 # Функция поиска участников группы
@@ -89,12 +102,17 @@ def get_group_member(g_id):
             return data['response']['items']
 
 
+# Функция записи в файл
+def write_json(dump):
+    with open(os.path.join(os.path.abspath('files'), 'diplom.json'), 'w', encoding='utf-8') as f:
+        json.dump(dump, f, ensure_ascii=False, indent=4)
+
 #print(get_token())
 User = VKUser(sys.argv[1])
 print('Привет! Сейчас мы выведем список групп, в которых не состоит никто из друзей введённого тобой человека '
       'с идентификатором соцсети VK "{}"'.format(sys.argv[1]))
-print(f'Ты ввёл пользователя: {User.get_name()}\nЧисло друзей пользователя {len(User.get_friends_list())}.'
-      f'\nПользователь состоит в таких группах: {User.get_groups_by_id(User.get_groups())}')
+print(f'Ты ввёл пользователя: {User.get_name()}\nЧисло друзей пользователя {len(User.get_friends_list())}.')
+#      f'\nПользователь состоит в таких группах: {User.get_groups_by_id(User.get_groups())}')
 print('Получаем списки участников каждой группы, в которой состоит искомый пользователь ...')
 # Список всех друзей
 # Список всех групп
@@ -108,8 +126,10 @@ print('Получаем группы, в которых нет ни одного
 unique = []
 for key, value in pbar(groups_members.items()):
     if value:
-        check = set(value)&set(User.get_friends_list())
+        check = set(value) & set(User.get_friends_list())
         if not check:
             unique.append(key)
 unique_name = User.get_groups_by_id(unique)
-print(f"Группы, где нет друзей: {unique_name}")
+#print(f"Группы, где нет друзей: {unique_name}")
+write_json(unique_name)
+print(f"Программа выполнена. Данные записаны в файл {os.path.join(os.path.abspath('files'))}\diplom.json")
