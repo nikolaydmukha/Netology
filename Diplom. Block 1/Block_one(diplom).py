@@ -1,10 +1,9 @@
 import time
 import requests
 import sys
-import progressbar
 import json
 import os
-from pprint import pprint
+from tqdm import tqdm
 
 
 REQUEST_URL = "https://api.vk.com/method/"
@@ -53,7 +52,8 @@ class VKUser:
         self.params['user_id'] = self.account_id
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
-        return data['response']['items']
+        if 'error' not in data.keys():
+            return data['response']['items']
 
     def get_groups_by_id(self, list_groups):
         time.sleep(1)
@@ -90,36 +90,37 @@ def get_group_member(g_id):
             return data['response']['items']
 
 
-# Прогресс-бар
-def progress_bar(data):
-    pbar = progressbar.ProgressBar()
-    return pbar(data)
-
-
 # Функция записи в файл
 def write_json(dump):
-    with open(os.path.join(os.path.abspath('files'), 'diplom.json'), 'w', encoding='utf-8') as f:
+    with open(os.path.abspath('diplom.json'), 'w', encoding='utf-8') as f:
         json.dump(dump, f, ensure_ascii=False, indent=4)
 
 
-User = VKUser(sys.argv[1])
-print('Привет! Сейчас мы выведем список групп, в которых не состоит никто из друзей введённого тобой человека '
-      'с идентификатором соцсети VK "{}"'.format(sys.argv[1]))
-print(f'Ты ввёл пользователя: {User.get_name()}\nЧисло друзей пользователя {len(User.get_friends_list())}.')
-print('Получаем списки участников каждой группы, в которой состоит искомый пользователь ...')
-groups_members = {}
-for group_id in progress_bar(User.get_groups()):
-    groups_members[group_id] = get_group_member(group_id)
-print('Получаем группы, в которых нет ни одного друга искомого пользователя ...')
-unique = []
-for key, value in progress_bar(groups_members.items()):
-    if value:
-        check = set(value) & set(User.get_friends_list())
-        if not check:
-            unique.append(key)
-if not unique:
-    write_json("Нет ни одной уникальной группы!")
-else:
-    unique_name = User.get_groups_by_id(unique)
-    write_json(unique_name)
-print(f"Программа выполнена. Данные записаны в файл {os.path.join(os.path.abspath('files'))}\diplom.json")
+def run_work():
+    user = VKUser(sys.argv[1])
+    print('Привет! Сейчас мы выведем список групп, в которых не состоит никто из друзей введённого тобой человека '
+          'с идентификатором соцсети VK "{}"'.format(sys.argv[1]))
+    print(f'Ты ввёл пользователя: {user.get_name()}\nЧисло друзей пользователя {len(user.get_friends_list())}.')
+    print('Получаем группы, в которых состоят друзья искомого пользователя...')
+    group_list = []
+    target = user.get_groups()
+    for friend in user.get_friends_list():
+        friend_id = VKUser(friend)
+        print("Получаем список групп друга --->", friend_id.get_name())
+        if friend_id.get_groups():
+            for group in tqdm(friend_id.get_groups()):
+                group_list.append(group)
+                time.sleep(0.1)
+        else:
+            print("Пользователь удалён, заблокирован или включил настройки приватности своего аккаунта.")
+    unique = set(target) - set(group_list)
+    if not unique:
+        write_json("Нет ни одной уникальной группы!")
+    else:
+        unique_name = user.get_groups_by_id(unique)
+        write_json(unique_name)
+    print(f"Программа выполнена. Данные записаны в файл {os.path.join(os.path.abspath('files'))}\diplom.json")
+
+
+if __name__ == "__main__":
+    run_work()
