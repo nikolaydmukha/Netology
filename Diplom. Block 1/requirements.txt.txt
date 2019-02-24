@@ -1,2 +1,1 @@
-progressbar==2.5
 tqdm==4.31.1
