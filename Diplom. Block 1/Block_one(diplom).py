@@ -25,12 +25,16 @@ class VKUser:
         method = "users.get"
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
+        name = list()
         if 'deactivated' not in data['response'][0].keys():
-                self.account_id = data['response'][0]['id'] # цифровой id пользователя
-                name = " ".join((data['response'][0]['first_name'], data['response'][0]['last_name']))
-                return name
+            self.account_id = data['response'][0]['id'] # цифровой id пользователя
+            name.append(" ".join((data['response'][0]['first_name'], data['response'][0]['last_name'])))
+            return name
         else:
-            sys.exit("Введённый пользователь заблокирован или удалён. Программа завершает свою работу!")
+            self.account_id = data['response'][0]['id']  # цифровой id пользователя
+            name.append(" ".join((data['response'][0]['first_name'], data['response'][0]['last_name'])))
+            name.append("deleted")
+            return name
 
     def get_friends_list(self):
         time.sleep(1)
@@ -98,28 +102,34 @@ def write_json(dump):
 
 def run_work():
     user = VKUser(sys.argv[1])
-    print('Привет! Сейчас мы выведем список групп, в которых не состоит никто из друзей введённого тобой человека '
-          'с идентификатором соцсети VK "{}"'.format(sys.argv[1]))
-    print(f'Ты ввёл пользователя: {user.get_name()}\nЧисло друзей пользователя {len(user.get_friends_list())}.')
-    print('Получаем группы, в которых состоят друзья искомого пользователя...')
-    group_list = []
-    target = user.get_groups()
-    for friend in user.get_friends_list():
-        friend_id = VKUser(friend)
-        print("Получаем список групп друга --->", friend_id.get_name())
-        if friend_id.get_groups():
-            for group in tqdm(friend_id.get_groups()):
-                group_list.append(group)
-                time.sleep(0.1)
+    if len(user.get_name()) != 2:
+        print('Привет! Сейчас мы выведем список групп, в которых не состоит никто из друзей введённого тобой человека '
+              'с идентификатором соцсети VK "{}"'.format(sys.argv[1]))
+        print(f'Ты ввёл пользователя: {user.get_name()[0]}\nЧисло друзей пользователя {len(user.get_friends_list())}.')
+        print('Получаем группы, в которых состоят друзья искомого пользователя...')
+        group_list = []
+        target = user.get_groups()
+        for friend in user.get_friends_list():
+            friend_id = VKUser(friend)
+            print("Получаем список групп друга --->", friend_id.get_name()[0])
+            if len(friend_id.get_name()) != 2:
+                if friend_id.get_groups():
+                    for group in tqdm(friend_id.get_groups()):
+                        group_list.append(group)
+                        time.sleep(0.1)
+                else:
+                    print("Пользователь удалён, заблокирован или включил настройки приватности своего аккаунта.")
+            else:
+                print("Пользователь удалён, заблокирован или включил настройки приватности своего аккаунта")
+        unique = set(target) - set(group_list)
+        if not unique:
+            write_json("Нет ни одной уникальной группы!")
         else:
-            print("Пользователь удалён, заблокирован или включил настройки приватности своего аккаунта.")
-    unique = set(target) - set(group_list)
-    if not unique:
-        write_json("Нет ни одной уникальной группы!")
+            unique_name = user.get_groups_by_id(unique)
+            write_json(unique_name)
+        print(f"Программа выполнена. Данные записаны в файл {os.path.join(os.path.abspath('files'))}\diplom.json")
     else:
-        unique_name = user.get_groups_by_id(unique)
-        write_json(unique_name)
-    print(f"Программа выполнена. Данные записаны в файл {os.path.join(os.path.abspath('files'))}\diplom.json")
+        sys.exit("Введённый пользователь заблокирован или удалён. Программа завершает свою работу!")
 
 
 if __name__ == "__main__":
