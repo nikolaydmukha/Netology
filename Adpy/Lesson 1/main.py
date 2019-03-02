@@ -1,6 +1,7 @@
-import application.salary as s
-import application.db.people as p
+from application.salary import calculate_salary
+from application.db.people import get_employees
+
 
 if __name__ == '__main__':
-    s.calculate_salary()
-    p.get_employees()
+    calculate_salary()
+    get_employees()
