@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da0e128d-72e1-4816-af8b-8cd4fc6c39c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Lesson 1.2/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Diplom. Block 1/Block_one(diplom).py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Diplom. Block 1/diplom.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Diplom. Block 1/requirements.txt.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 2.2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 2.3(Task 1,2).py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 2.3(Task 3).py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 2.4(file).py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 2.5.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 3.1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 3.2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 3.3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../files/DE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../files/ES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../files/FR.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../files/cook_book.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../files/fromDE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../files/fromES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../files/fromFR.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../files/matrix.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../files/newsafr.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../files/newsafr.xml" beforeDir="false" />
-    </list>
+    <list default="true" id="da0e128d-72e1-4816-af8b-8cd4fc6c39c0" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
