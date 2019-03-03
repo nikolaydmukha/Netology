@@ -37,13 +37,14 @@ def generator_md5(path):
 
 
 if __name__ == "__main__":
-    # with open(os.path.abspath('countries.json'), 'r', encoding='utf-8') as js:
-    #     name = []
-    #     data = json.load(js)
-    #     for item in data:
-    #         long_short = [item['translations']['rus']['official'], item['cca2']]
-    #         name.append(long_short)
-    # for wiki in Wiki(name):
-    #     print(f"Записали для страны {wiki} соответствующую ссылку")
-    for hash in generator_md5(os.path.abspath('country-link')):
-        print(hash)
+    with open(os.path.abspath('countries.json'), 'r', encoding='utf-8') as js:
+        name = []
+        data = json.load(js)
+        for item in data:
+            long_short = [item['translations']['rus']['official'], item['cca2']]
+            name.append(long_short)
+    for wiki in Wiki(name):
+        print(f"Записали для страны {wiki} соответствующую ссылку")
+    print('Вывод md5 hash строки:\n')
+    for md5 in generator_md5(os.path.abspath('country-link')):
+        print(md5)
