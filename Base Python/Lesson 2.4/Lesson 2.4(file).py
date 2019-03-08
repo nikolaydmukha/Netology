@@ -2,7 +2,9 @@
 # 2. Если в строке только цифры, то это строка с количеством ингредиентов
 # 3. Если в строке любые символы и нет разделителя |, то это строка с названием блюда
 
+import os
 from pprint import pprint
+from datetime import datetime
 
 
 # Читаем данные из файла
@@ -26,7 +28,8 @@ def read_file(path_to_file):
 
 # Формируем списко покупок
 def get_shop_list_by_dishes(dishes_list, count):
-    path_to_file = "D:\Python\\Netology\\Netology\\files\cook_book.txt"
+    path_to_file = "D:\Python\\Netology\\Netology\\Base Python\\files\cook_book.txt"
+    print(path_to_file)
     cook_book = read_file(path_to_file)
     shopping_list = {}
     for dish in dishes_list:
@@ -45,8 +48,28 @@ def get_shop_list_by_dishes(dishes_list, count):
     else:
         print("Блюдо не найдено!")
 
+def decorator_path(path):
+    def logger(decorated_func):
+        def wrapper(*args):
+            result = decorated_func(*args)
+            arg = []
+            for param in args:
+                arg.append(param)
+            dict_data = {
+                'Время вызова': str(datetime.now()),
+                'Имя функции': decorated_func.__name__,
+                'Парамтеры вызова': arg,
+                'Результат работы программы': result
+            }
+            with open(path, 'w', encoding='utf-8') as f:
+                for key, val in dict_data.items():
+                    f.write('{}: {} \n'.format(key, val))
+        return wrapper
+    return logger
+
 
 # Код для получения данных, необходимых программе
+@decorator_path(os.path.abspath('logger'))
 def start_programm():
     dishes_list = []
     while True:
