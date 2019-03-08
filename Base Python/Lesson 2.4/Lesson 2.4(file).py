@@ -25,29 +25,7 @@ def read_file(path_to_file):
                 cook_book[name].append(list_ingredietnts)
     return cook_book
 
-
-# Формируем списко покупок
-def get_shop_list_by_dishes(dishes_list, count):
-    path_to_file = "D:\Python\\Netology\\Netology\\Base Python\\files\cook_book.txt"
-    print(path_to_file)
-    cook_book = read_file(path_to_file)
-    shopping_list = {}
-    for dish in dishes_list:
-        if dish not in cook_book:
-            pass
-        else:
-            for ingredient in cook_book[dish]:
-                if ingredient['ingredient_name'] not in shopping_list:
-                    shopping_list[ingredient['ingredient_name']] = {'measure': ingredient['measure'],
-                                                                   'quantity': ingredient['quantity'] * count}
-                else:
-                    all_quatity = shopping_list[ingredient['ingredient_name']]['quantity'] + ingredient['quantity'] * count
-                    shopping_list[ingredient['ingredient_name']]['quantity'] = all_quatity
-    if shopping_list:
-        pprint(shopping_list)
-    else:
-        print("Блюдо не найдено!")
-
+# Декоратор-логгер
 def decorator_path(path):
     def logger(decorated_func):
         def wrapper(*args):
@@ -68,8 +46,32 @@ def decorator_path(path):
     return logger
 
 
-# Код для получения данных, необходимых программе
+# Формируем списко покупок
 @decorator_path(os.path.abspath('logger'))
+def get_shop_list_by_dishes(dishes_list, count):
+    path_to_file = "D:\Python\\Netology\\Netology\\Base Python\\files\cook_book.txt"
+    print(path_to_file)
+    cook_book = read_file(path_to_file)
+    shopping_list = {}
+    for dish in dishes_list:
+        if dish not in cook_book:
+            pass
+        else:
+            for ingredient in cook_book[dish]:
+                if ingredient['ingredient_name'] not in shopping_list:
+                    shopping_list[ingredient['ingredient_name']] = {'measure': ingredient['measure'],
+                                                                   'quantity': ingredient['quantity'] * count}
+                else:
+                    all_quatity = shopping_list[ingredient['ingredient_name']]['quantity'] + ingredient['quantity'] * count
+                    shopping_list[ingredient['ingredient_name']]['quantity'] = all_quatity
+    if shopping_list:
+        pprint(shopping_list)
+        return shopping_list
+    else:
+        print("Блюдо не найдено!")
+
+
+# Код для получения данных, необходимых программе
 def start_programm():
     dishes_list = []
     while True:
