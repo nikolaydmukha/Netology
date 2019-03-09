@@ -71,7 +71,7 @@ class PhoneBook(Contact):
         self.contact_list = []
 
 # Добавление контакта в книгу
-    def add_contact(self):
+    def add_contacts(self):
         first_name = input("Введите имя контакта: ")
         last_name = input("Введите фамилию контакта: ")
         phone_number = input("Введите телефон контакта: ")
@@ -112,23 +112,88 @@ class PhoneBook(Contact):
         for item in self.contact_list:
             print(item)
 
+# Удаление данных книги
+    def del_contacts(self):
+        number = input("Введите номер телефона для поиска и удаления контакта: ")
+        is_deleted = False
+        if len(self.contact_list) != 0:
+            i = 0
+            while i < len(self.contact_list):
+                if number == self.contact_list[i].phone:
+                    del(self.contact_list[i])
+                    i -= 1
+                    is_deleted = True
+                i += 1
+            if is_deleted:
+                print("Контакты удалены!")
+            else:
+                print("Контакты не найдены!")
+        else:
+            print("В записной книге нет ни одного контака!")
+# Поиск избранных контактов
+    def find_fav(self):
+        if len(self.contact_list) != 0:
+            is_favorite = False
+            i = 0
+            while i < len(self.contact_list):
+                if self.contact_list[i].favorite == 'да':
+                    print(self.contact_list[i])
+                    is_favorite = True
+                i += 1
+            if not is_favorite:
+                print("Нет избранных контактов!")
+        else:
+            print("В записной книге нет ни одного контака!")
+# Поиск контактов по имени и фамилии
+    def find_by_name(self):
+        first_name = input("Введите имя: ")
+        last_name = input("Введите фамилию: ")
+        if len(self.contact_list) != 0:
+            is_find = False
+            i = 0
+            while i < len(self.contact_list):
+                if self.contact_list[i].first_name == first_name and self.contact_list[i].last_name == last_name:
+                    print(self.contact_list[i])
+                    is_find = True
+                i += 1
+            if not is_find:
+                print("Контакты не найдены!")
+        else:
+            print("В записной книге нет ни одного контака!")
+
+
+# Демонстрация работы adv_print
+def adv_demo():
+    Nicolas = Contact('Nikolay', 'Dmukha', '+7123456789', skype='@nikolaydmukha', instagram='nikolaydm',
+                      email='dmukha@mail.ru')
+    Julia = Contact('Julia', 'Dmukha', '+7123456789', favorite=True, skype='butova_julia', instagram='julia_rrr',
+                    email='butova@mail.ru')
+    print(Nicolas)
+    print(Julia)
+    Jhon = Contact('Jhon', 'Smith', '+71234567809')
+    print(Jhon)
+
+    adv_print("Каждый охотник желает знать, где сидит фазан!", max_line=39, in_file=1)
+
 
 def run_app(key):
     if key == '0':
         sys.exit("Вы нажали кнопку выхода из программы")
     elif key == '1':
         phonebook.show_contacts()
+    elif key == '2':
+        phonebook.add_contacts()
+    elif key == '3':
+        phonebook.del_contacts()
+    elif key == '4':
+        phonebook.find_fav()
+    elif key == '5':
+        phonebook.find_by_name()
+    elif key == '6':
+        adv_demo()
 
 
 if __name__ == '__main__':
-    Nicolas = Contact('Nikolay', 'Dmukha', '+7123456789', skype='@nikolaydmukha', instagram='nikolaydm', email='dmukha@mail.ru')
-    Julia = Contact('Julia', 'Dmukha', '+7123456789', favorite=True, skype='butova_julia', instagram='julia_rrr', email='butova@mail.ru')
-    print(Nicolas)
-    print(Julia)
-    jhon = Contact('Jhon', 'Smith', '+71234567809')
-    print(jhon)
-
-    adv_print("Каждый охотник желает знать, где сидит фазан!", max_line=39, in_file=1)
     name = input("Введите имя записаной книги:")
     while not name:
         name = input("Введите имя записаной книги:")
@@ -139,7 +204,7 @@ if __name__ == '__main__':
         if stop == '0':
             break
         elif stop == '':
-            phonebook.add_contact()
+            phonebook.add_contacts()
         else:
             stop = input("ENTER или 0! ")
     phonebook.show_contacts()
@@ -152,6 +217,7 @@ if __name__ == '__main__':
         3 - для удаления контакта по номеру телефона;
         4 - для поиска избранных контактов;
         5 - для поиска по имени и фамилии;
+        6 - для демонстрации функции adv_print;
         0 - ВЫХОД
         """)
         run_app(action)
