@@ -10,26 +10,40 @@ def adv_print(*args, **kwargs):
     print thr data on the next row;
     in_file - if is True than write the data to the file
     """
-    for key, val in kwargs.items():
-        if key == 'start':
-            print(val)
-        elif key == 'max_line':
-            temp_name = ''
-            sep = ' '
-            if 'sep' in kwargs.keys():
-                sep = kwargs['sep']
-            for string in args:
-                temp_name += str(string) + sep
-            name = temp_name.rstrip(sep)
-            if len(name) > val:
-                temp_name = name
-                while len(temp_name) > 0:
-                    substring = temp_name[:val]
-                    print(substring)
-                    temp_name = temp_name[val:]
-        elif key == 'in_file' and val == 1:
-            with open(os.path.abspath('contacts_list'), 'a', encoding='utf-8') as f:
-                f.write(name)
+    if kwargs:
+        temp_name = ''
+        sep = ' '
+        flag = 0
+        if 'sep' in kwargs.keys():
+            sep = kwargs['sep']
+        for string in args:
+            temp_name += str(string) + str(sep)
+        name = temp_name.rstrip(str(sep))
+        for key, val in kwargs.items():
+            if key == 'start':
+                print(val)
+            elif key == 'max_line':
+                if len(name) > val:
+                    temp_name = name
+                    while len(temp_name) > 0:
+                        substring = temp_name[:val]
+                        print(substring)
+                        temp_name = temp_name[val:]
+                    flag = 1
+            elif key == 'in_file' and val == 1:
+                with open(os.path.abspath('contacts_list'), 'a', encoding='utf-8') as f:
+                    f.write(name)
+        if flag == 0:
+             print(name)
+    else:
+        temp_name = ''
+        sep = ' '
+        if 'sep' in kwargs.keys():
+            sep = kwargs['sep']
+        for string in args:
+            temp_name += str(string) + str(sep)
+        name = temp_name.rstrip(str(sep))
+        print(name)
 
 
 # Класс Контакт
@@ -180,3 +194,9 @@ def adv_demo():
     Jhon = Contact('Jhon', 'Smith', '+71234567809')
     print(Jhon)
     adv_print("Каждый охотник желает знать, где сидит фазан!", "А если не желает?", 1, 23, 33, '(())', sep="#_#_#_#", start="*******", max_line=15, in_file=1)
+    adv_print(1,2,3,4, sep='00', start='#####', max_line=4, in_file=1)
+    adv_print(11,22,33,44, 'abcdef')
+    adv_print("Проверка ограничения по длине строки", max_line=5)
+    adv_print("Проверка записи в файл и без ограничения по длине!!", in_file=1)
+    adv_print("Проверка, есть или нет строка начала", start="ОПАОПАОПАПА")
+    adv_print(1, 2, 3, 4, sep='1')
