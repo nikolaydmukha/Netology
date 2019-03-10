@@ -3,7 +3,7 @@ import sys
 
 
 # Собственная реализация функции print
-def adv_print(name, **kwargs):
+def adv_print(*args, **kwargs):
     """
     start - if is True than start than start the output from value of start
     max_line - limit symbols per line. If string is more than max_line
@@ -14,13 +14,20 @@ def adv_print(name, **kwargs):
         if key == 'start':
             print(val)
         elif key == 'max_line':
+            temp_name = ''
+            sep = ' '
+            if 'sep' in kwargs.keys():
+                sep = kwargs['sep']
+            for string in args:
+                temp_name += str(string) + sep
+            name = temp_name.rstrip(sep)
             if len(name) > val:
                 temp_name = name
                 while len(temp_name) > 0:
                     substring = temp_name[:val]
                     print(substring)
                     temp_name = temp_name[val:]
-        elif key == 'in_file':
+        elif key == 'in_file' and val == 1:
             with open(os.path.abspath('contacts_list'), 'a', encoding='utf-8') as f:
                 f.write(name)
 
@@ -65,7 +72,7 @@ class Contact:
 
 
 # Записная книга
-class PhoneBook(Contact):
+class PhoneBook():
     def __init__(self, book_name):
         self.book_name = book_name
         self.contact_list = []
@@ -172,4 +179,4 @@ def adv_demo():
     print(Julia)
     Jhon = Contact('Jhon', 'Smith', '+71234567809')
     print(Jhon)
-    adv_print("Каждый охотник желает знать, где сидит фазан!", max_line=39, in_file=1)
+    adv_print("Каждый охотник желает знать, где сидит фазан!", "А если не желает?", 1, 23, 33, '(())', sep="#_#_#_#", start="*******", max_line=15, in_file=1)
