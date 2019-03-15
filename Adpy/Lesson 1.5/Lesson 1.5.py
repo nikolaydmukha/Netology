@@ -51,4 +51,5 @@ class Email:
 
 
 if __name__ == '__main__':
-    send_mail = Email('login@gmail.com', 'qwerty', 'Subject', ['vasya@email.com', 'petya@email.com'], 'Message', header='Refactoring')
+    send_mail = Email('login@gmail.com', 'qwerty', 'Subject', ['vasya@email.com', 'petya@email.com'], 'Message',
+                      header='Refactoring')
