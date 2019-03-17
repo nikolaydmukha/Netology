@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da0e128d-72e1-4816-af8b-8cd4fc6c39c0" name="Default Changelist" comment="" />
+    <list default="true" id="da0e128d-72e1-4816-af8b-8cd4fc6c39c0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Lesson2/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson2/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson2/helpers/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson2/helpers/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson2/tests/test_class_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson2/tests/test_constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,50 +22,82 @@
         <counts>
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.31" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="2" />
-          <entry key="Markdown" value="3" />
+          <entry key="Markdown" value="5" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="12" />
+          <entry key="Python" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="2" />
-          <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Python" value="1828" />
+          <entry key="Markdown" value="3" />
+          <entry key="PLAIN_TEXT" value="44" />
+          <entry key="Python" value="2571" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Lesson 1.2/main.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Lesson2/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+            <state relative-caret-position="289">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
-                <element signature="e#263#272#0" expanded="true" />
+                <element signature="e#0#14#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Lesson 1.2/country-link">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/Lesson2/helpers/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="29" column="30" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Lesson 1.2/README.md">
+        <entry file="file://$PROJECT_DIR$/Lesson2/tests/test_constants.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="4" selection-start-line="4" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Lesson2/tests/test_class_config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="35" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Lesson2/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor />
+            <state split_layout="SECOND">
+              <first_editor relative-caret-position="204">
+                <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+              </first_editor>
               <second_editor />
             </state>
           </provider>
@@ -91,6 +131,20 @@
         <option value="$PROJECT_DIR$/Lesson 1.2/countries.json" />
         <option value="$PROJECT_DIR$/Lesson 1.2/country-link" />
         <option value="$PROJECT_DIR$/Lesson 1.2/main.py" />
+        <option value="$PROJECT_DIR$/Lesson 2.1/app.py" />
+        <option value="$PROJECT_DIR$/Lesson 2.1/README.md" />
+        <option value="$PROJECT_DIR$/Lesson 2.1/helpers/vonfig.py" />
+        <option value="$PROJECT_DIR$/Lesson 2.1/helpers/config.py" />
+        <option value="$PROJECT_DIR$/Lesson 2.1/tests/test_class.py" />
+        <option value="$PROJECT_DIR$/Lesson 2.1/helpers/__init__.py" />
+        <option value="$PROJECT_DIR$/Lesson 2.1/tests/app.py" />
+        <option value="$PROJECT_DIR$/Lesson 2.1/tests/test_class_Config.py" />
+        <option value="$PROJECT_DIR$/Lesson/tests/test_class_Config.py" />
+        <option value="$PROJECT_DIR$/Lesson2/tests/test_class_Config.py" />
+        <option value="$PROJECT_DIR$/Lesson2/tests/test_class_constants.py" />
+        <option value="$PROJECT_DIR$/Lesson2/tests/test_constants.py" />
+        <option value="$PROJECT_DIR$/Lesson2/app.py" />
+        <option value="$PROJECT_DIR$/Lesson2/tests/test_class_config.py" />
       </list>
     </option>
   </component>
@@ -125,6 +179,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -135,26 +190,40 @@
             <path>
               <item name="Adpy" type="b2602c69:ProjectViewProjectNode" />
               <item name="Adpy" type="462c0819:PsiDirectoryNode" />
-              <item name="Lesson 1" type="462c0819:PsiDirectoryNode" />
+              <item name="Lesson2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Adpy" type="b2602c69:ProjectViewProjectNode" />
               <item name="Adpy" type="462c0819:PsiDirectoryNode" />
-              <item name="Lesson 1.2" type="462c0819:PsiDirectoryNode" />
+              <item name="Lesson2" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Adpy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Adpy" type="462c0819:PsiDirectoryNode" />
+              <item name="Lesson2" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Base Python/Lesson 3.1/Lesson 3.1.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Python\Netology\Netology\Adpy\Lesson 2.1\tests" />
+      <recent name="D:\Python\Netology\Netology\Adpy\Lesson" />
+      <recent name="D:\Python\Netology\Netology\Adpy\Lesson 2.1" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Python\Netology\Netology\Adpy\Lesson 2.1\tests" />
+      <recent name="D:\Python\Netology\Netology\Adpy\Lesson 2.1" />
       <recent name="D:\Python\Netology\Netology\Adpy\Lesson 1\application" />
       <recent name="D:\Python\Netology\Netology\Adpy\Lesson 1" />
     </key>
@@ -171,57 +240,91 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main (1)">
-    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python tests.Unittests in test_class_config.py">
+    <configuration name="Unittests for test_class_config.TestConfig.testArgs" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="Adpy" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lesson 1.2" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lesson2/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lesson 1.2/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_class_config.TestConfig.testArgs&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Unittests for test_class_config.TestConfig.test_out_types" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="Adpy" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lesson 1" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lesson2/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lesson 1/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_class_config.TestConfig.test_out_types&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_constants.TestConfigFails.test_is_windows" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Adpy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lesson2/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_constants.TestConfigFails.test_is_windows&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in test_class_config.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Adpy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lesson2/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/Lesson2/tests/test_class_config.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in test_constants.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Adpy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lesson2/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/Lesson2/tests/test_constants.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main" />
-      <item itemvalue="Python.main (1)" />
+      <item itemvalue="Python tests.Unittests in test_constants.py" />
+      <item itemvalue="Python tests.Unittests for test_constants.TestConfigFails.test_is_windows" />
+      <item itemvalue="Python tests.Unittests in test_class_config.py" />
+      <item itemvalue="Python tests.Unittests for test_class_config.TestConfig.testArgs" />
+      <item itemvalue="Python tests.Unittests for test_class_config.TestConfig.test_out_types" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main (1)" />
-        <item itemvalue="Python.main" />
+        <item itemvalue="Python tests.Unittests in test_class_config.py" />
+        <item itemvalue="Python tests.Unittests for test_class_config.TestConfig.test_out_types" />
+        <item itemvalue="Python tests.Unittests for test_class_config.TestConfig.testArgs" />
+        <item itemvalue="Python tests.Unittests in test_constants.py" />
+        <item itemvalue="Python tests.Unittests for test_constants.TestConfigFails.test_is_windows" />
       </list>
     </recent_temporary>
   </component>
@@ -238,23 +341,56 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_out_types - 2019.03.17 at 11h 22m 25s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_out_types" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_out_types - 2019.03.17 at 11h 22m 34s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_out_types" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_out_types - 2019.03.17 at 11h 22m 49s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_out_types" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_out_types - 2019.03.17 at 11h 22m 55s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_out_types" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_out_types - 2019.03.17 at 11h 23m 17s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_out_types" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_out_types - 2019.03.17 at 11h 23m 26s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_out_types" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_out_types - 2019.03.17 at 11h 23m 38s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_out_types" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_class_config_py - 2019.03.17 at 11h 23m 49s.xml">
+      <configuration name="Unittests in test_class_config.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_class_config_py - 2019.03.17 at 11h 24m 02s.xml">
+      <configuration name="Unittests in test_class_config.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_class_config_py - 2019.03.17 at 11h 24m 20s.xml">
+      <configuration name="Unittests in test_class_config.py" configurationId="tests" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -278,37 +414,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Diplom. Block 1/Block_one(diplom).py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="129" column="94" selection-start-line="129" selection-start-column="61" selection-end-line="129" selection-end-column="98" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Lesson 2.4(file).py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-588" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Lesson 2.5.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Lesson 3.1.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Lesson 1/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../Diplom. Block 1/Block_one(diplom).py" />
+    <entry file="file://$PROJECT_DIR$/../Lesson 2.4(file).py" />
+    <entry file="file://$PROJECT_DIR$/../Lesson 2.5.py" />
+    <entry file="file://$PROJECT_DIR$/../Lesson 3.1.py" />
     <entry file="file://$PROJECT_DIR$/Lesson 1/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -322,11 +431,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Base Python/Lesson 3.1/Lesson 3.1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <folding>
-            <element signature="e#395#406#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-51" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Lesson 1.2/countries.json">
@@ -336,8 +441,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Lesson 1.2/country-link">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/Lesson 1.2/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+          <folding>
+            <element signature="e#263#272#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Lesson 1.2/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -347,12 +459,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Lesson 1.2/main.py">
+    <entry file="file://$PROJECT_DIR$/Lesson 1.2/country-link">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+        <state relative-caret-position="867">
+          <caret line="51" column="76" selection-start-line="51" selection-start-column="73" selection-end-line="51" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lesson2/helpers/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lesson2/helpers/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="74" column="33" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="33" />
           <folding>
-            <element signature="e#263#272#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lesson2/tests/test_constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lesson 2.1/tests/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="15" lean-forward="true" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lesson 1/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lesson2/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SECOND">
+          <first_editor relative-caret-position="204">
+            <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lesson2/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lesson2/helpers/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="29" column="30" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lesson2/tests/test_constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="4" selection-start-line="4" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lesson2/tests/test_class_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="35" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
