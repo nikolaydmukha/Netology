@@ -21,8 +21,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Lesson2/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="38" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="38" />
+            <state relative-caret-position="400">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -30,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Lesson2/helpers/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="88" column="4" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="4" />
+            <state relative-caret-position="386">
+              <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -45,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Lesson2/tests/test_constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="420">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -54,13 +54,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Lesson2/tests/test_class_config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+            <state relative-caret-position="800">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
               <folding>
-                <element signature="e#0#15#0" expanded="true" />
+                <element signature="e#1195#1210#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,10 +105,10 @@
         <option value="$PROJECT_DIR$/Lesson/tests/test_class_Config.py" />
         <option value="$PROJECT_DIR$/Lesson2/tests/test_class_Config.py" />
         <option value="$PROJECT_DIR$/Lesson2/tests/test_class_constants.py" />
-        <option value="$PROJECT_DIR$/Lesson2/tests/test_constants.py" />
         <option value="$PROJECT_DIR$/Lesson2/app.py" />
-        <option value="$PROJECT_DIR$/Lesson2/tests/test_class_config.py" />
+        <option value="$PROJECT_DIR$/Lesson2/tests/test_constants.py" />
         <option value="$PROJECT_DIR$/Lesson2/helpers/config.py" />
+        <option value="$PROJECT_DIR$/Lesson2/tests/test_class_config.py" />
       </list>
     </option>
   </component>
@@ -175,9 +175,9 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Lesson2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -204,29 +204,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in test_class_config.py">
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Adpy" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lesson2" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lesson2/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests for test_class_config.TestConfig" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Unittests for test_class_config.TestConfig.test_os_while_find_system_disc">
+    <configuration name="Unittests for test_class_config.TestConfig.test_os_while_find_system_disc" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="Adpy" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -236,11 +215,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_class_config.TestConfig&quot;" />
+      <option name="_new_target" value="&quot;test_class_config.TestConfig.test_os_while_find_system_disc&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_class_config.TestConfig.test_output_type" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_class_config.TestConfig.test_os_while_system_disc" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="Adpy" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -250,11 +229,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_class_config.TestConfig.test_output_type&quot;" />
+      <option name="_new_target" value="&quot;test_class_config.TestConfig.test_os_while_system_disc&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_class_config.TestConfig.test_output_type_true" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_class_config.TestConfig.test_system_disk" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="Adpy" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -264,7 +243,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_class_config.TestConfig.test_output_type_true&quot;" />
+      <option name="_new_target" value="&quot;test_class_config.TestConfig.test_system_disk&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -282,20 +261,34 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests in test_constants.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Adpy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lesson2/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/Lesson2/tests/test_constants.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python tests.Unittests in test_class_config.py" />
-      <item itemvalue="Python tests.Unittests for test_class_config.TestConfig" />
-      <item itemvalue="Python tests.Unittests for test_class_config.TestConfig.test_output_type" />
-      <item itemvalue="Python.app" />
-      <item itemvalue="Python tests.Unittests for test_class_config.TestConfig.test_output_type_true" />
+      <item itemvalue="Python tests.Unittests for test_class_config.TestConfig.test_os_while_system_disc" />
+      <item itemvalue="Python tests.Unittests in test_constants.py" />
+      <item itemvalue="Python tests.Unittests for test_class_config.TestConfig.test_system_disk" />
+      <item itemvalue="Python tests.Unittests for test_class_config.TestConfig.test_os_while_find_system_disc" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests for test_class_config.TestConfig.test_os_while_find_system_disc" />
         <item itemvalue="Python tests.Unittests in test_class_config.py" />
-        <item itemvalue="Python tests.Unittests for test_class_config.TestConfig.test_output_type_true" />
-        <item itemvalue="Python tests.Unittests for test_class_config.TestConfig.test_output_type" />
-        <item itemvalue="Python tests.Unittests for test_class_config.TestConfig" />
-        <item itemvalue="Python.app" />
+        <item itemvalue="Python tests.Unittests for test_class_config.TestConfig.test_system_disk" />
+        <item itemvalue="Python tests.Unittests for test_class_config.TestConfig.test_os_while_system_disc" />
+        <item itemvalue="Python tests.Unittests in test_constants.py" />
       </list>
     </recent_temporary>
   </component>
@@ -313,35 +306,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_class_config_TestConfig - 2019.03.19 at 18h 39m 43s.xml">
-      <configuration name="Unittests for test_class_config.TestConfig" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_class_config_TestConfig - 2019.03.19 at 18h 43m 06s.xml">
-      <configuration name="Unittests for test_class_config.TestConfig" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_class_config_TestConfig - 2019.03.19 at 18h 43m 31s.xml">
-      <configuration name="Unittests for test_class_config.TestConfig" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_class_config_TestConfig_test_output_type - 2019.03.19 at 18h 44m 29s.xml">
-      <configuration name="Unittests for test_class_config.TestConfig.test_output_type" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_class_config_TestConfig_test_output_type - 2019.03.19 at 18h 44m 52s.xml">
-      <configuration name="Unittests for test_class_config.TestConfig.test_output_type" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_class_config_TestConfig_test_output_type - 2019.03.19 at 18h 45m 02s.xml">
-      <configuration name="Unittests for test_class_config.TestConfig.test_output_type" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_class_config_TestConfig_test_output_type - 2019.03.19 at 18h 45m 28s.xml">
-      <configuration name="Unittests for test_class_config.TestConfig.test_output_type" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_class_config_py - 2019.03.19 at 18h 45m 34s.xml">
+    <history-entry file="Unittests_in_test_class_config_py - 2019.03.20 at 15h 17m 42s.xml">
       <configuration name="Unittests in test_class_config.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_class_config_TestConfig_test_output_type_true - 2019.03.19 at 18h 46m 10s.xml">
-      <configuration name="Unittests for test_class_config.TestConfig.test_output_type_true" configurationId="tests" />
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_os_while_system_disc - 2019.03.20 at 15h 19m 48s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_os_while_system_disc" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_class_config_py - 2019.03.19 at 18h 46m 16s.xml">
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_os_while_system_disc - 2019.03.20 at 15h 20m 21s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_os_while_system_disc" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_system_disk - 2019.03.20 at 16h 35m 55s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_system_disk" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_system_disk - 2019.03.20 at 16h 36m 03s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_system_disk" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_system_disk - 2019.03.20 at 16h 36m 15s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_system_disk" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_class_config_py - 2019.03.20 at 16h 42m 09s.xml">
       <configuration name="Unittests in test_class_config.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_os_while_find_system_disc - 2019.03.20 at 16h 42m 32s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_os_while_find_system_disc" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_os_while_find_system_disc - 2019.03.20 at 16h 42m 45s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_os_while_find_system_disc" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_os_while_find_system_disc - 2019.03.20 at 16h 43m 05s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_os_while_find_system_disc" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -353,7 +346,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3261105" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -372,7 +365,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3261105" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -458,6 +451,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/unittest/loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Lesson2/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SECOND">
@@ -470,28 +470,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Lesson2/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="38" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="38" />
+        <state relative-caret-position="400">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Lesson2/tests/test_class_config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Lesson2/tests/test_constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="420">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -500,10 +490,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Lesson2/helpers/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="88" column="4" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="4" />
+        <state relative-caret-position="386">
+          <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lesson2/tests/test_class_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="e#1195#1210#0" expanded="true" />
           </folding>
         </state>
       </provider>

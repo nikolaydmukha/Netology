@@ -86,4 +86,3 @@ class Config:
         if not result:
             raise EnvironmentError('Operation system is not Windows')
         return result
-    

@@ -1,5 +1,5 @@
 import logging
-from helpers.config import Config, APP_NAME
+from Lesson2.helpers.config import Config, APP_NAME
 
 
 class App:
