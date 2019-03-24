@@ -56,7 +56,7 @@ def csv_processing(file_name):
                 phone_dict_user['surname'] = surname
                 phone_dict_user['organization'] = organization
                 phone_dict_user['position'] = position
-                sub_for_phone = re.sub(pattern, r"+7 \3 \6 \8 \10 \13", str(phone))
+                sub_for_phone = re.sub(pattern, r"+7(\3)\6-\8-\10 \13", str(phone))
                 phone_dict_user['phone'] = sub_for_phone
                 phone_dict_user['email'] = email
                 phone_dict[lastname + " " + firstname] = phone_dict_user
