@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da0e128d-72e1-4816-af8b-8cd4fc6c39c0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lesson2/tests/test_class_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson2/tests/test_class_config.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,13 +22,13 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="6" />
+          <entry key="Python" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="176" />
+          <entry key="Python" value="216" />
         </counts>
       </usages-collector>
     </session>
@@ -37,8 +38,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Lesson2/tests/test_class_config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="340">
+              <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Lesson2/tests/test_constants.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -61,7 +74,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Lesson2/helpers/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
+            <state relative-caret-position="1033">
               <caret line="86" column="22" lean-forward="true" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="67" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -320,39 +333,40 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_class_config_TestConfig_test_check_config_params - 2019.03.28 at 08h 48m 15s.xml">
-      <configuration name="Unittests for test_class_config.TestConfig.test_check_config_params" configurationId="tests" />
+    <history-entry file="Unittests_in_test_class_config_py - 2019.03.28 at 09h 01m 50s.xml">
+      <configuration name="Unittests in test_class_config.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_class_config_TestConfig_test_check_config_params - 2019.03.28 at 08h 51m 24s.xml">
-      <configuration name="Unittests for test_class_config.TestConfig.test_check_config_params" configurationId="tests" />
+    <history-entry file="Unittests_for_test_class_config_TestConfig_test_log_verbose - 2019.03.28 at 09h 02m 01s.xml">
+      <configuration name="Unittests for test_class_config.TestConfig.test_log_verbose" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_constants_py - 2019.03.28 at 08h 51m 29s.xml">
+    <history-entry file="Unittests_in_test_class_config_py - 2019.03.28 at 09h 02m 09s.xml">
+      <configuration name="Unittests in test_class_config.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_constants_py - 2019.03.28 at 09h 03m 47s.xml">
       <configuration name="Unittests in test_constants.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_class_config_py - 2019.03.28 at 08h 51m 52s.xml">
+    <history-entry file="Unittests_in_test_class_config_py - 2019.03.28 at 09h 03m 52s.xml">
       <configuration name="Unittests in test_class_config.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_class_config_TestConfig_test_compare_list - 2019.03.28 at 08h 56m 03s.xml">
-      <configuration name="Unittests for test_class_config.TestConfig.test_compare_list" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_class_config_TestConfig_test_compare_list - 2019.03.28 at 08h 56m 12s.xml">
-      <configuration name="Unittests for test_class_config.TestConfig.test_compare_list" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_class_config_TestConfig_test_compare_list - 2019.03.28 at 08h 56m 26s.xml">
-      <configuration name="Unittests for test_class_config.TestConfig.test_compare_list" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_class_config_TestConfig_test_compare_list - 2019.03.28 at 08h 57m 00s.xml">
-      <configuration name="Unittests for test_class_config.TestConfig.test_compare_list" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_class_config_py - 2019.03.28 at 08h 59m 36s.xml">
+    <history-entry file="Unittests_in_test_class_config_py - 2019.03.28 at 09h 08m 33s.xml">
       <configuration name="Unittests in test_class_config.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_class_config_py - 2019.03.28 at 09h 00m 08s.xml">
+    <history-entry file="Unittests_in_test_constants_py - 2019.03.28 at 09h 08m 40s.xml">
+      <configuration name="Unittests in test_constants.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_class_config_py - 2019.03.28 at 09h 08m 48s.xml">
+      <configuration name="Unittests in test_class_config.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_class_config_py - 2019.03.28 at 09h 09m 09s.xml">
+      <configuration name="Unittests in test_class_config.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_class_config_py - 2019.03.28 at 09h 09m 28s.xml">
       <configuration name="Unittests in test_class_config.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17650159" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -546,7 +560,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Lesson2/helpers/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
+        <state relative-caret-position="1033">
           <caret line="86" column="22" lean-forward="true" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="67" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -566,8 +580,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Lesson2/tests/test_class_config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="340">
+          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>

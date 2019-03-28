@@ -17,11 +17,15 @@ class TestConfig(unittest.TestCase):
     def test_compare_list(self):
         if 'win' in sys.platform:
             self.assertEqual(len(self.test), 5)
+        else:
+            print("Тест только для ОС Windows")
 
     # проверка, что результаты работы функции init_env_config_path() для windows - тип list
     def test_output_type_true(self):
         if 'win' in sys.platform:
             self.assertIsInstance(self.test, list)
+        else:
+            print("Тест только для ОС Windows")
 
     # проверка результата работы функции get_verbosity_level
     def test_log_verbose(self):
@@ -39,6 +43,8 @@ class TestConfig(unittest.TestCase):
     def test_system_disk(self):
         if 'win' in sys.platform:
             self.assertTrue(Config.get_windows_system_disk().rstrip(":") == "C", "Внимание! Системный диск не C:")
+        else:
+            print("Тест только для ОС Windows")
 
 
 if __name__ == '__main__':
