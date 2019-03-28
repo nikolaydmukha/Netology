@@ -14,18 +14,14 @@ class TestConfig(unittest.TestCase):
         self.assertNotEqual(self.test_class.config_paths, [], "Не задан config_paths!")
 
     # проверка, что вывод функции init_env_config_path() для windows состоитиз 5 значения
+    @unittest.skipIf('lin' in sys.platform, 'Only for Win')
     def test_compare_list(self):
-        if 'win' in sys.platform:
-            self.assertEqual(len(self.test), 5)
-        else:
-            print("Тест только для ОС Windows")
+        self.assertEqual(len(self.test), 5)
 
     # проверка, что результаты работы функции init_env_config_path() для windows - тип list
+    @unittest.skipIf('lin' in sys.platform, 'Only for Win')
     def test_output_type_true(self):
-        if 'win' in sys.platform:
-            self.assertIsInstance(self.test, list)
-        else:
-            print("Тест только для ОС Windows")
+        self.assertIsInstance(self.test, list)
 
     # проверка результата работы функции get_verbosity_level
     def test_log_verbose(self):
@@ -40,11 +36,10 @@ class TestConfig(unittest.TestCase):
         self.assertIsInstance(self.test_class.get_verbosity_level(), str)
 
     # проверим, что системный диск именно C:, а не D: или другой (для windows)
+    @unittest.skipIf('lin' in sys.platform, 'Only for Win')
     def test_system_disk(self):
-        if 'win' in sys.platform:
-            self.assertTrue(Config.get_windows_system_disk().rstrip(":") == "C", "Внимание! Системный диск не C:")
-        else:
-            print("Тест только для ОС Windows")
+        self.assertTrue(Config.get_windows_system_disk().rstrip(":") == "C", "Внимание! Системный диск не C:")
+
 
 
 if __name__ == '__main__':

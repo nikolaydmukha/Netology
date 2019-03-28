@@ -1,11 +1,12 @@
 import unittest
 from Lesson2.helpers.config import APP_NAME, WINDOWS, Config
 from Lesson2.app import App
-#from Lesson2.app import App
+import sys
 
 
 class TestConfigFails(unittest.TestCase):
     # проверка что ОС windows
+    @unittest.skipIf('lin' in sys.platform, 'Only for Win')
     def test_is_os_windows(self):
         self.assertEqual(WINDOWS, True)
 
