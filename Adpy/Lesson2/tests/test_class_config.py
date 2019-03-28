@@ -1,5 +1,6 @@
 import unittest
 from Lesson2.helpers.config import Config
+import sys
 
 
 class TestConfig(unittest.TestCase):
@@ -12,35 +13,32 @@ class TestConfig(unittest.TestCase):
         self.assertEqual(self.test_class.config_file, "testapp.yaml", "Не задан config_file!")
         self.assertNotEqual(self.test_class.config_paths, [], "Не задан config_paths!")
 
-    # проверка, что вывод функции init_env_config_path() - конкретный список значений
+    # проверка, что вывод функции init_env_config_path() для windows состоитиз 5 значения
     def test_compare_list(self):
-        #test = ['проверка', 'что', 'это', 'список']
-        test = ['.\\', 'C:\\Users\\Владимир\\.testapp', 'C:\\Users\\Владимир\\AppData\\Roaming\\testapp',
-                'D:\\Python\\Netology\\Netology\\Adpy\\Lesson2', 'C:\\']
-        self.assertListEqual(self.test, test)
+        if 'win' in sys.platform:
+            self.assertEqual(len(self.test), 5)
 
-    # проверка, что результаты работы функции init_env_config_path() - тип list
+    # проверка, что результаты работы функции init_env_config_path() для windows - тип list
     def test_output_type_true(self):
-        self.assertIsInstance(self.test, list)
-
-    # проверка, что результаты работы функции init_env_config_path() - тип dict
-    def test_output_type_false(self):
-        self.assertIsInstance(self.test, dict)
+        if 'win' in sys.platform:
+            self.assertIsInstance(self.test, list)
 
     # проверка результата работы функции get_verbosity_level
     def test_log_verbose(self):
         self.assertEqual(self.test_class.get_verbosity_level('critical'), 50,
                          "Некорреткно определяется уровень логирования для critical")
-        self.assertEqual(self.test_class.get_verbosity_level('console'), 110,
+        self.assertEqual(self.test_class.get_verbosity_level('console'), 10,
                          "Некорреткно определяется уровень логирования для console")
-        self.assertEqual(self.test_class.get_verbosity_level('warning'), 330,
+        self.assertEqual(self.test_class.get_verbosity_level('warning'), 30,
                          "Некорреткно определяется уровень логирования для warning")
         self.assertEqual(self.test_class.get_verbosity_level('debug'), self.test_class.get_verbosity_level('console'),
                          "Некорреткно определяется уровень логирования для debug")
+        self.assertIsInstance(self.test_class.get_verbosity_level(), str)
 
-    # проверим, что системный диск именно C:, а не D: или другой
+    # проверим, что системный диск именно C:, а не D: или другой (для windows)
     def test_system_disk(self):
-        self.assertTrue(Config.get_windows_system_disk().rstrip(":") == "C", "Внимание! Системный диск не C:")
+        if 'win' in sys.platform:
+            self.assertTrue(Config.get_windows_system_disk().rstrip(":") == "C", "Внимание! Системный диск не C:")
 
 
 if __name__ == '__main__':
