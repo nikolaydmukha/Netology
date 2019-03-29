@@ -52,10 +52,26 @@ def sort_by_date(lesson_db):
         print(f"Дата: {user['Дата']} Исполнитель: {user['Исполнитель']} | Место проведения: {user['Место']} | Цена: {user['Цена']}")
 
 
+def find_by_date(day_start, month_start, day_end, month_end, lesson_db):
+    """
+    Найти концерты в указанный период.
+    Функция примнимает параметры: день начала, месяц начала, день конца и месяц конца поиска
+    """
+    # создание коллекции
+    artists_collection = lesson_db['artists']
+    start = datetime.datetime(2019,month_start, day_start)
+    end = datetime.datetime(2019,month_end, day_end)
+    k = 1
+    print(f"Найденный концерты в период с {day_start}.{month_start} по {day_end}.{month_end}")
+    for user in artists_collection.find({'Дата': {'$gte': start, '$lte': end}}).sort('Дата', 1):
+        print(f"{k}. Дата: {user['Дата']} Исполнитель: {user['Исполнитель']} | Место проведения: {user['Место']} | Цена: {user['Цена']}")
+        k += 1
+
+
 def find_by_name(name, lesson_db):
     """
     Найти билеты по имени исполнителя (в том числе – по подстроке),
-    и выведите их по возрастанию цены
+    и выведите их по возрастанию цены.
     """
     # создание коллекции
     artists_collection = lesson_db['artists']
@@ -89,3 +105,4 @@ if __name__ == '__main__':
     find_by_name('e', lesson_db)
     # вывод отсортированных по дате событий
     sort_by_date(lesson_db)
+    find_by_date(1, 2, 28, 2, lesson_db)
