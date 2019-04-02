@@ -13,45 +13,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/Lesson 2.5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+            <state relative-caret-position="320">
+              <caret line="16" column="93" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="93" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1900.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="756" column="7" selection-start-line="756" selection-end-line="756" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1950.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="6113" column="5" selection-start-line="6113" selection-end-line="6113" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob2000.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="17681" column="7" selection-start-line="17681" selection-end-line="17681" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1880.txt">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -329,7 +297,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32936078" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -447,31 +415,31 @@
     <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1880.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1900.txt">
+    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob2000.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="756" column="7" selection-start-line="756" selection-end-line="756" selection-end-column="7" />
+        <state relative-caret-position="120">
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1950.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
-          <caret line="6113" column="5" selection-start-line="6113" selection-end-line="6113" selection-end-column="5" />
+          <caret line="6111" column="6" selection-start-line="6111" selection-end-line="6111" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob2000.txt">
+    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1900.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="17681" column="7" selection-start-line="17681" selection-end-line="17681" selection-end-column="7" />
+        <state relative-caret-position="186">
+          <caret line="3717" column="10" lean-forward="true" selection-end-line="3730" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/Lesson 2.5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+        <state relative-caret-position="320">
+          <caret line="16" column="93" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="93" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
