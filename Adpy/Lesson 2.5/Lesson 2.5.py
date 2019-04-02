@@ -32,6 +32,6 @@ def count_dinamics(query_years):
 
 
 if __name__ == "__main__":
-    # print(find_top3([1880]))
-    # print(find_top3([1900, 1950, 2000]))
+    print(find_top3([1880]))
+    print(find_top3([1900, 1950, 2000]))
     print(count_dinamics([1900, 1950, 2000]))
