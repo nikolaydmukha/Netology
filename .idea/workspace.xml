@@ -11,35 +11,55 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.4/artists.csv">
-          <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/Lesson 2.5.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
-          </provider>
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.4/README.md">
+        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1900.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="756" column="7" selection-start-line="756" selection-end-line="756" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1950.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="6113" column="5" selection-start-line="6113" selection-end-line="6113" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob2000.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="17681" column="7" selection-start-line="17681" selection-end-line="17681" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1880.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SECOND">
               <first_editor />
               <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.4/Lesson 2.4.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="107" column="19" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -53,6 +73,15 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>James</find>
+      <find>John</find>
+      <find>John,</find>
+      <find>James,</find>
+      <find>Robert,</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -64,6 +93,8 @@
         <option value="$PROJECT_DIR$/Adpy/Lesson 2.2/phonebook_parsed.csv" />
         <option value="$PROJECT_DIR$/Adpy/Lesson 2.4/artists.csv" />
         <option value="$PROJECT_DIR$/Adpy/Lesson 2.4/Lesson 2.4.py" />
+        <option value="$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1900.txt" />
+        <option value="$PROJECT_DIR$/Adpy/Lesson 2.5/Lesson 2.5.py" />
       </list>
     </option>
   </component>
@@ -96,6 +127,19 @@
               <item name="Adpy" type="462c0819:PsiDirectoryNode" />
               <item name="Lesson 2.4" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Netology2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Netology2" type="462c0819:PsiDirectoryNode" />
+              <item name="Adpy" type="462c0819:PsiDirectoryNode" />
+              <item name="Lesson 2.5" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Netology2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Netology2" type="462c0819:PsiDirectoryNode" />
+              <item name="Adpy" type="462c0819:PsiDirectoryNode" />
+              <item name="Lesson 2.5" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -106,6 +150,11 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Python\Netology2\Adpy\Lesson 2.5\files" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -119,7 +168,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Lesson 2.4">
+  <component name="RunManager" selected="Python.Lesson 2.5">
     <configuration name="Lesson 2.2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Netology2" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -183,6 +232,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Lesson 2.5" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Netology2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Adpy/Lesson 2.5" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Adpy/Lesson 2.5/Lesson 2.5.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Unittests in test_class_config.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="Netology2" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -197,27 +267,13 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests in test_constants.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="Netology2" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Adpy/Lesson2/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/Adpy/Lesson2/tests/test_constants.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Lesson 2.5" />
         <item itemvalue="Python.Lesson 2.4" />
         <item itemvalue="Python.Lesson 2.3" />
         <item itemvalue="Python.Lesson 2.2" />
         <item itemvalue="Python tests.Unittests in test_class_config.py" />
-        <item itemvalue="Python tests.Unittests in test_constants.py" />
       </list>
     </recent_temporary>
   </component>
@@ -347,24 +403,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.4/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SECOND">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.4/Lesson 2.4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="107" column="19" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.4/artists.csv">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -376,7 +414,67 @@
       </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="280">
-          <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+          <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.4/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SECOND">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.4/Lesson 2.4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="107" column="19" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SECOND">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1880.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1900.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="756" column="7" selection-start-line="756" selection-end-line="756" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1950.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="6113" column="5" selection-start-line="6113" selection-end-line="6113" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob2000.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="17681" column="7" selection-start-line="17681" selection-end-line="17681" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/Lesson 2.5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
