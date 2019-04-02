@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/Lesson 2.5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="468">
+              <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -48,6 +48,7 @@
       <find>John,</find>
       <find>James,</find>
       <find>Robert,</find>
+      <find>,M,</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -288,7 +289,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1358" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
@@ -429,17 +430,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1990.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285481">
+          <caret line="15235" column="10" selection-start-line="15235" selection-start-column="7" selection-end-line="15235" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1900.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="3717" column="10" lean-forward="true" selection-end-line="3730" />
+        <state relative-caret-position="551">
+          <caret line="3719" column="9" lean-forward="true" selection-start-line="3719" selection-start-column="9" selection-end-line="3719" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/Lesson 2.5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="468">
+          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

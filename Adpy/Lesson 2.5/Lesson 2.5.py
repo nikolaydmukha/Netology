@@ -28,7 +28,7 @@ def count_dinamics(query_years):
         temp.append(df_temp)
     res_df = pd.concat(temp).reset_index(drop=True)
     res_sort_df = res_df.groupby(['Gender', 'Year']).sum().sort_values('Count', ascending=False)
-    return res_sort_df.head().unstack()
+    return res_sort_df.unstack()
 
 
 if __name__ == "__main__":
