@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/Lesson 2.5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+            <state relative-caret-position="460">
+              <caret line="29" column="95" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="95" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -23,10 +23,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/README.md">
+        <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.6/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SECOND">
-              <first_editor />
+              <first_editor relative-caret-position="100">
+                <caret line="5" selection-start-line="5" selection-end-line="5" />
+              </first_editor>
               <second_editor />
             </state>
           </provider>
@@ -63,15 +65,16 @@
         <option value="$PROJECT_DIR$/Adpy/Lesson 2.4/artists.csv" />
         <option value="$PROJECT_DIR$/Adpy/Lesson 2.4/Lesson 2.4.py" />
         <option value="$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1900.txt" />
+        <option value="$PROJECT_DIR$/Adpy/Lesson 2.6/README.md" />
         <option value="$PROJECT_DIR$/Adpy/Lesson 2.5/Lesson 2.5.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1358" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -94,20 +97,13 @@
               <item name="Netology2" type="b2602c69:ProjectViewProjectNode" />
               <item name="Netology2" type="462c0819:PsiDirectoryNode" />
               <item name="Adpy" type="462c0819:PsiDirectoryNode" />
-              <item name="Lesson 2.4" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Netology2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Netology2" type="462c0819:PsiDirectoryNode" />
-              <item name="Adpy" type="462c0819:PsiDirectoryNode" />
               <item name="Lesson 2.5" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Netology2" type="b2602c69:ProjectViewProjectNode" />
               <item name="Netology2" type="462c0819:PsiDirectoryNode" />
               <item name="Adpy" type="462c0819:PsiDirectoryNode" />
-              <item name="Lesson 2.5" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="Lesson 2.6" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -289,15 +285,15 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24925596" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -405,14 +401,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SECOND">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/files/yob1880.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -444,10 +432,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SECOND">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.6/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SECOND">
+          <first_editor relative-caret-position="100">
+            <caret line="5" selection-start-line="5" selection-end-line="5" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Adpy/Lesson 2.5/Lesson 2.5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+        <state relative-caret-position="460">
+          <caret line="29" column="95" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="95" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
