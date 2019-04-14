@@ -11,7 +11,7 @@ def start_programm():
     username = "29827545"
     user = VKUser(username)
     lovefinder_data = user.lovefinder_info()
-    pprint(lovefinder_data)
+    #pprint(lovefinder_data)
     if 'error' not in lovefinder_data.keys():
         if 'reason' not in lovefinder_data.keys():
             ##print(f'Привет! Сейчас мы искать пару пользователю с идентификатором соцсети VK "{sys.argv[1]}"')

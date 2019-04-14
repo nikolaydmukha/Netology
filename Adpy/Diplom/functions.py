@@ -5,7 +5,8 @@ import csv
 import datetime
 import os
 from pprint import pprint
-from constants import ACCESS_TOKEN, REQUEST_URL, CSV_FILE
+from constants import ACCESS_TOKEN, REQUEST_URL, CSV_FILE, SEX, RELATION, POLITICAL, PEOPLE_MAIN, LIFE_MAIN, SMOKING
+from constants import ALCOHOL
 
 
 class VKUser:
@@ -20,40 +21,46 @@ class VKUser:
 
     # Поиск информации о пользователе, для которого будем предлагать варианты знакомства
     def lovefinder_info(self):
-        sex = {
-            1: 'женский',
-            2: 'мужской',
-            3: 'не указан'}
-        relation = {
-            1: 'не в браке',
-            2: 'есть друг/подруга',
-            3: 'помолвлен/помолвлена',
-            4: 'женат/замужем',
-            5: 'всё сложно',
-            6: 'в активном поиске',
-            7: 'влюблён/влюблена',
-            8: 'в гражданском браке',
-            9: 'не указано'}
         time.sleep(1)
         method = 'users.get'
-        self.params['fields'] = 'bdate, interests, personal, relation, sex, city, country, education, interests, ' \
-                                'music, movies, tv, books, games, about, '
+        self.params['fields'] = 'bdate, interests, personal, relation, sex, city, country, interests, education,' \
+                                'music, movies, tv, books'
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
-        pprint(data)
+        #pprint(data)
         name = {}
         if 'error' not in data.keys():
             if 'deactivated' not in data['response'][0].keys():
                 self.account_id = data['response'][0]['id'] # цифровой id пользователя
                 name['fullname'] = " ".join((data['response'][0]['first_name'], data['response'][0]['last_name']))
                 if data['response'][0]['sex']:
-                    name['sex'] = sex[data['response'][0]['sex']]
+                    name['sex'] = SEX[data['response'][0]['sex']]
                 else:
                     name['sex'] = ''
                 if data['response'][0]['relation']:
-                    name['relation'] = relation[data['response'][0]['relation']]
+                    name['relation'] = RELATION[data['response'][0]['relation']]
                 else:
                     name['relation'] = ''
+                if data['response'][0]['university_name']:
+                    name['university_name'] = data['response'][0]['university_name']
+                else:
+                    name['university_name'] = ''
+                if data['response'][0]['interests']:
+                    name['interests'] = data['response'][0]['interests']
+                else:
+                    name['interests'] = ''
+                if data['response'][0]['books']:
+                    name['books'] = data['response'][0]['books']
+                else:
+                    name['books'] = ''
+                if data['response'][0]['movies']:
+                    name['movies'] = data['response'][0]['movies']
+                else:
+                    name['movies'] = ''
+                if data['response'][0]['personal']:
+                    name['personal'] = data['response'][0]['personal']
+                else:
+                    name['movies'] = ''
                 if data['response'][0]['bdate']:
                     name['bdate'] = data['response'][0]['bdate']
                     name['age'] = datetime.datetime.now().year - int(data['response'][0]['bdate'][-4:])
@@ -74,22 +81,14 @@ class VKUser:
                 else:
                     name['country']['title'] = ''
                     name['country']['id'] = ''
-                if data['response'][0]['university_name']:
-                    name['university_name'] = data['response'][0]['university_name']
-                else:
-                    #self.params['fields'] = ''
-                    name['university_name'] = ''
-                #self.params['fields'] = ''
                 return name
             else:
                 self.account_id = data['response'][0]['id']  # цифровой id пользователя
                 name['fullname'] = ' '.join((data['response'][0]['first_name'], data['response'][0]['last_name']))
                 name['reason'] = "deleted"
-                #self.params['fields'] = ''
                 return name
         else:
             name['error'] = data['error']['error_msg']
-            #self.params['fields'] = ''
             return name
 
     # Поиск идентификатора страны по имени
@@ -152,7 +151,7 @@ class VKUser:
         self.params['count'] = 1000
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
-        print(data)
+        #print(data)
         for row in data['response']['items']:
             pprint(row['title'])
         dict_of_cities = {}
@@ -177,9 +176,11 @@ class VKUser:
         """
         search_params[0] - sex
         search_params[1] - age_range
-        search_params[2][0] - id города, search_params[2][1] - название города, city[2][3] - id страны
+        search_params[2] - территория поиска
+                       [0] - id города, [1] - название города, [2] - id страны
         """
-        self.params['country'] = search_params[0]
+        self.params['sex'] = search_params[0]
+        self.params['country'] = search_params[2][2]
         self.params['city'] = search_params[2][0]
         self.params['age_from'] = search_params[1][0]
         self.params['age_to'] = search_params[1][1]
