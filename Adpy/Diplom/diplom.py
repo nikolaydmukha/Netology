@@ -1,49 +1,36 @@
-import time
-import requests
-import sys
-import json
 import os
-#import psycopg2
-from constants import ACCESS_TOKEN, REQUEST_URL
-
-
-class VKUser:
-    def __init__(self, user_id):
-        self.user_id = user_id
-        self.account_id = None
-        self.params = {
-            'access_token': ACCESS_TOKEN,
-            'v': '5.92',
-            'user_ids': self.user_id,
-        }
-
-    def get_name(self):
-        time.sleep(1)
-        method = "users.get"
-        response = requests.get(REQUEST_URL + method, self.params)
-        data = response.json()
-        print(data)
-        name = list()
-        if 'deactivated' not in data['response'][0].keys():
-            self.account_id = data['response'][0]['id'] # цифровой id пользователя
-            name.append(" ".join((data['response'][0]['first_name'], data['response'][0]['last_name'])))
-            return name
-        else:
-            self.account_id = data['response'][0]['id']  # цифровой id пользователя
-            name.append(" ".join((data['response'][0]['first_name'], data['response'][0]['last_name'])))
-            name.append("deleted")
-            return name
+import sys
+from functions import VKUser, set_search_gender, set_search_age
+from pprint import pprint
 
 
 def start_programm():
-    user = VKUser(sys.argv[1])
-    print(sys.argv[1])
-    if len(user.get_name()) != 2:
-        print('Привет! Сейчас мы искать пару пользователю с идентификатором соцсети VK "{}"'.format(sys.argv[1]))
-        print(f'Ты ввёл пользователя: {user.get_name()[0]}\nПол пользователя: \nВозраст пользователя: ')
-        print(f"Программа выполнена. Данные записаны в файл {os.path.join(os.path.abspath('files'))}\diplom.json")
+    ##user = VKUser(sys.argv[1])
+    ##print(sys.argv[1])
+    #username = "155686070"
+    username = "dmukha"
+    user = VKUser(username)
+    lovefinder_data = user.lovefinder_info()
+    pprint(lovefinder_data)
+    if 'error' not in lovefinder_data.keys():
+        if 'reason' not in lovefinder_data.keys():
+            ##print(f'Привет! Сейчас мы искать пару пользователю с идентификатором соцсети VK "{sys.argv[1]}"')
+            print(f'Привет! Сейчас мы будем искать пару пользователю с идентификатором соцсети VK "{username}".\n'
+                  f'Короткая справка о пользователе (может помочь при составлении запроса на поиск пары):')
+            print(f'Полное имя: {lovefinder_data["fullname"]}\nПол: {lovefinder_data["sex"]}'
+                  f'  \nДата рождения: {lovefinder_data["bdate"]} (возраст {lovefinder_data["age"]})\n'
+                  f'Страна и город проживания: {lovefinder_data["country"]["title"]} ({lovefinder_data["city"]["title"]})'
+                  f'\nВысшее образование: {lovefinder_data["university_name"]}\n')
+            print('Давайте сформируем параметры поиска.')
+            sex = set_search_gender()
+            age_range = set_search_age()
+            city = user.get_city()
+            print(f"Поиск пол {sex} возраст {age_range} город {city}")
+            print(f"Программа выполнена. Данные записаны в файл {os.path.join(os.path.abspath('files'))}\diplom.json")
+        else:
+            sys.exit(f"Что-то пошло не так :( пользователь удалил свою страницу.")
     else:
-        sys.exit("Введённый пользователь заблокирован или удалён. Программа завершает свою работу!")
+        sys.exit(f"Что-то пошло не так :( {lovefinder_data['error']}")
 
 
 if __name__ == "__main__":
