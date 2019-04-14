@@ -8,7 +8,7 @@ def start_programm():
     ##user = VKUser(sys.argv[1])
     ##print(sys.argv[1])
     #username = "155686070"
-    username = "dmukha"
+    username = "29827545"
     user = VKUser(username)
     lovefinder_data = user.lovefinder_info()
     pprint(lovefinder_data)
@@ -24,8 +24,10 @@ def start_programm():
             print('Давайте сформируем параметры поиска.')
             sex = set_search_gender()
             age_range = set_search_age()
-            city = user.get_city()
-            print(f"Поиск пол {sex} возраст {age_range} город {city}")
+            city = user.get_city() #city[0] - id города, city[1] - название города, city[3] - id страны
+            search_params = [sex, age_range,city]
+            user.users_search(search_params)
+            print(f"Поиск пол: {sex} возраст: от {age_range[0]} до {age_range[1]} город: {city[1]}")
             print(f"Программа выполнена. Данные записаны в файл {os.path.join(os.path.abspath('files'))}\diplom.json")
         else:
             sys.exit(f"Что-то пошло не так :( пользователь удалил свою страницу.")

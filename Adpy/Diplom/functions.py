@@ -36,7 +36,8 @@ class VKUser:
             9: 'не указано'}
         time.sleep(1)
         method = 'users.get'
-        self.params['fields'] = 'bdate, interests, personal, relation, sex, city, country, education'
+        self.params['fields'] = 'bdate, interests, personal, relation, sex, city, country, education, interests, ' \
+                                'music, movies, tv, books, games, about, '
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
         pprint(data)
@@ -76,19 +77,19 @@ class VKUser:
                 if data['response'][0]['university_name']:
                     name['university_name'] = data['response'][0]['university_name']
                 else:
-                    self.params['fields'] = ''
+                    #self.params['fields'] = ''
                     name['university_name'] = ''
-                self.params['fields'] = ''
+                #self.params['fields'] = ''
                 return name
             else:
                 self.account_id = data['response'][0]['id']  # цифровой id пользователя
                 name['fullname'] = ' '.join((data['response'][0]['first_name'], data['response'][0]['last_name']))
                 name['reason'] = "deleted"
-                self.params['fields'] = ''
+                #self.params['fields'] = ''
                 return name
         else:
             name['error'] = data['error']['error_msg']
-            self.params['fields'] = ''
+            #self.params['fields'] = ''
             return name
 
     # Поиск идентификатора страны по имени
@@ -139,21 +140,6 @@ class VKUser:
                 continue
             else:
                 break
-        # while True:
-        #     try:
-        #         self.params['q'] = input("Введите регион поиска:")
-        #         response = requests.get(REQUEST_URL + method, self.params)
-        #         data = response.json()
-        #         print(data)
-        #         if data['response']['count'] == 0:
-        #             print("А-яй, такого региона. Повторите ввод.")
-        #             continue
-        #     except:
-        #         pass
-        #     else:
-        #         break
-        # Возвратим id страны по базе ВК
-        #return data['response']['items'][0]['id']
         return [dict_of_region[region_name], region_name, country_id]
 
     # Поиск идентификатора города по стране и имени города
@@ -162,10 +148,8 @@ class VKUser:
         method = 'database.getCities'
         self.params['country_id'] = self.get_country()
         region_id = self.get_regions(self.params['country_id'])
-        #self.params['region_id'] = self.get_regions(self.params['country_id'])
         self.params['region_id'] = region_id[0]
         self.params['count'] = 1000
-        ##self.params['q'] = input("Введите город поиска:")
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
         print(data)
@@ -186,18 +170,25 @@ class VKUser:
                 continue
             else:
                 break
-        # diсt_of_cities[city_name] - id города, city_name - имя города, region_id[2] - id страны
         return [dict_of_cities[city_name], city_name, region_id[2]]
 
     # Поиск подходящих вариантов для знакомства
-    def users_search(self):
+    def users_search(self, search_params):
+        """
+        search_params[0] - sex
+        search_params[1] - age_range
+        search_params[2][0] - id города, search_params[2][1] - название города, city[2][3] - id страны
+        """
+        self.params['country'] = search_params[0]
+        self.params['city'] = search_params[2][0]
+        self.params['age_from'] = search_params[1][0]
+        self.params['age_to'] = search_params[1][1]
+        print((self.params))
         time.sleep(1)
         method = 'users.search'
-        #self.params['fields'] = ''
-        #self.params['fields'] = 'bdate, interests, personal, relation, sex, city, country, education'
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
-        #pprint(data)
+        pprint(data)
 
 # Установка параметров поиска: пол
 def set_search_gender():
