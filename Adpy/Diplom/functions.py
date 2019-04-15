@@ -32,6 +32,8 @@ class VKUser:
         if 'error' not in data.keys():
             if 'deactivated' not in data['response'][0].keys():
                 self.account_id = data['response'][0]['id'] # цифровой id пользователя
+                name['groups'] = self.get_groups(self.account_id)
+                print(len(name['groups']))
                 name['fullname'] = " ".join((data['response'][0]['first_name'], data['response'][0]['last_name']))
                 if data['response'][0]['sex']:
                     name['sex'] = SEX[data['response'][0]['sex']]
@@ -175,6 +177,18 @@ class VKUser:
                 break
         return [dict_of_cities[city_name], city_name, region_id[2]]
 
+    # Поиск групп
+    def get_groups(self, account_id):
+        print("start:  ",account_id)
+        time.sleep(1)
+        method = 'groups.get'
+        self.params['count'] = 500
+        self.params['user_id'] = account_id
+        response = requests.get(REQUEST_URL + method, self.params)
+        data = response.json()
+        if 'error' not in data.keys():
+            return data['response']['items']
+
     # Поиск подходящих вариантов для знакомства
     def users_search(self, search_params):
         """
@@ -226,7 +240,8 @@ class VKUser:
                     finded_users[fullname]['personal'] = item['personal']
                 else:
                     finded_users[fullname]['personal'] = ''
-        pprint(finded_users)
+            finded_users[fullname]['groups'] = self.get_groups(finded_users[fullname]['id'])
+            pprint(finded_users)
 
 
 # Установка параметров поиска: пол
