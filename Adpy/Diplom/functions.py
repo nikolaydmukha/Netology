@@ -41,6 +41,10 @@ class VKUser:
                     name['relation'] = RELATION[data['response'][0]['relation']]
                 else:
                     name['relation'] = ''
+                if data['response'][0]['music']:
+                    name['music'] = data['response'][0]['music']
+                else:
+                    name['relation'] = ''
                 if data['response'][0]['university_name']:
                     name['university_name'] = data['response'][0]['university_name']
                 else:
@@ -189,7 +193,41 @@ class VKUser:
         method = 'users.search'
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
-        pprint(data)
+        #pprint(data)
+        finded_users = {}
+        for item in data['response']['items']:
+            # сразу отсекаем тех, кто имеет пару. При этом считаем, что если пользователь не захотел вообще
+            # указывать семейное положение, то считаем по дефолту 9 - не указано
+            if 'relation' not in item.keys():
+                item['relation'] = 0
+            #if 'relation' in item.keys():
+            if item['relation'] not in [2, 3, 4, 5, 7, 8]:
+                fullname = item['first_name'] + ' ' + item['last_name']
+                finded_users[fullname] = {}
+                finded_users[fullname]['relation'] = item['relation']
+                finded_users[fullname]['id'] = item['id']
+                if 'books' in item.keys():
+                    finded_users[fullname]['books'] = item['books']
+                else:
+                    finded_users[fullname]['books'] = ''
+                if 'interests' in item.keys():
+                    finded_users[fullname]['interests'] = item['interests']
+                else:
+                    finded_users[fullname]['interests'] = ''
+                if 'movies' in item.keys():
+                    finded_users[fullname]['movies'] = item['movies']
+                else:
+                    finded_users[fullname]['movies'] = ''
+                if 'music' in item.keys():
+                    finded_users[fullname]['music'] = item['music']
+                else:
+                    finded_users[fullname]['music'] = ''
+                if 'personal' in item.keys():
+                    finded_users[fullname]['personal'] = item['personal']
+                else:
+                    finded_users[fullname]['personal'] = ''
+        pprint(finded_users)
+
 
 # Установка параметров поиска: пол
 def set_search_gender():
