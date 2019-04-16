@@ -11,7 +11,6 @@ def start_programm():
     username = "29827545"
     user = VKUser(username)
     lovefinder_data = user.lovefinder_info()
-    pprint(lovefinder_data)
     if 'error' not in lovefinder_data.keys():
         if 'reason' not in lovefinder_data.keys():
             ##print(f'Привет! Сейчас мы искать пару пользователю с идентификатором соцсети VK "{sys.argv[1]}"')
@@ -25,9 +24,13 @@ def start_programm():
             sex = set_search_gender()
             age_range = set_search_age()
             city = user.get_city() #city[0] - id города, city[1] - название города, city[3] - id страны
-            search_params = [sex, age_range,city]
-            user.users_search(search_params)
-            print(f"Поиск пол: {sex} возраст: от {age_range[0]} до {age_range[1]} город: {city[1]}")
+            print(f"Производим поиск людей по условиям: пол: {sex[1]}, возраст: от {age_range[0]} до {age_range[1]}, город: {city[1]}")
+            search_params = [sex[0], age_range,city]
+            filtered_users = user.users_search(search_params)
+            pprint(filtered_users)
+            print(f"Найдено {len(filtered_users)} человек в первой выборке. Подберём людей, исходя из более точных "
+                  f"условий.")
+            pprint(lovefinder_data)
             print(f"Программа выполнена. Данные записаны в файл {os.path.join(os.path.abspath('files'))}\diplom.json")
         else:
             sys.exit(f"Что-то пошло не так :( пользователь удалил свою страницу.")

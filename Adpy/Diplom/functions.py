@@ -5,6 +5,7 @@ import csv
 import datetime
 import os
 from pprint import pprint
+from tqdm import tqdm
 from constants import ACCESS_TOKEN, REQUEST_URL, CSV_FILE, SEX, RELATION, POLITICAL, PEOPLE_MAIN, LIFE_MAIN, SMOKING
 from constants import ALCOHOL
 
@@ -33,60 +34,89 @@ class VKUser:
             if 'deactivated' not in data['response'][0].keys():
                 self.account_id = data['response'][0]['id'] # цифровой id пользователя
                 name['groups'] = self.get_groups(self.account_id)
-                print(len(name['groups']))
+                name['friends_list'] = self.get_friends_list(self.account_id)
                 name['fullname'] = " ".join((data['response'][0]['first_name'], data['response'][0]['last_name']))
-                if data['response'][0]['sex']:
-                    name['sex'] = SEX[data['response'][0]['sex']]
-                else:
-                    name['sex'] = ''
-                if data['response'][0]['relation']:
-                    name['relation'] = RELATION[data['response'][0]['relation']]
-                else:
-                    name['relation'] = ''
-                if data['response'][0]['music']:
-                    name['music'] = data['response'][0]['music']
-                else:
-                    name['relation'] = ''
-                if data['response'][0]['university_name']:
-                    name['university_name'] = data['response'][0]['university_name']
-                else:
-                    name['university_name'] = ''
-                if data['response'][0]['interests']:
-                    name['interests'] = data['response'][0]['interests']
-                else:
-                    name['interests'] = ''
-                if data['response'][0]['books']:
-                    name['books'] = data['response'][0]['books']
-                else:
-                    name['books'] = ''
-                if data['response'][0]['movies']:
-                    name['movies'] = data['response'][0]['movies']
-                else:
-                    name['movies'] = ''
-                if data['response'][0]['personal']:
-                    name['personal'] = data['response'][0]['personal']
-                else:
-                    name['movies'] = ''
-                if data['response'][0]['bdate']:
-                    name['bdate'] = data['response'][0]['bdate']
-                    name['age'] = datetime.datetime.now().year - int(data['response'][0]['bdate'][-4:])
-                else:
-                    name['bdate'] = ''
-                    name['age'] = ''
-                name['city'] = {}
-                name['country'] = {}
-                if data['response'][0]['city']['title']:
-                    name['city']['title'] = data['response'][0]['city']['title']
-                    name['city']['id'] = data['response'][0]['city']['id']
-                else:
-                    name['city']['title'] = ''
-                    name['city']['id'] = ''
-                if data['response'][0]['country']['title']:
-                    name['country']['title'] = data['response'][0]['country']['title']
-                    name['country']['id'] = data['response'][0]['country']['id']
-                else:
-                    name['country']['title'] = ''
-                    name['country']['id'] = ''
+                # if data['response'][0]['sex']:
+                #     name['sex'] = SEX[data['response'][0]['sex']]
+                # else:
+                #     name['sex'] = ''
+                # if data['response'][0]['relation']:
+                #     name['relation'] = RELATION[data['response'][0]['relation']]
+                # else:
+                #     name['relation'] = ''
+
+                fields = ['music', 'university_name', 'interests', 'books', 'movies', 'personal', 'bdate', 'city',
+                          'country', 'bdate', 'sex', 'relation']
+                for param in fields:
+                    if param in ['city', 'country']:
+                        name[param] = {}
+                        if data['response'][0][param]['title']:
+                            name[param]['title'] = data['response'][0][param]['title']
+                            name[param]['id'] = data['response'][0][param]['id']
+                        else:
+                            name[param]['title'] = ''
+                            name[param]['id'] = ''
+                    elif param == 'bdate':
+                        if data['response'][0]['bdate']:
+                            name['bdate'] = data['response'][0]['bdate']
+                            name['age'] = datetime.datetime.now().year - int(data['response'][0]['bdate'][-4:])
+                        else:
+                            name['bdate'] = ''
+                            name['age'] = ''
+                    elif param in ['sex', 'relation']:
+                        if data['response'][0][param]:
+                            name[param] = param.upper()[data['response'][0][param]]
+                        else:
+                            name[param] = ''
+                    else:
+                        if data['response'][0][param]:
+                            name[param] = data['response'][0][param]
+                        else:
+                            name[param] = ''
+                # if data['response'][0]['music']:
+                #     name['music'] = data['response'][0]['music']
+                # else:
+                #     name['music'] = ''
+                # if data['response'][0]['university_name']:
+                #     name['university_name'] = data['response'][0]['university_name']
+                # else:
+                #     name['university_name'] = ''
+                # if data['response'][0]['interests']:
+                #     name['interests'] = data['response'][0]['interests']
+                # else:
+                #     name['interests'] = ''
+                # if data['response'][0]['books']:
+                #     name['books'] = data['response'][0]['books']
+                # else:
+                #     name['books'] = ''
+                # if data['response'][0]['movies']:
+                #     name['movies'] = data['response'][0]['movies']
+                # else:
+                #     name['movies'] = ''
+                # if data['response'][0]['personal']:
+                #     name['personal'] = data['response'][0]['personal']
+                # else:
+                #     name['movies'] = ''
+                # if data['response'][0]['bdate']:
+                #     name['bdate'] = data['response'][0]['bdate']
+                #     name['age'] = datetime.datetime.now().year - int(data['response'][0]['bdate'][-4:])
+                # else:
+                #     name['bdate'] = ''
+                #     name['age'] = ''
+                # name['city'] = {}
+                # name['country'] = {}
+                # if data['response'][0]['city']['title']:
+                #     name['city']['title'] = data['response'][0]['city']['title']
+                #     name['city']['id'] = data['response'][0]['city']['id']
+                # else:
+                #     name['city']['title'] = ''
+                #     name['city']['id'] = ''
+                # if data['response'][0]['country']['title']:
+                #     name['country']['title'] = data['response'][0]['country']['title']
+                #     name['country']['id'] = data['response'][0]['country']['id']
+                # else:
+                #     name['country']['title'] = ''
+                #     name['country']['id'] = ''
                 return name
             else:
                 self.account_id = data['response'][0]['id']  # цифровой id пользователя
@@ -119,6 +149,7 @@ class VKUser:
         self.params['need_all'] = 0
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
+        pprint(data)
         # Возвратим id страны по базе ВК
         return data['response']['items'][0]['id']
 
@@ -179,15 +210,28 @@ class VKUser:
 
     # Поиск групп
     def get_groups(self, account_id):
-        print("start:  ",account_id)
         time.sleep(1)
         method = 'groups.get'
-        self.params['count'] = 500
+        self.params['count'] = 1000
         self.params['user_id'] = account_id
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
         if 'error' not in data.keys():
             return data['response']['items']
+
+    # Поиск списка друзей
+    def get_friends_list(self, account_id):
+        time.sleep(1)
+        method = "friends.get"
+        self.params["count"] = 1000
+        self.params["user_id"] = account_id
+        self.params['fields'] = ''
+        response = requests.get(REQUEST_URL + method, self.params)
+        data = response.json()
+        if 'error' not in data.keys():
+            return data['response']['items']
+        else:
+            return None
 
     # Поиск подходящих вариантов для знакомства
     def users_search(self, search_params):
@@ -209,12 +253,11 @@ class VKUser:
         data = response.json()
         #pprint(data)
         finded_users = {}
-        for item in data['response']['items']:
+        for item in tqdm(data['response']['items']):
             # сразу отсекаем тех, кто имеет пару. При этом считаем, что если пользователь не захотел вообще
             # указывать семейное положение, то считаем по дефолту 9 - не указано
             if 'relation' not in item.keys():
                 item['relation'] = 0
-            #if 'relation' in item.keys():
             if item['relation'] not in [2, 3, 4, 5, 7, 8]:
                 fullname = item['first_name'] + ' ' + item['last_name']
                 finded_users[fullname] = {}
@@ -240,16 +283,18 @@ class VKUser:
                     finded_users[fullname]['personal'] = item['personal']
                 else:
                     finded_users[fullname]['personal'] = ''
-            finded_users[fullname]['groups'] = self.get_groups(finded_users[fullname]['id'])
-            pprint(finded_users)
+                finded_users[fullname]['groups'] = self.get_groups(finded_users[fullname]['id'])
+                finded_users[fullname]['friends_list'] = self.get_friends_list(finded_users[fullname]['id'])
+        return finded_users
 
 
 # Установка параметров поиска: пол
 def set_search_gender():
+    sex = []
     while True:
         try:
-            sex = int(input("Укажите пол:\n    1 - женский, 2 - мужской"))
-            if (sex != 1) & (sex!= 2):
+            sex_input = int(input("Укажите пол:\n    1 - женский, 2 - мужской"))
+            if (sex_input != 1) & (sex_input!= 2):
                 print("Вы выбрали не один из предложенных вариантов. Повторите выбор.")
                 continue
         except ValueError:
@@ -257,6 +302,10 @@ def set_search_gender():
             continue
         else:
             break
+    if sex_input == 1:
+        sex = [sex_input, 'женский']
+    else:
+        sex = [sex_input, 'мужской']
     return sex
 
 
