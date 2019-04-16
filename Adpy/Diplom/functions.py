@@ -45,7 +45,7 @@ class VKUser:
                 # else:
                 #     name['relation'] = ''
 
-                fields = ['music', 'university_name', 'interests', 'books', 'movies', 'personal', 'bdate', 'city',
+                fields = ['music', 'university_name', 'interests', 'books', 'movies', 'personal', 'city',
                           'country', 'bdate', 'sex', 'relation']
                 for param in fields:
                     if param in ['city', 'country']:
@@ -188,7 +188,6 @@ class VKUser:
         self.params['count'] = 1000
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
-        #print(data)
         for row in data['response']['items']:
             pprint(row['title'])
         dict_of_cities = {}
@@ -246,12 +245,11 @@ class VKUser:
         self.params['city'] = search_params[2][0]
         self.params['age_from'] = search_params[1][0]
         self.params['age_to'] = search_params[1][1]
-        print((self.params))
+        self.params['fields'] = 'relation'
         time.sleep(1)
         method = 'users.search'
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
-        #pprint(data)
         finded_users = {}
         for item in tqdm(data['response']['items']):
             # сразу отсекаем тех, кто имеет пару. При этом считаем, что если пользователь не захотел вообще
@@ -263,24 +261,30 @@ class VKUser:
                 finded_users[fullname] = {}
                 finded_users[fullname]['relation'] = item['relation']
                 finded_users[fullname]['id'] = item['id']
-                if 'books' in item.keys():
-                    finded_users[fullname]['books'] = item['books']
-                else:
-                    finded_users[fullname]['books'] = ''
-                if 'interests' in item.keys():
-                    finded_users[fullname]['interests'] = item['interests']
-                else:
-                    finded_users[fullname]['interests'] = ''
-                if 'movies' in item.keys():
-                    finded_users[fullname]['movies'] = item['movies']
-                else:
-                    finded_users[fullname]['movies'] = ''
-                if 'music' in item.keys():
-                    finded_users[fullname]['music'] = item['music']
-                else:
-                    finded_users[fullname]['music'] = ''
-                if 'personal' in item.keys():
-                    finded_users[fullname]['personal'] = item['personal']
+                fields = ['music', 'interests', 'books', 'movies', 'sex', 'personal']
+                for param in fields:
+                    if param in item.keys():
+                        finded_users[fullname][param] = item[param]
+                    else:
+                        finded_users[fullname][param] = ''
+                # if 'books' in item.keys():
+                #     finded_users[fullname]['books'] = item['books']
+                # else:
+                #     finded_users[fullname]['books'] = ''
+                # if 'interests' in item.keys():
+                #     finded_users[fullname]['interests'] = item['interests']
+                # else:
+                #     finded_users[fullname]['interests'] = ''
+                # if 'movies' in item.keys():
+                #     finded_users[fullname]['movies'] = item['movies']
+                # else:
+                #     finded_users[fullname]['movies'] = ''
+                # if 'music' in item.keys():
+                #     finded_users[fullname]['music'] = item['music']
+                # else:
+                #     finded_users[fullname]['music'] = ''
+                # if 'personal' in item.keys():
+                #     finded_users[fullname]['personal'] = item['personal']
                 else:
                     finded_users[fullname]['personal'] = ''
                 finded_users[fullname]['groups'] = self.get_groups(finded_users[fullname]['id'])
