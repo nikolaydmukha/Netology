@@ -22,13 +22,12 @@ class VKUser:
 
     # Поиск информации о пользователе, для которого будем предлагать варианты знакомства
     def lovefinder_info(self):
-        time.sleep(1)
+        #time.sleep(1)
         method = 'users.get'
         self.params['fields'] = 'bdate, interests, personal, relation, sex, city, country, interests, education,' \
                                 'music, movies, tv, books'
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
-        #pprint(data)
         name = {}
         if 'error' not in data.keys():
             if 'deactivated' not in data['response'][0].keys():
@@ -36,18 +35,10 @@ class VKUser:
                 name['groups'] = self.get_groups(self.account_id)
                 name['friends_list'] = self.get_friends_list(self.account_id)
                 name['fullname'] = " ".join((data['response'][0]['first_name'], data['response'][0]['last_name']))
-                # if data['response'][0]['sex']:
-                #     name['sex'] = SEX[data['response'][0]['sex']]
-                # else:
-                #     name['sex'] = ''
-                # if data['response'][0]['relation']:
-                #     name['relation'] = RELATION[data['response'][0]['relation']]
-                # else:
-                #     name['relation'] = ''
-
                 fields = ['music', 'university_name', 'interests', 'books', 'movies', 'personal', 'city',
                           'country', 'bdate', 'sex', 'relation']
                 for param in fields:
+                    print("PARAM", param)
                     if param in ['city', 'country']:
                         name[param] = {}
                         if data['response'][0][param]['title']:
@@ -63,60 +54,21 @@ class VKUser:
                         else:
                             name['bdate'] = ''
                             name['age'] = ''
-                    elif param in ['sex', 'relation']:
+                    elif param == 'sex':
                         if data['response'][0][param]:
-                            name[param] = param.upper()[data['response'][0][param]]
+                            name[param] = SEX[data['response'][0][param]]
                         else:
                             name[param] = ''
+                    elif param == 'relation':
+                        if data['response'][0][param]:
+                            name[param] = RELATION[data['response'][0][param]]
+                        else:
+                            name[param] = 0
                     else:
                         if data['response'][0][param]:
                             name[param] = data['response'][0][param]
                         else:
                             name[param] = ''
-                # if data['response'][0]['music']:
-                #     name['music'] = data['response'][0]['music']
-                # else:
-                #     name['music'] = ''
-                # if data['response'][0]['university_name']:
-                #     name['university_name'] = data['response'][0]['university_name']
-                # else:
-                #     name['university_name'] = ''
-                # if data['response'][0]['interests']:
-                #     name['interests'] = data['response'][0]['interests']
-                # else:
-                #     name['interests'] = ''
-                # if data['response'][0]['books']:
-                #     name['books'] = data['response'][0]['books']
-                # else:
-                #     name['books'] = ''
-                # if data['response'][0]['movies']:
-                #     name['movies'] = data['response'][0]['movies']
-                # else:
-                #     name['movies'] = ''
-                # if data['response'][0]['personal']:
-                #     name['personal'] = data['response'][0]['personal']
-                # else:
-                #     name['movies'] = ''
-                # if data['response'][0]['bdate']:
-                #     name['bdate'] = data['response'][0]['bdate']
-                #     name['age'] = datetime.datetime.now().year - int(data['response'][0]['bdate'][-4:])
-                # else:
-                #     name['bdate'] = ''
-                #     name['age'] = ''
-                # name['city'] = {}
-                # name['country'] = {}
-                # if data['response'][0]['city']['title']:
-                #     name['city']['title'] = data['response'][0]['city']['title']
-                #     name['city']['id'] = data['response'][0]['city']['id']
-                # else:
-                #     name['city']['title'] = ''
-                #     name['city']['id'] = ''
-                # if data['response'][0]['country']['title']:
-                #     name['country']['title'] = data['response'][0]['country']['title']
-                #     name['country']['id'] = data['response'][0]['country']['id']
-                # else:
-                #     name['country']['title'] = ''
-                #     name['country']['id'] = ''
                 return name
             else:
                 self.account_id = data['response'][0]['id']  # цифровой id пользователя
@@ -129,13 +81,14 @@ class VKUser:
 
     # Поиск идентификатора страны по имени
     def get_country(self):
-        time.sleep(1)
+        #time.sleep(1)
+        method = 'database.getCountries'
+        self.params['need_all'] = 0
         with open(os.path.abspath(CSV_FILE), encoding='utf-8') as csvfile:
             data = csv.reader(csvfile)
             short_name = {}
             for row in data:
                 short_name[row[0].strip().lower()] = row[1].strip()
-        method = 'database.getCountries'
         while True:
             try:
                 country_name = input("Введите страну поиска:").lower()
@@ -146,20 +99,19 @@ class VKUser:
                 continue
             else:
                 break
-        self.params['need_all'] = 0
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
-        pprint(data)
+        #pprint(data)
         # Возвратим id страны по базе ВК
         return data['response']['items'][0]['id']
 
     # Выбор региона города
     def get_regions(self, country_id):
-        time.sleep(1)
+        #time.sleep(1)
         method = 'database.getRegions'
-        response = requests.get(REQUEST_URL + method, self.params)
         self.params['country_id'] = country_id
         self.params['count'] = 1000
+        response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
         dict_of_region = {}
         print("\nВыберите регион из списка:")
@@ -168,11 +120,11 @@ class VKUser:
             print(row['title'])
         while True:
             try:
-                region_name = input("Введите регион поиска:").lower()
+                region_name = input("Введите регион поиска из списка выше:").lower()
                 if dict_of_region[region_name]:
                     pass
             except KeyError:
-                print("А-яй, неппавильно ввели регион. Повторите ввод.")
+                print("А-яй, неправильно ввели регион. Повторите ввод.")
                 continue
             else:
                 break
@@ -180,7 +132,7 @@ class VKUser:
 
     # Поиск идентификатора города по стране и имени города
     def get_city(self):
-        time.sleep(1)
+        #time.sleep(1)
         method = 'database.getCities'
         self.params['country_id'] = self.get_country()
         region_id = self.get_regions(self.params['country_id'])
@@ -189,19 +141,19 @@ class VKUser:
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
         for row in data['response']['items']:
-            pprint(row['title'])
+            print(row['title'])
         dict_of_cities = {}
-        print("\nВыберите город из списка:")
+        #print("\nВыберите город из списка:")
         for row in data['response']['items']:
             dict_of_cities[row['title'].lower()] = row['id']
-            print(row['title'])
+            #print(row['title'])
         while True:
             try:
-                city_name = input("Введите регион поиска:").lower()
+                city_name = input("Введите город из списка выше:").lower()
                 if dict_of_cities[city_name]:
                     pass
             except KeyError:
-                print("А-яй, неппавильно ввели регион. Повторите ввод.")
+                print("А-яй, неправильно ввели регион. Повторите ввод.")
                 continue
             else:
                 break
@@ -240,14 +192,14 @@ class VKUser:
         search_params[2] - территория поиска
                        [0] - id города, [1] - название города, [2] - id страны
         """
+        time.sleep(1)
+        method = 'users.search'
         self.params['sex'] = search_params[0]
         self.params['country'] = search_params[2][2]
         self.params['city'] = search_params[2][0]
         self.params['age_from'] = search_params[1][0]
         self.params['age_to'] = search_params[1][1]
-        self.params['fields'] = 'relation'
-        time.sleep(1)
-        method = 'users.search'
+        self.params['fields'] = 'relation, books, interests, music, movies, personal'
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
         finded_users = {}
@@ -285,8 +237,8 @@ class VKUser:
                 #     finded_users[fullname]['music'] = ''
                 # if 'personal' in item.keys():
                 #     finded_users[fullname]['personal'] = item['personal']
-                else:
-                    finded_users[fullname]['personal'] = ''
+                # else:
+                #     finded_users[fullname]['personal'] = ''
                 finded_users[fullname]['groups'] = self.get_groups(finded_users[fullname]['id'])
                 finded_users[fullname]['friends_list'] = self.get_friends_list(finded_users[fullname]['id'])
         return finded_users
