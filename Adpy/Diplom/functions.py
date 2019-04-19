@@ -38,7 +38,7 @@ class VKUser:
                 fields = ['music', 'university_name', 'interests', 'books', 'movies', 'personal', 'city',
                           'country', 'bdate', 'sex', 'relation']
                 for param in fields:
-                    print("PARAM", param)
+                    ###print("PARAM", param)
                     if param in ['city', 'country']:
                         name[param] = {}
                         if data['response'][0][param]['title']:
@@ -69,6 +69,8 @@ class VKUser:
                             name[param] = data['response'][0][param]
                         else:
                             name[param] = ''
+                name['groups_list'] = self.get_groups(data['response'][0]['id'])
+                name['friends_list'] = self.get_friends_list(data['response'][0]['id'])
                 return name
             else:
                 self.account_id = data['response'][0]['id']  # цифровой id пользователя
@@ -199,9 +201,11 @@ class VKUser:
         self.params['city'] = search_params[2][0]
         self.params['age_from'] = search_params[1][0]
         self.params['age_to'] = search_params[1][1]
-        self.params['fields'] = 'relation, books, interests, music, movies, personal'
+        self.params['fields'] = 'relation, books, interests, music, movies, personal, bdate'
+        #print(self.params)
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
+        #print(data)
         finded_users = {}
         for item in tqdm(data['response']['items']):
             # сразу отсекаем тех, кто имеет пару. При этом считаем, что если пользователь не захотел вообще
@@ -213,12 +217,24 @@ class VKUser:
                 finded_users[fullname] = {}
                 finded_users[fullname]['relation'] = item['relation']
                 finded_users[fullname]['id'] = item['id']
-                fields = ['music', 'interests', 'books', 'movies', 'sex', 'personal']
+                fields = ['music', 'interests', 'books', 'movies', 'sex', 'personal', 'bdate']
                 for param in fields:
                     if param in item.keys():
+                        if param == 'bdate':
+                            if item[param]:
+                                length_age = item[param].split('.')
+                            else:
+                                length_age = []
+                            if len(length_age) == 3:
+                                ###print("22222222222222222222222", item)
+                                finded_users[fullname]['age'] = datetime.datetime.now().year - int(item[param][-4:])
+                            else:
+                                finded_users[fullname]['age'] = ''
+                        ##finded_users[fullname][param] = item[param]
                         finded_users[fullname][param] = item[param]
                     else:
                         finded_users[fullname][param] = ''
+                        finded_users[fullname]['age'] = ''
                 # if 'books' in item.keys():
                 #     finded_users[fullname]['books'] = item['books']
                 # else:
@@ -239,7 +255,7 @@ class VKUser:
                 #     finded_users[fullname]['personal'] = item['personal']
                 # else:
                 #     finded_users[fullname]['personal'] = ''
-                finded_users[fullname]['groups'] = self.get_groups(finded_users[fullname]['id'])
+                finded_users[fullname]['groups_list'] = self.get_groups(finded_users[fullname]['id'])
                 finded_users[fullname]['friends_list'] = self.get_friends_list(finded_users[fullname]['id'])
         return finded_users
 
@@ -249,7 +265,8 @@ def set_search_gender():
     sex = []
     while True:
         try:
-            sex_input = int(input("Укажите пол:\n    1 - женский, 2 - мужской"))
+            print("Укажите пол:\n    1 - женский, 2 - мужской")
+            sex_input = int(input())
             if (sex_input != 1) & (sex_input!= 2):
                 print("Вы выбрали не один из предложенных вариантов. Повторите выбор.")
                 continue
@@ -272,8 +289,8 @@ def set_search_age():
         try:
             print('Возраст от: ')
             age_from = int(input())
-            if age_from < 0 or age_from == 0:
-                print("Возраст не может быть отрицательным или равным 0.")
+            if age_from < 0 or age_from == 0 or len(str(age_from)) > 2:
+                print("Возраст не может быть отрицательным, равным 0 и, вероятно, недвузначным.")
                 continue
         except ValueError:
             print("А-яй, вы ввели не число. Повторите ввод.")
@@ -284,8 +301,8 @@ def set_search_age():
                 try:
                     print('Возраст до: ')
                     age_to = int(input())
-                    if age_to <= age_from:
-                        print("Возраст 'до' не может быть больше возраста 'от'.")
+                    if age_to <= age_from or len(str(age_to)) > 2:
+                        print("Возраст 'до' не может быть больше возраста 'от' и, вероятно, недвузначным..")
                         continue
                 except ValueError:
                     print("А-яй, вы ввели не число. Повторите ввод.")
@@ -295,3 +312,31 @@ def set_search_age():
                     break
             break
     return age
+
+
+# Поиск пары по критериям: общие друзья, общие группы, общие интересы, общая музыка
+def compare_data(loverfinder, finded_users, filter_by, result):
+    print("ФИЛЬТР ПО", filter_by)
+    for key, data in finded_users.items():
+        """
+         Cовпадение по возрасту должны быть важнее общих групп. 
+         Интересы по музыке важнее книг. 
+         Наличие общих друзей важнее возраста.
+        """
+        if data[filter_by]:
+            if filter_by == 'age':
+                if finded_users[key][filter_by] == loverfinder[filter_by]:
+                    finded_users[key][result] = loverfinder[filter_by]
+                else:
+                    finded_users[key][result] = ''
+            else:
+                if set(finded_users[key][filter_by]) & set(loverfinder[filter_by]):
+                    finded_users[key][result] = len(set(finded_users[key][filter_by]) & set(loverfinder[filter_by]))
+                else:
+                    finded_users[key][result] = ''
+        else:
+            finded_users[key][result] = ''
+            print("У пользователя закрытый профиль.")
+    print("В ФУНКЦИИ!!!")
+    pprint(finded_users)
+    return data
