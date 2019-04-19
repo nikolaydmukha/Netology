@@ -1,0 +1,769 @@
+[
+    {
+        "Дмитрий Яцев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Евгений Скачедуб": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Алексей Полянский": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Артур Кузьменко": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 7
+        },
+        "Антон Александров": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Алексей Объедков": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Вячеслав Рязанцев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 22
+        },
+        "Костя Оганов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Дмитрий Соловьев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Самир Агаев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Макс Максимус": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Пару Вёсел": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 7
+        },
+        "Александр Неткачев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 8
+        },
+        "Сергей Ворошилов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Александр Кузьминов": {
+            "common_age": 34,
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Николай Булова": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Андрей Тимошенко": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Эмиль Рой": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Вовка Арсентьев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Дима Скорогодских": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Николай Мартынов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Юрий Черепков": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Arthur Akatjev": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Кирилл Терехов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 3
+        },
+        "Степан Князькин": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Алексей Негодайлов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Andrey Soldatenkov": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Максим Жевнерев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Аралбек Казыканов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 5
+        },
+        "Олег Иноземцев": {
+            "common_age": 34,
+            "common_groups": "",
+            "common_friends": 5
+        },
+        "Сергей Мартехов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 2
+        },
+        "Константин Углов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Никита Григорьев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Константин Вергасов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Игорь Мыкытив": {
+            "common_age": 34,
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Виталий Давлетбаев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Михаил Иноземцев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Иван Марков": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Влад Гапонов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Антон Потороча": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 6
+        },
+        "Самый-Лучший Дрс": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Ярослав Косухин": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Евгений Никулин": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Артем Жарихин": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Алексей Тактаев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Игорь Мозырко": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Олег Колесников": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Тимур Исаев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Джордж Алекс": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Олег Брагин": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 8
+        },
+        "Александр Казимир": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Александр Крят": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Андрей Матюхин": {
+            "common_age": 34,
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Миша Исаев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 2
+        },
+        "Василий Руденко": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 7
+        },
+        "Денис Василенков": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "DarkSide ..": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Юра Клименок": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Сергей Горевой": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "александр gapa таничев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 2
+        },
+        "Владимир Корножицкий": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 6
+        },
+        "Денис Долгов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Сашка Лазарев": {
+            "common_age": 34,
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Сергей Новгородцев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Кирилл Вус": {
+            "common_age": 34,
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Angry Pashnin": {
+            "common_age": 34,
+            "common_groups": "",
+            "common_friends": 4
+        },
+        "Денис Евсеенков": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Александр Козачков": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 2
+        },
+        "Александр Жабин": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Дмитрий Удинцев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Денис Стойкий": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Алексей Тяпкин": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Андрей Сергеев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 4
+        },
+        "Михаил Соловов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Алексей Пономарев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Max Corleone": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 8
+        },
+        "Николай Николаев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Денис Бузало": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Паб Власиха": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 9
+        },
+        "Алексей Винтовкин": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Александр Коваленко": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Андрей Талалуев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Oleg Tkachenko": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Вася Маругин": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 5
+        },
+        "Алексей Набоков": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Дмитрий Гарцев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Данил Щенин": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Виктор Яценко": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 6
+        },
+        "Александр Бурдюг": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 15
+        },
+        "Кирилл Петров": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Don Raven": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Александр Дунаев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Дрс Дрсович": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Сергей Кабышев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Василий Самойлов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Kirill Savin": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Дмитрий Пинясов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Тимофей Родионов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Вадим Книпель": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 2
+        },
+        "Алексей Шавырин": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Максим Карпиленя": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Руслан Габдрахманов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Антон Художников": {
+            "common_age": 34,
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Антон Войнов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Александр Крючек": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Стас Кульчицкий": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Ганс Ганс": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Ivan Tkachenko": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Иван Иванов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Руслан Барбарош": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Václav Novák": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Георгий Колесов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Николай Бондарцев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Денис Тульчинский": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 2
+        },
+        "Евгений Смирнов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Александр Легезин": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Виталий Мищенко": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Николай Холопов": {
+            "common_age": 34,
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Владислав Краснопольский": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Гедеон Сычёвский": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Nik Gyuysev": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Дмитрий Шипилов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Андрей Родионов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Igoryan Saveus": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Андрей Слюсарь": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Саня Бессонов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1
+        },
+        "Юрий Свистельников": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Игорь Ткаченко": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Александр Рейх": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Александр Кошелев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Дмитрий Батон": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Александр Павлов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Андрей Богданов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Виталий Харитонов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 3
+        },
+        "Денис Сухарев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 2
+        },
+        "Евгений Литвинов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Карен Макоян": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Денис Закиров": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Серёга Гусаков": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Гиви Кавсадзе": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Егор Шевчук": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Татьяна Добровольская": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Евгений Андреев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Александр Буланкин": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Kohsap Olva": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Дмитрий Левчук": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Сергей Мулянов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Александр Плескачев": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Jeka Jopeo": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Александр Ляхов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Слава Петров": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Егор Анисимов": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        },
+        "Евгений Ширков": {
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": ""
+        }
+    }
+]

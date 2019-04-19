@@ -93,7 +93,7 @@ class VKUser:
                 short_name[row[0].strip().lower()] = row[1].strip()
         while True:
             try:
-                country_name = input("Введите страну поиска:").lower()
+                country_name = input("Введите страну поиска:").lower().strip()
                 if short_name[country_name]:
                     self.params['code'] = short_name[country_name]
             except KeyError:
@@ -122,7 +122,7 @@ class VKUser:
             print(row['title'])
         while True:
             try:
-                region_name = input("Введите регион поиска из списка выше:").lower()
+                region_name = input("Введите регион поиска из списка выше:").lower().strip()
                 if dict_of_region[region_name]:
                     pass
             except KeyError:
@@ -151,7 +151,7 @@ class VKUser:
             #print(row['title'])
         while True:
             try:
-                city_name = input("Введите город из списка выше:").lower()
+                city_name = input("Введите город из списка выше:").lower().strip()
                 if dict_of_cities[city_name]:
                     pass
             except KeyError:
@@ -266,8 +266,8 @@ def set_search_gender():
     while True:
         try:
             print("Укажите пол:\n    1 - женский, 2 - мужской")
-            sex_input = int(input())
-            if (sex_input != 1) & (sex_input!= 2):
+            sex_input = int(input().strip())
+            if (sex_input != 1) & (sex_input != 2):
                 print("Вы выбрали не один из предложенных вариантов. Повторите выбор.")
                 continue
         except ValueError:
@@ -288,7 +288,7 @@ def set_search_age():
     while True:
         try:
             print('Возраст от: ')
-            age_from = int(input())
+            age_from = int(input().strip())
             if age_from < 0 or age_from == 0 or len(str(age_from)) > 2:
                 print("Возраст не может быть отрицательным, равным 0 и, вероятно, недвузначным.")
                 continue
@@ -300,7 +300,7 @@ def set_search_age():
             while True:
                 try:
                     print('Возраст до: ')
-                    age_to = int(input())
+                    age_to = int(input().strip())
                     if age_to <= age_from or len(str(age_to)) > 2:
                         print("Возраст 'до' не может быть больше возраста 'от' и, вероятно, недвузначным..")
                         continue
@@ -337,6 +337,10 @@ def compare_data(loverfinder, finded_users, filter_by, result):
         else:
             finded_users[key][result] = ''
             print("У пользователя закрытый профиль.")
-    print("В ФУНКЦИИ!!!")
-    pprint(finded_users)
-    return data
+ #   print("В ФУНКЦИИ!!!")
+    #pprint(finded_users)
+    return finded_users
+
+def write_json(dump):
+    with open(os.path.abspath('diplom.json'), 'w', encoding='utf-8') as f:
+        json.dump(dump, f, ensure_ascii=False, indent=4)
