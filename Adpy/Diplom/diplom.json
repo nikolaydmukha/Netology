@@ -1,769 +1,1438 @@
 [
     {
-        "Дмитрий Яцев": {
+        "Natik Natalicheva": {
+            "id": 103830068,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Евгений Скачедуб": {
+        "Элеонора Черникова": {
+            "id": 2414572,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Алексей Полянский": {
+        "Анастасия Авакиян": {
+            "id": 10194673,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Артур Кузьменко": {
+        "Елена Шульга": {
+            "id": 59486238,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": 7
-        },
-        "Антон Александров": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Алексей Объедков": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Вячеслав Рязанцев": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": 22
-        },
-        "Костя Оганов": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Дмитрий Соловьев": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Самир Агаев": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Макс Максимус": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Пару Вёсел": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": 7
-        },
-        "Александр Неткачев": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": 8
-        },
-        "Сергей Ворошилов": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Александр Кузьминов": {
-            "common_age": 34,
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Николай Булова": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Андрей Тимошенко": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": 1
-        },
-        "Эмиль Рой": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Вовка Арсентьев": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": 1
-        },
-        "Дима Скорогодских": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Николай Мартынов": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Юрий Черепков": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Arthur Akatjev": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Кирилл Терехов": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": 3
-        },
-        "Степан Князькин": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Алексей Негодайлов": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 2,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Andrey Soldatenkov": {
+        "Анна Мельничук": {
+            "id": 14722927,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Максим Жевнерев": {
+        "Людмила Лаптева": {
+            "id": 5882488,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Аралбек Казыканов": {
+        "Ирена Силиванова": {
+            "id": 1816247,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": 5
-        },
-        "Олег Иноземцев": {
-            "common_age": 34,
             "common_groups": "",
-            "common_friends": 5
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Сергей Мартехов": {
+        "Алена Кускова": {
+            "id": 1055127,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": 2
+            "common_groups": 2,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Константин Углов": {
+        "Тонечка Менг": {
+            "id": 13678559,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 1
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Никита Григорьев": {
+        "Ирина Саркисова": {
+            "id": 12419978,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Константин Вергасов": {
+        "Евгения Касаткина": {
+            "id": 8919123,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Игорь Мыкытив": {
-            "common_age": 34,
-            "common_groups": "",
-            "common_friends": ""
+        "Татьяна Крупина": {
+            "id": 7394609,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Виталий Давлетбаев": {
+        "Елена Николенко": {
+            "id": 6940885,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": 1
+            "common_groups": 3,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Михаил Иноземцев": {
+        "Екатерина Мосягина": {
+            "id": 1974479,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
-        },
-        "Иван Марков": {
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Танюшка Байназарова": {
+            "id": 207243769,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Виктория Котикова": {
+            "id": 198894001,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": [
+                "\"Форсаж\"",
+                "\"Спеши",
+                "любить\"",
+                "\"Поцелуй",
+                "на",
+                "удачу\""
+            ]
+        },
+        "Анна Тодощенко": {
+            "id": 106398500,
+            "common_age": 33,
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Валерия Егорова": {
+            "id": 92109892,
+            "common_age": "",
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Елизавета Куликова": {
+            "id": 58134928,
+            "common_age": "",
+            "common_groups": 2,
+            "common_friends": "",
+            "common_music": [
+                "\"Терем-квартет\""
+            ],
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Екатерина Разгуляева": {
+            "id": 39685090,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": [
+                "\"Терем-квартет\""
+            ],
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Анастасия Валиуллина": {
+            "id": 31131956,
+            "common_age": 33,
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Анастасия Юдина": {
+            "id": 8026500,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Дарья Мартынова": {
+            "id": 3560687,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
-        },
-        "Влад Гапонов": {
-            "common_age": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": [
+                "\"А",
+                "зори",
+                "здесь",
+                "тихии\"",
+                "\"",
+                "Алхимик\"",
+                "Градостроительный",
+                "кодекс.",
+                "12",
+                "стульев.",
+                "Золотой",
+                "теленок"
+            ],
+            "common_movies": ""
+        },
+        "Дарья Булатова": {
+            "id": 745661,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": [
+                "\"А",
+                "зори",
+                "здесь",
+                "тихии\"",
+                "\"",
+                "Алхимик\"",
+                "Градостроительный",
+                "кодекс.",
+                "12",
+                "стульев.",
+                "Золотой",
+                "теленок"
+            ],
+            "common_movies": ""
+        },
+        "Ольга Банах": {
+            "id": 34090147,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Дина Нестерова": {
+            "id": 78069011,
+            "common_age": "",
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Анна Тимошкина": {
+            "id": 66681208,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Елена Поповская": {
+            "id": 22424256,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Олеся Матвеева": {
+            "id": 19400563,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Анна Шумилина": {
+            "id": 7228982,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Наталия Головина": {
+            "id": 3034507,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Татьяна Пастухова": {
+            "id": 2870658,
+            "common_age": "",
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Валентина Корольчук": {
+            "id": 2379025,
+            "common_age": "",
+            "common_groups": 2,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": [
+                "\"Форсаж\"",
+                "\"Спеши",
+                "любить\"",
+                "\"Поцелуй",
+                "на",
+                "удачу\""
+            ]
+        },
+        "Марина Пулкстенис": {
+            "id": 113199,
+            "common_age": 33,
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Мария Рязанцева": {
+            "id": 16444871,
+            "common_age": 33,
+            "common_groups": 3,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Kristina Bartseva": {
+            "id": 110991289,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Любашка Сушкевич": {
+            "id": 89805392,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": 1,
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Ирина Фадеева": {
+            "id": 31313379,
+            "common_age": 33,
+            "common_groups": 2,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Мария Николаева": {
+            "id": 14046345,
+            "common_age": 33,
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Жанна Разбоева": {
+            "id": 4871054,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Мария Веселова": {
+            "id": 4206226,
+            "common_age": 33,
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Маша Куторова": {
+            "id": 1711901,
+            "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Юлия Гулакова": {
+            "id": 1694869,
+            "common_age": "",
+            "common_groups": "",
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
+        },
+        "Зоя Осипова": {
+            "id": 1447607,
+            "common_age": "",
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Антон Потороча": {
-            "common_age": "",
+        "Анастасия Сулковская": {
+            "id": 302250209,
+            "common_age": "",
             "common_groups": "",
-            "common_friends": 6
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Самый-Лучший Дрс": {
+        "Нина Коноваленко": {
+            "id": 269833663,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Ярослав Косухин": {
+        "Светлана Мирошниченко": {
+            "id": 88693970,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Евгений Никулин": {
+        "Екатерина Матюхина": {
+            "id": 78079301,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 2,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Артем Жарихин": {
+        "Гульнара Юмашева": {
+            "id": 56055526,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Алексей Тактаев": {
+        "Ирина Кравец": {
+            "id": 40471907,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Игорь Мозырко": {
+        "Наталия Серикова-Параева": {
+            "id": 10759772,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 1
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Олег Колесников": {
+        "Марина Руденко": {
+            "id": 5615205,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Тимур Исаев": {
+        "Ирина Устинова": {
+            "id": 2866951,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Джордж Алекс": {
-            "common_age": "",
+        "Наталья Чередниченко": {
+            "id": 1878373,
+            "common_age": 33,
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Олег Брагин": {
+        "Катерина Кондрашина": {
+            "id": 862766,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 8
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Казимир": {
-            "common_age": "",
+        "Зоя Матвиенко": {
+            "id": 352573330,
+            "common_age": 33,
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Крят": {
+        "Ирина Скопинцева": {
+            "id": 233877493,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": 1
-        },
-        "Андрей Матюхин": {
-            "common_age": 34,
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Миша Исаев": {
+        "Марина Рогожина": {
+            "id": 184428353,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 2
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Василий Руденко": {
+        "Марина Юркова": {
+            "id": 148169725,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": 7
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Денис Василенков": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+        "Галина Мицкевич": {
+            "id": 82294866,
+            "common_age": 33,
+            "common_groups": 2,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "DarkSide ..": {
+        "Анна Павлова": {
+            "id": 81453112,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Юра Клименок": {
+        "Оля Василенкова": {
+            "id": 74143918,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Сергей Горевой": {
+        "Марина Батенева": {
+            "id": 71510371,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": 1
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "александр gapa таничев": {
+        "Наталья Менщикова": {
+            "id": 58530887,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 2
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Владимир Корножицкий": {
+        "Мария Матвиенко": {
+            "id": 51767787,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": 6
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Денис Долгов": {
+        "Людмила Жерелина": {
+            "id": 31976395,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Сашка Лазарев": {
-            "common_age": 34,
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Сергей Новгородцев": {
+        "Анютка Ведмицкая": {
+            "id": 22373082,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Кирилл Вус": {
-            "common_age": 34,
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Angry Pashnin": {
-            "common_age": 34,
             "common_groups": "",
-            "common_friends": 4
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Денис Евсеенков": {
+        "Юлия Долгова": {
+            "id": 15598253,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Козачков": {
+        "Катя Сергеева": {
+            "id": 15596144,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": 2
+            "common_groups": 2,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Жабин": {
+        "Мария Ерохина": {
+            "id": 12496687,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 1
+            "common_friends": "",
+            "common_music": "",
+            "common_books": [
+                "\"А",
+                "зори",
+                "здесь",
+                "тихии\"",
+                "\"",
+                "Алхимик\"",
+                "Градостроительный",
+                "кодекс.",
+                "12",
+                "стульев.",
+                "Золотой",
+                "теленок"
+            ],
+            "common_movies": ""
         },
-        "Дмитрий Удинцев": {
+        "Алла Фомина": {
+            "id": 12459221,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 1
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Денис Стойкий": {
+        "Ольга Левчук": {
+            "id": 12337624,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 1
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Алексей Тяпкин": {
+        "Татьяна Боровых": {
+            "id": 8671610,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Андрей Сергеев": {
+        "Елена Ставицкая": {
+            "id": 8309335,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 4
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Михаил Соловов": {
+        "Юлия Сёмина": {
+            "id": 3819999,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 1
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Алексей Пономарев": {
+        "Камила Кетова": {
+            "id": 3224071,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Max Corleone": {
+        "Ирина Дмитриева-Беркетова": {
+            "id": 2417582,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 8
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Николай Николаев": {
+        "Юлия Тупицина": {
+            "id": 2125237,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Денис Бузало": {
-            "common_age": "",
+        "Настена Черезова": {
+            "id": 1939307,
+            "common_age": 33,
             "common_groups": "",
-            "common_friends": 1
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Паб Власиха": {
+        "Елена Кондрашина": {
+            "id": 1733351,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 9
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Алексей Винтовкин": {
+        "Анна Оранская": {
+            "id": 558678,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Коваленко": {
+        "Дарья Тихонова": {
+            "id": 39283358,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": 1,
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Андрей Талалуев": {
+        "Мария Суворова": {
+            "id": 5282076,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Oleg Tkachenko": {
+        "Мария Федорова": {
+            "id": 3715316,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Вася Маругин": {
+        "Вера Ольгина": {
+            "id": 368189095,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 5
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Алексей Набоков": {
+        "Елена Максакова": {
+            "id": 26009534,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Дмитрий Гарцев": {
+        "Эля Кулигина": {
+            "id": 13215602,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 1
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Данил Щенин": {
-            "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+        "Ирина Жученкова": {
+            "id": 8929268,
+            "common_age": 33,
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Виктор Яценко": {
+        "Татьяна Левицкая": {
+            "id": 5335346,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 6
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Бурдюг": {
+        "Светлана Китаева": {
+            "id": 2579939,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": 15
+            "common_groups": 4,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Кирилл Петров": {
+        "Наталья Демидова": {
+            "id": 349088878,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": 1,
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Don Raven": {
+        "Аня Попова": {
+            "id": 44027883,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Дунаев": {
+        "Екатерина Шмелева": {
+            "id": 43104071,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Дрс Дрсович": {
+        "Виктория Балданова": {
+            "id": 19235880,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Сергей Кабышев": {
+        "Светлана Матыцина": {
+            "id": 3929813,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Василий Самойлов": {
+        "Наталья Коваленко": {
+            "id": 1138113,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Kirill Savin": {
+        "Натали Натали": {
+            "id": 508776153,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Дмитрий Пинясов": {
+        "Наталья Алякина": {
+            "id": 481830010,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Тимофей Родионов": {
+        "Марфа Николавна": {
+            "id": 473450498,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": 1
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Вадим Книпель": {
+        "Ирина Барышникова": {
+            "id": 372162683,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 2
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Алексей Шавырин": {
+        "Василиса Василёк": {
+            "id": 358059914,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Максим Карпиленя": {
+        "Ольга Пичугина": {
+            "id": 288134457,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Руслан Габдрахманов": {
+        "Ольга Барабанова": {
+            "id": 233271915,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Антон Художников": {
-            "common_age": 34,
+        "Майя Колова": {
+            "id": 223426834,
+            "common_age": 33,
             "common_groups": "",
-            "common_friends": 1
+            "common_friends": 1,
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Антон Войнов": {
+        "Лилия Брик": {
+            "id": 207906099,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Крючек": {
+        "Анна Коваленко": {
+            "id": 181900331,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Стас Кульчицкий": {
+        "Юлия Попова": {
+            "id": 150645722,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Ганс Ганс": {
+        "Ольга Сухоцкая": {
+            "id": 82190761,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Ivan Tkachenko": {
+        "Рита Нурапкина": {
+            "id": 64476441,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Иван Иванов": {
+        "Анастасия Сергеевна": {
+            "id": 58936452,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Руслан Барбарош": {
+        "Анна Винникова": {
+            "id": 53194994,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Václav Novák": {
+        "Кристина Лепесина": {
+            "id": 22744717,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Георгий Колесов": {
+        "Ксения Крючек": {
+            "id": 18503014,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Николай Бондарцев": {
+        "Ирина Константинова": {
+            "id": 6339498,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Денис Тульчинский": {
+        "Катя Борянова": {
+            "id": 52781187,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": 2
+            "common_groups": 2,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Евгений Смирнов": {
+        "Маргарита Григораш": {
+            "id": 42741349,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Легезин": {
+        "Анна Шаблий": {
+            "id": 3045914,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Виталий Мищенко": {
+        "Любовь Дианова": {
+            "id": 367922393,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
-        },
-        "Николай Холопов": {
-            "common_age": 34,
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Владислав Краснопольский": {
-            "common_age": "",
+        "Алёна Малахова": {
+            "id": 283088888,
+            "common_age": 33,
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Гедеон Сычёвский": {
+        "Aleksandra Antonova": {
+            "id": 263477274,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Nik Gyuysev": {
+        "Ольга Федорчукова": {
+            "id": 158871918,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Дмитрий Шипилов": {
+        "Юлия Соколова": {
+            "id": 136258384,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": ""
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Андрей Родионов": {
+        "Анна Смирнова": {
+            "id": 103793281,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Igoryan Saveus": {
+        "Надежда Афанасьева": {
+            "id": 96057342,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Андрей Слюсарь": {
+        "Анна Якушина": {
+            "id": 85265713,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 1
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Саня Бессонов": {
+        "Татьяна Волевач": {
+            "id": 5641519,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 1
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Юрий Свистельников": {
+        "Марина Коноплякова": {
+            "id": 242971288,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Игорь Ткаченко": {
+        "Юйу Сан": {
+            "id": 3475302,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Рейх": {
+        "Оля Селивёрстова": {
+            "id": 130295620,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Кошелев": {
+        "Anna Ivanova": {
+            "id": 510470631,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Дмитрий Батон": {
+        "Ольга Гриценко": {
+            "id": 454148899,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Павлов": {
+        "Маринка Злая": {
+            "id": 372648067,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Андрей Богданов": {
+        "Марина Решетникова": {
+            "id": 363169721,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Виталий Харитонов": {
+        "Юлия Исай": {
+            "id": 280458146,
             "common_age": "",
-            "common_groups": "",
-            "common_friends": 3
+            "common_groups": 1,
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Денис Сухарев": {
+        "Мирослава Дарьина": {
+            "id": 239559939,
             "common_age": "",
             "common_groups": "",
-            "common_friends": 2
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Евгений Литвинов": {
+        "Татьяна Иванова": {
+            "id": 198803200,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Карен Макоян": {
+        "Ирина Ермацанова": {
+            "id": 52645266,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Денис Закиров": {
+        "Марина Рудик": {
+            "id": 15309524,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Серёга Гусаков": {
+        "Анна Дубачева": {
+            "id": 11583499,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Гиви Кавсадзе": {
+        "Маруся Пирогова": {
+            "id": 431237078,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Егор Шевчук": {
+        "Алёна Зубкова": {
+            "id": 273561058,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Татьяна Добровольская": {
+        "Татьяна Лутай": {
+            "id": 239244491,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Евгений Андреев": {
+        "Елена Евстигнеева": {
+            "id": 41883937,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Буланкин": {
+        "Наталья Воеводина": {
+            "id": 498966335,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Kohsap Olva": {
+        "Алена Πетрова": {
+            "id": 133821497,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Дмитрий Левчук": {
+        "Blanc Legit": {
+            "id": 389328447,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Сергей Мулянов": {
+        "Lana Lay": {
+            "id": 199482647,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Плескачев": {
+        "Ирина Фролова": {
+            "id": 461060051,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Jeka Jopeo": {
+        "Нураня Зейналова": {
+            "id": 442463535,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Александр Ляхов": {
+        "Котельная Власиха": {
+            "id": 152202248,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Слава Петров": {
+        "Ольга Фролова": {
+            "id": 488930632,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Егор Анисимов": {
+        "Юлия Ковалева": {
+            "id": 463237658,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         },
-        "Евгений Ширков": {
+        "Таисия Казакова": {
+            "id": 518662698,
             "common_age": "",
             "common_groups": "",
-            "common_friends": ""
+            "common_friends": "",
+            "common_music": "",
+            "common_books": "",
+            "common_movies": ""
         }
     }
 ]

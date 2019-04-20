@@ -4,6 +4,8 @@ import json
 import csv
 import datetime
 import os
+import re
+import sys
 from pprint import pprint
 from tqdm import tqdm
 from constants import ACCESS_TOKEN, REQUEST_URL, CSV_FILE, SEX, RELATION, POLITICAL, PEOPLE_MAIN, LIFE_MAIN, SMOKING
@@ -22,7 +24,6 @@ class VKUser:
 
     # Поиск информации о пользователе, для которого будем предлагать варианты знакомства
     def lovefinder_info(self):
-        #time.sleep(1)
         method = 'users.get'
         self.params['fields'] = 'bdate, interests, personal, relation, sex, city, country, interests, education,' \
                                 'music, movies, tv, books'
@@ -31,14 +32,13 @@ class VKUser:
         name = {}
         if 'error' not in data.keys():
             if 'deactivated' not in data['response'][0].keys():
-                self.account_id = data['response'][0]['id'] # цифровой id пользователя
-                name['groups'] = self.get_groups(self.account_id)
+                self.account_id = data['response'][0]['id']  # цифровой id пользователя
+                #name['groups'] = self.get_groups(self.account_id)
                 name['friends_list'] = self.get_friends_list(self.account_id)
                 name['fullname'] = " ".join((data['response'][0]['first_name'], data['response'][0]['last_name']))
                 fields = ['music', 'university_name', 'interests', 'books', 'movies', 'personal', 'city',
                           'country', 'bdate', 'sex', 'relation']
                 for param in fields:
-                    ###print("PARAM", param)
                     if param in ['city', 'country']:
                         name[param] = {}
                         if data['response'][0][param]['title']:
@@ -83,7 +83,6 @@ class VKUser:
 
     # Поиск идентификатора страны по имени
     def get_country(self):
-        #time.sleep(1)
         method = 'database.getCountries'
         self.params['need_all'] = 0
         with open(os.path.abspath(CSV_FILE), encoding='utf-8') as csvfile:
@@ -103,13 +102,11 @@ class VKUser:
                 break
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
-        #pprint(data)
         # Возвратим id страны по базе ВК
         return data['response']['items'][0]['id']
 
     # Выбор региона города
     def get_regions(self, country_id):
-        #time.sleep(1)
         method = 'database.getRegions'
         self.params['country_id'] = country_id
         self.params['count'] = 1000
@@ -134,7 +131,6 @@ class VKUser:
 
     # Поиск идентификатора города по стране и имени города
     def get_city(self):
-        #time.sleep(1)
         method = 'database.getCities'
         self.params['country_id'] = self.get_country()
         region_id = self.get_regions(self.params['country_id'])
@@ -145,10 +141,8 @@ class VKUser:
         for row in data['response']['items']:
             print(row['title'])
         dict_of_cities = {}
-        #print("\nВыберите город из списка:")
         for row in data['response']['items']:
             dict_of_cities[row['title'].lower()] = row['id']
-            #print(row['title'])
         while True:
             try:
                 city_name = input("Введите город из списка выше:").lower().strip()
@@ -189,10 +183,11 @@ class VKUser:
     # Поиск подходящих вариантов для знакомства
     def users_search(self, search_params):
         """
-        search_params[0] - sex
-        search_params[1] - age_range
-        search_params[2] - территория поиска
-                       [0] - id города, [1] - название города, [2] - id страны
+            Параметры:
+                search_params[0] - sex
+                search_params[1] - age_range
+                search_params[2] - территория поиска:
+                [0] - id города, [1] - название города, [2] - id страны
         """
         time.sleep(1)
         method = 'users.search'
@@ -205,11 +200,10 @@ class VKUser:
         #print(self.params)
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
-        #print(data)
         finded_users = {}
         for item in tqdm(data['response']['items']):
-            # сразу отсекаем тех, кто имеет пару. При этом считаем, что если пользователь не захотел вообще
-            # указывать семейное положение, то считаем по дефолту 9 - не указано
+            # Сразу отсекаем тех, кто уже имеет пару. При этом считаем, что если пользователь не захотел вообще
+            # указывать семейное положение, то по дефолту выставляем 9 - не указано и добавляем в выборку
             if 'relation' not in item.keys():
                 item['relation'] = 0
             if item['relation'] not in [2, 3, 4, 5, 7, 8]:
@@ -220,43 +214,25 @@ class VKUser:
                 fields = ['music', 'interests', 'books', 'movies', 'sex', 'personal', 'bdate']
                 for param in fields:
                     if param in item.keys():
+                        #print(param)
                         if param == 'bdate':
                             if item[param]:
+                                #print(fullname, item[param])
                                 length_age = item[param].split('.')
                             else:
                                 length_age = []
                             if len(length_age) == 3:
-                                ###print("22222222222222222222222", item)
                                 finded_users[fullname]['age'] = datetime.datetime.now().year - int(item[param][-4:])
                             else:
                                 finded_users[fullname]['age'] = ''
-                        ##finded_users[fullname][param] = item[param]
                         finded_users[fullname][param] = item[param]
                     else:
                         finded_users[fullname][param] = ''
                         finded_users[fullname]['age'] = ''
-                # if 'books' in item.keys():
-                #     finded_users[fullname]['books'] = item['books']
-                # else:
-                #     finded_users[fullname]['books'] = ''
-                # if 'interests' in item.keys():
-                #     finded_users[fullname]['interests'] = item['interests']
-                # else:
-                #     finded_users[fullname]['interests'] = ''
-                # if 'movies' in item.keys():
-                #     finded_users[fullname]['movies'] = item['movies']
-                # else:
-                #     finded_users[fullname]['movies'] = ''
-                # if 'music' in item.keys():
-                #     finded_users[fullname]['music'] = item['music']
-                # else:
-                #     finded_users[fullname]['music'] = ''
-                # if 'personal' in item.keys():
-                #     finded_users[fullname]['personal'] = item['personal']
-                # else:
-                #     finded_users[fullname]['personal'] = ''
                 finded_users[fullname]['groups_list'] = self.get_groups(finded_users[fullname]['id'])
                 finded_users[fullname]['friends_list'] = self.get_friends_list(finded_users[fullname]['id'])
+        write_json(finded_users)
+        sys.exit()
         return finded_users
 
 
@@ -315,7 +291,7 @@ def set_search_age():
 
 
 # Поиск пары по критериям: общие друзья, общие группы, общие интересы, общая музыка
-def compare_data(loverfinder, finded_users, filter_by, result):
+def compare_users(loverfinder, finded_users, filter_by, result):
     print("ФИЛЬТР ПО", filter_by)
     for key, data in finded_users.items():
         """
@@ -327,6 +303,7 @@ def compare_data(loverfinder, finded_users, filter_by, result):
             if filter_by == 'age':
                 if finded_users[key][filter_by] == loverfinder[filter_by]:
                     finded_users[key][result] = loverfinder[filter_by]
+                    ###print(key, finded_users[key][filter_by], loverfinder[filter_by])
                 else:
                     finded_users[key][result] = ''
             else:
@@ -336,11 +313,35 @@ def compare_data(loverfinder, finded_users, filter_by, result):
                     finded_users[key][result] = ''
         else:
             finded_users[key][result] = ''
-            print("У пользователя закрытый профиль.")
- #   print("В ФУНКЦИИ!!!")
-    #pprint(finded_users)
     return finded_users
 
+
+# Поиск друзей по интересам: музыка, фильмы, книги
+def regex_compare(loverfinder, finded_users, filter_by, result):
+    #pprint(finded_users)
+    if filter_by in ['music', 'books', 'movies']:
+        parsed_interesrts = []
+        interests = loverfinder[filter_by].split(",")
+        for word in interests:
+            parsed_interesrts.extend(word.split(' '))
+        regexes = list(set(filter(None, parsed_interesrts)))  # удаляем пустые и повторные элементы в списке
+        combined_regex = re.compile(rf'|'.join('(?:{0})'.format(x) for x in regexes))
+        for key, data in finded_users.items():
+            if filter_by in data.keys():
+                ###print("222222222", data[filter_by])
+                find_common = combined_regex.findall(data[filter_by])
+                if find_common:
+                    ###print("FIND COMMON", find_common, "   - ----")
+                    finded_users[key][result] = find_common
+                else:
+                    finded_users[key][result] = ''
+            else:
+                finded_users[key][result] = ''
+    ####pprint(finded_users)
+    return finded_users
+
+
+# Запись в файл
 def write_json(dump):
     with open(os.path.abspath('diplom.json'), 'w', encoding='utf-8') as f:
         json.dump(dump, f, ensure_ascii=False, indent=4)

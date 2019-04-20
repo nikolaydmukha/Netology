@@ -1,6 +1,7 @@
 import os
 import sys
-from functions import VKUser, set_search_gender, set_search_age, compare_data, write_json
+from functions import VKUser, set_search_gender, set_search_age, compare_users, regex_compare,  write_json
+from constants import finded_users,sasha
 from pprint import pprint
 
 
@@ -8,13 +9,13 @@ def start_programm():
     ##user = VKUser(sys.argv[1])
     ##print(sys.argv[1])
     #username = "155686070"
-    #username = "29827545"
-    username = sys.argv[1]
+    username = "29827545"
+    #username = sys.argv[1]
     user = VKUser(username)
-    lovefinder_data = user.lovefinder_info()
+    ###!!!!!!!###lovefinder_data = user.lovefinder_info()
+    lovefinder_data = sasha
     if 'error' not in lovefinder_data.keys():
         if 'reason' not in lovefinder_data.keys():
-            ##print(f'Привет! Сейчас мы искать пару пользователю с идентификатором соцсети VK "{sys.argv[1]}"')
             print(f'Привет! Сейчас мы будем искать пару пользователю с идентификатором соцсети VK "{username}".\n'
                   f'Короткая справка о пользователе (может помочь при составлении запроса на поиск пары):')
             print(f'Полное имя: {lovefinder_data["fullname"]}\nПол: {lovefinder_data["sex"]}'
@@ -24,9 +25,10 @@ def start_programm():
             print('Давайте сформируем параметры поиска.')
             sex = set_search_gender()
             age_range = set_search_age()
-            city = user.get_city() #city[0] - id города, city[1] - название города, city[3] - id страны
+            city = user.get_city()  # city[0] - id города, city[1] - название города, city[3] - id страны
             search_params = [sex[0], age_range,city]
-            finded_users = user.users_search(search_params)
+            # Поиск людей по городу, диапазону возраста
+            ##!!!!!!##finded_users = user.users_search(search_params)
             print(f'\nКороткая справка о пользователе:')
             print(f'Полное имя: {lovefinder_data["fullname"]}\nПол: {lovefinder_data["sex"]}\n'
                   f'Дата рождения: {lovefinder_data["bdate"]} (возраст {lovefinder_data["age"]})\n'
@@ -36,33 +38,40 @@ def start_programm():
                   f'Музыка: {lovefinder_data["music"]}\n'
                   f'Фильмы: {lovefinder_data["movies"]}\n'
                   f'Книги: {lovefinder_data["books"]}\n'
-                  f'Группы: {len(lovefinder_data["groups"])}\n'
+                  f'Группы: {len(lovefinder_data["groups_list"])}\n'
                   f'Друзья: {len(lovefinder_data["friends_list"])}\n')
-            #f'О себе: {lovefinder_data["personal"]}\n'
+                    #f'О себе: {lovefinder_data["personal"]}\n'
             print(f'\nНайдено {len(finded_users)}, удовлетворяющих поиску:')
             print(f"Производим поиск людей по условиям:\nпол: '{sex[1]}'' \nвозраст: 'от {age_range[0]} до "
                   f"{age_range[1]}'' \nгород: '{city[1]}'")
             if finded_users:
-
-            # Поиск пары по общим друзьям
-                pair_by = compare_data(lovefinder_data, finded_users, 'friends_list', 'common_friends')
-            # Поиск пары по общим группам
-                pair_by = compare_data(lovefinder_data, finded_users, 'groups_list', 'common_groups')
-            # Поиск пары по точнному возрасту
-                pair_by = compare_data(lovefinder_data, finded_users, 'age', 'common_age')
+                ###sys.exit()
+                # Поиск пары по общим друзьям
+                pair_by = compare_users(lovefinder_data, finded_users, 'friends_list', 'common_friends')
+                # Поиск пары по общим группам
+                pair_by = compare_users(lovefinder_data, finded_users, 'groups_list', 'common_groups')
+                # Поиск пары по точнному возрасту
+                pair_by = compare_users(lovefinder_data, finded_users, 'age', 'common_age')
+                # Поиск общей музыки
+                pair_by = regex_compare(lovefinder_data, finded_users, 'music', 'common_music')
+                # Поиск общих книг
+                pair_by = regex_compare(lovefinder_data, finded_users, 'books', 'common_books')
+                # Поиск общих фильмов
+                pair_by = regex_compare(lovefinder_data, finded_users, 'movies', 'common_movies')
                 temp = []
                 temp_dict = {}
                 for name, option in pair_by.items():
-                    print(name)
                     temp_dict[name] = {}
+                    temp_dict[name]['id'] = option['id']
                     temp_dict[name]['common_age'] = option['common_age']
                     temp_dict[name]['common_groups'] = option['common_groups']
                     temp_dict[name]['common_friends'] = option['common_friends']
+                    temp_dict[name]['common_music'] = option['common_music']
+                    temp_dict[name]['common_books'] = option['common_books']
+                    temp_dict[name]['common_movies'] = option['common_movies']
+                    ###print(temp_dict[name]['common_music'])
                 temp.append(temp_dict)
-                    # print(f"Имя: {name}\n"
-                    #   f"Общий возраст: {pair_by[name]['common_age']}\n"
-                    #   f"Общие друзья: {pair_by[name]['common_friends']}\n"
-                    #   f"Общие группы: {pair_by[name]['common_groups']}")
+                ###pprint(temp)
                 write_json(temp)
                 print(f"Программа выполнена. Данные записаны в файл {os.path.join(os.path.abspath('files'))}\diplom.json")
             else:
