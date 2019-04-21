@@ -8,10 +8,11 @@ import re
 import sys
 from pprint import pprint
 from tqdm import tqdm
-from constants import ACCESS_TOKEN, REQUEST_URL, CSV_FILE, SEX, RELATION, POLITICAL, PEOPLE_MAIN, LIFE_MAIN, SMOKING
-from constants import ALCOHOL
+from constants import ACCESS_TOKEN, REQUEST_URL, CSV_FILE, SEX, RELATION
+###from constants import ALCOHOL, POLITICAL, PEOPLE_MAIN, LIFE_MAIN, SMOKING
 
 
+# Класс для пользователя VK, пару которому ищем
 class VKUser:
     def __init__(self, user_id):
         self.user_id = user_id
@@ -33,9 +34,9 @@ class VKUser:
         if 'error' not in data.keys():
             if 'deactivated' not in data['response'][0].keys():
                 self.account_id = data['response'][0]['id']  # цифровой id пользователя
-                #name['groups'] = self.get_groups(self.account_id)
                 name['friends_list'] = self.get_friends_list(self.account_id)
                 name['fullname'] = " ".join((data['response'][0]['first_name'], data['response'][0]['last_name']))
+                name['id'] = data['response'][0]['id']
                 fields = ['music', 'university_name', 'interests', 'books', 'movies', 'personal', 'city',
                           'country', 'bdate', 'sex', 'relation']
                 for param in fields:
@@ -102,8 +103,7 @@ class VKUser:
                 break
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
-        # Возвратим id страны по базе ВК
-        return data['response']['items'][0]['id']
+        return data['response']['items'][0]['id']  # Возвратим id страны по базе ВК
 
     # Выбор региона города
     def get_regions(self, country_id):
@@ -197,7 +197,6 @@ class VKUser:
         self.params['age_from'] = search_params[1][0]
         self.params['age_to'] = search_params[1][1]
         self.params['fields'] = 'relation, books, interests, music, movies, personal, bdate'
-        #print(self.params)
         response = requests.get(REQUEST_URL + method, self.params)
         data = response.json()
         finded_users = {}
@@ -214,10 +213,8 @@ class VKUser:
                 fields = ['music', 'interests', 'books', 'movies', 'sex', 'personal', 'bdate']
                 for param in fields:
                     if param in item.keys():
-                        #print(param)
                         if param == 'bdate':
                             if item[param]:
-                                #print(fullname, item[param])
                                 length_age = item[param].split('.')
                             else:
                                 length_age = []
@@ -231,8 +228,6 @@ class VKUser:
                         finded_users[fullname]['age'] = ''
                 finded_users[fullname]['groups_list'] = self.get_groups(finded_users[fullname]['id'])
                 finded_users[fullname]['friends_list'] = self.get_friends_list(finded_users[fullname]['id'])
-        write_json(finded_users)
-        sys.exit()
         return finded_users
 
 
@@ -289,21 +284,13 @@ def set_search_age():
             break
     return age
 
-
 # Поиск пары по критериям: общие друзья, общие группы, общие интересы, общая музыка
 def compare_users(loverfinder, finded_users, filter_by, result):
-    print("ФИЛЬТР ПО", filter_by)
     for key, data in finded_users.items():
-        """
-         Cовпадение по возрасту должны быть важнее общих групп. 
-         Интересы по музыке важнее книг. 
-         Наличие общих друзей важнее возраста.
-        """
         if data[filter_by]:
             if filter_by == 'age':
                 if finded_users[key][filter_by] == loverfinder[filter_by]:
                     finded_users[key][result] = loverfinder[filter_by]
-                    ###print(key, finded_users[key][filter_by], loverfinder[filter_by])
                 else:
                     finded_users[key][result] = ''
             else:
@@ -318,18 +305,25 @@ def compare_users(loverfinder, finded_users, filter_by, result):
 
 # Поиск друзей по интересам: музыка, фильмы, книги
 def regex_compare(loverfinder, finded_users, filter_by, result):
-    #pprint(finded_users)
+    print("ФИЛТР ПО!!!!!", filter_by)
     if filter_by in ['music', 'books', 'movies']:
         parsed_interesrts = []
-        interests = loverfinder[filter_by].split(",")
-        for word in interests:
-            parsed_interesrts.extend(word.split(' '))
+        interests = loverfinder[filter_by].split(",")  # разделим полученное из запрсоа значение поля на отдельные части
+        interests =[x.strip(' ') for x in interests]  # удалим пробельные символы слева и справа, если они есть
+        ###for word in interests:
+        ###    parsed_interesrts.extend(word.split(' '))
+        parsed_interesrts = interests
+        ###print("PARSED INT", parsed_interesrts, loverfinder['fullname'])
         regexes = list(set(filter(None, parsed_interesrts)))  # удаляем пустые и повторные элементы в списке
-        combined_regex = re.compile(rf'|'.join('(?:{0})'.format(x) for x in regexes))
+        print(regexes)
+        expression = '|'.join('\w*(?:{0})\w*'.format(x) for x in regexes)
+        combined_regex = re.compile(expression)
+        print(combined_regex)
         for key, data in finded_users.items():
             if filter_by in data.keys():
-                ###print("222222222", data[filter_by])
+                ###print("1. Филтьтруемый:", key, data[filter_by])
                 find_common = combined_regex.findall(data[filter_by])
+                ####print("2.Совпадения", key, find_common)
                 if find_common:
                     ###print("FIND COMMON", find_common, "   - ----")
                     finded_users[key][result] = find_common
@@ -337,8 +331,43 @@ def regex_compare(loverfinder, finded_users, filter_by, result):
                     finded_users[key][result] = ''
             else:
                 finded_users[key][result] = ''
-    ####pprint(finded_users)
     return finded_users
+
+
+# Функция формирования итоговой выборки
+def exact_result(finded_users):
+    """
+    Требуется 10 человек, при этом:
+    1. совпадение по возрасту важнее общих групп.
+    2. интересы по музыке важнее книг.
+    3. наличие общих друзей важнее возраста,
+    Т.е.:
+    1. Друзья --> 2. Возраст --> 3. Группы --> 4. Музыка --> 5. Книги --> 6. Кино
+    Расположим людей в списке в очередности по логике, описанной выше.
+    """
+    ordered_users = []
+    friends, age, groups, music, movies, books = [], [], [], [], [], []
+    for users in finded_users:
+        for key, data in users.items():
+            if data['common_friends']:
+                friends.append(key)
+            elif data['common_age']:
+                age.append(key)
+            elif data['common_groups']:
+                groups.append(key)
+            elif data['common_music']:
+                music.append(key)
+            elif data['common_books']:
+                books.append(key)
+            elif data['common_movies']:
+                movies.append(key)
+    ordered_users.extend(friends)
+    ordered_users.extend(age)
+    ordered_users.extend(groups)
+    ordered_users.extend(music)
+    ordered_users.extend(books)
+    ordered_users.extend(movies)
+    return ordered_users
 
 
 # Запись в файл
