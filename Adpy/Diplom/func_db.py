@@ -1,5 +1,7 @@
 import os
 import psycopg2
+import sys
+from pprint import pprint
 from configparser import ConfigParser
 
 
@@ -16,7 +18,6 @@ def config_db(filename='database.ini', section='postgresql'):
             db[param[0]] = param[1]
     else:
         raise Exception('Section {0} not found in the {1} file'.format(section, filename))
-    print(db)
     return db
 
 
@@ -40,9 +41,9 @@ def connect():
 # Создание таблиц
 def create_tables():
     commands = [
-        """
-        DROP TABLE users
-        """,
+#        """
+#        DROP TABLE users
+#        """,
         """
         CREATE TABLE users (
             id SERIAL PRIMARY KEY,
@@ -81,11 +82,7 @@ def insert_users(lovefinder_data, finded_users, result_data):
         params = config_db()
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
-        print(type(result_data))
         for key in result_data[:10]:
-            print(key)
-            print(finded_users)
-            print("2222222", finded_users[0][key]['age_from'])
             cur.execute(sql, (lovefinder_data['fullname'], lovefinder_data['id'], finded_users[0][key]['id'], key,
                               finded_users[0][key]['age_from'], finded_users[0][key]['age_to'], finded_users[0][key]['city_id'],
                               finded_users[0][key]['country_id']))
@@ -99,22 +96,21 @@ def insert_users(lovefinder_data, finded_users, result_data):
 
 
 # Получение информации из табдицы
-def get_users():
+def get_users(lovefinder_data, age_from, age_to):
     conn = None
+    sql = "SELECT id, vk_id, fullname, lovefinder_name, lovefinder_vk_id, age_from, age_to," \
+          "city_id, country_id FROM users WHERE lovefinder_vk_id=%s AND age_from=%s AND age_to=%s"
     try:
         params = config_db()
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
-        cur.execute("SELECT id, vk_id, fullname, lovefinder_name, lovefinder_vk_id, age_from, age_to,"
-                    "city_id, country_id FROM users")
-        print("The number of parts: ", cur.rowcount)
-        row = cur.fetchone()
-
-        while row is not None:
-            print(row)
-            row = cur.fetchone()
-
+        cur.execute(sql, (lovefinder_data['id'], age_from, age_to))
+        result_query = cur.fetchall()
+        old_finded = []
+        for data in result_query:
+            old_finded.append(data[2])
         cur.close()
+        return old_finded
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:

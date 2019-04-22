@@ -2,7 +2,7 @@ import os
 import sys
 from functions import VKUser, set_search_gender, set_search_age, compare_users, regex_compare, exact_result, write_json
 from func_db import connect, create_tables, insert_users, get_users
-from constants import finded_users,sasha #  УБРАТЬ В КОНЦЕ
+#####from constants import finded_users,sasha #  УБРАТЬ В КОНЦЕ
 from pprint import pprint
 
 
@@ -10,11 +10,11 @@ def start_programm():
     ##user = VKUser(sys.argv[1])
     ##print(sys.argv[1])
     #username = "155686070"
-    username = "29827545"
-    #username = sys.argv[1]
+    #####username = "29827545"
+    username = sys.argv[1]
     user = VKUser(username)
     lovefinder_data = user.lovefinder_info()
-    ###lovefinder_data = sasha
+    #####lovefinder_data = sasha
     if 'error' not in lovefinder_data.keys():
         if 'reason' not in lovefinder_data.keys():
             print(f'Привет! Сейчас мы будем искать пару пользователю с идентификатором соцсети VK "{username}".\n'
@@ -26,11 +26,11 @@ def start_programm():
             print('Давайте сформируем параметры поиска.')
             sex = set_search_gender()
             age_range = set_search_age()
-##            city = user.get_city()  # city[0] - id города, city[1] - название города, city[2] - id страны
-            city = [721, 'Власиха', 1]
-##            search_params = [sex[0], age_range,city]
+            city = user.get_city()  # city[0] - id города, city[1] - название города, city[2] - id страны
+            #####            city = [721, 'Власиха', 1]
+            search_params = [sex[0], age_range,city]
             # Поиск людей по городу, диапазону возраста
-            ###!!!!####finded_users = user.users_search(search_params)
+            finded_users = user.users_search(search_params)
             print(f'\nКороткая справка о пользователе:')
             print(f'Полное имя: {lovefinder_data["fullname"]}\nПол: {lovefinder_data["sex"]}\n'
                   f'Дата рождения: {lovefinder_data["bdate"]} (возраст {lovefinder_data["age"]})\n'
@@ -65,28 +65,30 @@ def start_programm():
                 temp_dict = {}
                 for name, option in pair_by.items():
                     temp_dict[name] = {}
-                    temp_dict[name]['id'] = option['id']
-                    temp_dict[name]['common_age'] = option['common_age']
-                    temp_dict[name]['common_groups'] = option['common_groups']
-                    temp_dict[name]['common_friends'] = option['common_friends']
-                    temp_dict[name]['common_music'] = option['common_music']
-                    temp_dict[name]['common_books'] = option['common_books']
-                    temp_dict[name]['common_movies'] = option['common_movies']
+                    for identificator in ['id', 'common_age', 'common_groups', 'common_friends', 'common_music', 'common_books', 'common_movies']:
+                        temp_dict[name][identificator] = option[identificator]
                     temp_dict[name]['age_from'] = age_range[0]
                     temp_dict[name]['age_to'] = age_range[1]
                     temp_dict[name]['city_id'] = city[0]
                     temp_dict[name]['country_id'] = city[2]
-                    ###print(temp_dict[name]['common_music'])
                 temp.append(temp_dict)
-                ###pprint(temp)
                 write_json(temp)
-                result_data = exact_result(temp)
-                # Запись в БД
-                #######connect()
+                result_data_find = exact_result(temp)
                 create_tables()
-                insert_users(lovefinder_data, temp, result_data)
-                get_users()
-                print(f"Программа выполнена. Данные записаны в файл {os.path.join(os.path.abspath('files'))}\diplom.json")
+                # Преждем, чем вставлять данные, получим тех, кто уже есть в базе по введённым критериям поиска
+                result_data_in_db = get_users(lovefinder_data, age_range[0], age_range[1])
+                # Исключим тех, кто есть в базе, из найденных людей
+                # result_data_find - найденные по условиям поиска
+                # result_data_in_db - найденные в базе
+                for x in result_data_in_db:
+                    if x in result_data_find:
+                        result_data_find.remove(x)
+                if not result_data_find:
+                    sys.exit("Не найдено ни одного нового человека, удовлетворяющего критериям поиска")
+                # Вставим данные в БД
+                insert_users(lovefinder_data, temp, result_data_find)
+
+                print(f"Программа выполнена. Данные записаны в файл в базу.")
             else:
                 print("Не найдено ни одного человека, удовлетворяющего критериям поиска")
         else:

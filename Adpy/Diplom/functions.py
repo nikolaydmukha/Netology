@@ -9,7 +9,6 @@ import sys
 from pprint import pprint
 from tqdm import tqdm
 from constants import ACCESS_TOKEN, REQUEST_URL, CSV_FILE, SEX, RELATION
-###from constants import ALCOHOL, POLITICAL, PEOPLE_MAIN, LIFE_MAIN, SMOKING
 
 
 # Класс для пользователя VK, пару которому ищем
@@ -228,7 +227,40 @@ class VKUser:
                         finded_users[fullname]['age'] = ''
                 finded_users[fullname]['groups_list'] = self.get_groups(finded_users[fullname]['id'])
                 finded_users[fullname]['friends_list'] = self.get_friends_list(finded_users[fullname]['id'])
+                #finded_users[fullname]['photos_url'] = self.get_photos()
         return finded_users
+
+    # Поиск фотографий аватара(=фотографии со стены пользователя)
+    def get_photos(self):
+        method = "photos.get"
+        self.params["count"] = 100
+        self.params["album_id"] = 'profile'
+        self.params['extended'] = 1
+        response = requests.get(REQUEST_URL + method, self.params)
+        data = response.json()
+        dict_photos = []
+        if 'error' not in data.keys():
+            for photo in data['response']['items']:
+                finded_photos = {}
+                photo_id = photo['id']
+                likes = photo['likes']['count']
+                finded_photos['likes'] = likes
+                finded_photos['url'] = ''
+                # Полагаем, что самый маленький размер есть всегда. А вот фото в среднем или крупном размере - нет
+                # Поэтому сразу сохраним маленькую фотографию, но если встретим среднюю, то сохраним её
+                for size in photo['sizes']:
+                    if (size['type'] == 's') & (not finded_photos['url']):
+                        finded_photos['url'] = size['url']
+                    elif size['type'] == 'r':
+                        finded_photos['url'] = size['url']
+                dict_photos.append(finded_photos)
+            sorted_dict_photos = sorted(dict_photos, key=lambda k: k['likes'])
+            urls = []
+            for link in sorted_dict_photos[-3:]:
+                urls.append(link['url'])
+            return urls
+        else:
+            return None
 
 
 # Установка параметров поиска: пол
@@ -284,6 +316,7 @@ def set_search_age():
             break
     return age
 
+
 # Поиск пары по критериям: общие друзья, общие группы, общие интересы, общая музыка
 def compare_users(loverfinder, finded_users, filter_by, result):
     for key, data in finded_users.items():
@@ -305,27 +338,19 @@ def compare_users(loverfinder, finded_users, filter_by, result):
 
 # Поиск друзей по интересам: музыка, фильмы, книги
 def regex_compare(loverfinder, finded_users, filter_by, result):
-    print("ФИЛТР ПО!!!!!", filter_by)
     if filter_by in ['music', 'books', 'movies']:
         parsed_interesrts = []
         interests = loverfinder[filter_by].split(",")  # разделим полученное из запрсоа значение поля на отдельные части
         interests =[x.strip(' ') for x in interests]  # удалим пробельные символы слева и справа, если они есть
-        ###for word in interests:
-        ###    parsed_interesrts.extend(word.split(' '))
         parsed_interesrts = interests
-        ###print("PARSED INT", parsed_interesrts, loverfinder['fullname'])
         regexes = list(set(filter(None, parsed_interesrts)))  # удаляем пустые и повторные элементы в списке
-        print(regexes)
         expression = '|'.join('\w*(?:{0})\w*'.format(x) for x in regexes)
         combined_regex = re.compile(expression)
         print(combined_regex)
         for key, data in finded_users.items():
             if filter_by in data.keys():
-                ###print("1. Филтьтруемый:", key, data[filter_by])
                 find_common = combined_regex.findall(data[filter_by])
-                ####print("2.Совпадения", key, find_common)
                 if find_common:
-                    ###print("FIND COMMON", find_common, "   - ----")
                     finded_users[key][result] = find_common
                 else:
                     finded_users[key][result] = ''
@@ -361,12 +386,8 @@ def exact_result(finded_users):
                 books.append(key)
             elif data['common_movies']:
                 movies.append(key)
-    ordered_users.extend(friends)
-    ordered_users.extend(age)
-    ordered_users.extend(groups)
-    ordered_users.extend(music)
-    ordered_users.extend(books)
-    ordered_users.extend(movies)
+    for i in [friends, age, groups, music, books, movies]:
+        ordered_users.extend(i)
     return ordered_users
 
 
