@@ -50,7 +50,9 @@ class VKUser:
                     elif param == 'bdate':
                         if data['response'][0]['bdate']:
                             name['bdate'] = data['response'][0]['bdate']
-                            name['age'] = datetime.datetime.now().year - int(data['response'][0]['bdate'][-4:])
+                            birth = data['response'][0]['bdate'].split(".")
+                            name['age'] = (datetime.datetime.now() - datetime.datetime(int(birth[2]), int(birth[1]), int(birth[0]))).days // 365
+                            #name['age'] = datetime.datetime.now().year - int(data['response'][0]['bdate'][-4:])
                         else:
                             name['bdate'] = ''
                             name['age'] = ''
@@ -145,8 +147,14 @@ class VKUser:
         while True:
             try:
                 city_name = input("Введите город из списка выше:").lower().strip()
-                if dict_of_cities[city_name]:
-                    pass
+                if city_name == 'москва':
+                    return [1, city_name, 1]
+                #sys.exit()
+                elif city_name == 'санкт-петербург':
+                    return [2, city_name, 1]
+                else:
+                    if dict_of_cities[city_name]:
+                        pass
             except KeyError:
                 print("А-яй, неправильно ввели регион. Повторите ввод.")
                 continue
@@ -187,6 +195,7 @@ class VKUser:
                 search_params[1] - age_range
                 search_params[2] - территория поиска:
                 [0] - id города, [1] - название города, [2] - id страны
+                отбрасываем тех, у кого указано в семейном поожении, что они в отношениях
         """
         time.sleep(1)
         method = 'users.search'
@@ -204,7 +213,8 @@ class VKUser:
             # указывать семейное положение, то по дефолту выставляем 9 - не указано и добавляем в выборку
             if 'relation' not in item.keys():
                 item['relation'] = 0
-            if item['relation'] not in [2, 3, 4, 5, 7, 8]:
+            #if item['relation'] not in [2, 3, 4, 5, 7, 8]:
+            if item['relation'] in [1, 6, 0]:
                 fullname = item['first_name'] + ' ' + item['last_name']
                 finded_users[fullname] = {}
                 finded_users[fullname]['relation'] = item['relation']
@@ -218,7 +228,9 @@ class VKUser:
                             else:
                                 length_age = []
                             if len(length_age) == 3:
-                                finded_users[fullname]['age'] = datetime.datetime.now().year - int(item[param][-4:])
+                                #finded_users[fullname]['age'] = datetime.datetime.now().year - int(item[param][-4:])
+                                birth = item[param].split(".")
+                                finded_users[fullname]['age'] = (datetime.datetime.now() - datetime.datetime(int(birth[2]), int(birth[1]), int(birth[0]))).days // 365
                             else:
                                 finded_users[fullname]['age'] = ''
                         finded_users[fullname][param] = item[param]
@@ -306,7 +318,7 @@ def set_search_age():
                 try:
                     print('Возраст до: ')
                     age_to = int(input().strip())
-                    if age_to <= age_from or len(str(age_to)) > 2:
+                    if age_to < age_from or len(str(age_to)) > 2:
                         print("Возраст 'до' не может быть больше возраста 'от' и, вероятно, недвузначным..")
                         continue
                 except ValueError:
@@ -345,16 +357,20 @@ def regex_compare(loverfinder, finded_users, filter_by, result):
     if filter_by in ['music', 'books', 'movies']:
         parsed_interesrts = []
         interests = loverfinder[filter_by].split(",")  # разделим полученное из запрсоа значение поля на отдельные части
-        interests =[x.strip(' ') for x in interests]  # удалим пробельные символы слева и справа, если они есть
-        parsed_interesrts = interests
+        parsed_interesrts = [x.strip(' ') for x in interests]  # удалим пробельные символы слева и справа, если они есть
         regexes = list(set(filter(None, parsed_interesrts)))  # удаляем пустые и повторные элементы в списке
-        expression = '|'.join('\w*(?:{0})\w*'.format(x) for x in regexes)
+        regexes_modified = [val.strip('"').strip() for val in regexes]
+        expression = '|'.join('\w*(?:{0})\w*'.format(x) for x in regexes_modified)
         combined_regex = re.compile(expression)
         for key, data in finded_users.items():
-            if filter_by in data.keys():
-                find_common = combined_regex.findall(data[filter_by])
-                if find_common:
-                    finded_users[key][result] = find_common
+            if loverfinder[filter_by]:
+                if filter_by in data.keys():
+                    #data[filter_by] = '"А зори здесь тихии", Алхимик, Градостроительный кодекс. 12 стульев. Золотой теленок'
+                    find_common = combined_regex.findall(data[filter_by])
+                    if len(find_common) != 0:
+                        finded_users[key][result] = find_common
+                    else:
+                        finded_users[key][result] = ''
                 else:
                     finded_users[key][result] = ''
             else:
@@ -372,9 +388,11 @@ def exact_result(finded_users):
     Т.е.:
     1. Друзья --> 2. Возраст --> 3. Группы --> 4. Музыка --> 5. Книги --> 6. Кино
     Расположим людей в списке в очередности по логике, описанной выше.
+    ВНИМАНИЕ! Если найденные пользователи не совпадают ни по каким параметрам, то выводим тех, кого нашли в первой
+    выборке
     """
     ordered_users = []
-    friends, age, groups, music, movies, books = [], [], [], [], [], []
+    friends, age, groups, music, movies, books, all_another = [], [], [], [], [], [], []
     for users in finded_users:
         for key, data in users.items():
             if data['common_friends']:
@@ -389,6 +407,12 @@ def exact_result(finded_users):
                 books.append(key)
             elif data['common_movies']:
                 movies.append(key)
-    for i in [friends, age, groups, music, books, movies]:
+            else:
+                all_another.append(key)
+    for i in [friends, age, groups, music, books, movies, all_another]:
         ordered_users.extend(i)
     return ordered_users
+
+def write_json(dump):
+    with open(os.path.abspath('diplom.json'), 'w', encoding='utf-8') as f:
+        json.dump(dump, f, ensure_ascii=False, indent=4)

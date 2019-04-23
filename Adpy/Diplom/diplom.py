@@ -1,6 +1,7 @@
+import datetime
 import os
 import sys
-from functions import VKUser, set_search_gender, set_search_age, compare_users, regex_compare, exact_result
+from functions import VKUser, set_search_gender, set_search_age, compare_users, regex_compare, exact_result, write_json
 from func_db import connect, create_tables, insert_users, get_users
 from pprint import pprint
 
@@ -13,7 +14,7 @@ def start_programm():
             print(f'Привет! Сейчас мы будем искать пару пользователю с идентификатором соцсети VK "{sys.argv[1]}".\n'
                   f'Короткая справка о пользователе (может помочь при составлении запроса на поиск пары):')
             print(f'Полное имя: {lovefinder_data["fullname"]}\nПол: {lovefinder_data["sex"]}'
-                  f'\nДата рождения: {lovefinder_data["bdate"]} (возраст {lovefinder_data["age"]})\n'
+                  f'\nДата рождения: {lovefinder_data["bdate"]} (возраст {lovefinder_data["age"]} полных лет)\n'
                   f'Страна и город проживания: {lovefinder_data["country"]["title"]} ({lovefinder_data["city"]["title"]})'
                   f'\nВысшее образование: {lovefinder_data["university_name"]}\n')
             print('Давайте сформируем параметры поиска.')
@@ -23,9 +24,9 @@ def start_programm():
             search_params = [sex[0], age_range,city]
             # Поиск людей по городу, диапазону возраста
             finded_users = user.users_search(search_params)
-            print(f'\nКороткая справка о пользователе:')
+            print(f'\n##СПРАВКА о соискателе##')
             print(f'Полное имя: {lovefinder_data["fullname"]}\nПол: {lovefinder_data["sex"]}\n'
-                  f'Дата рождения: {lovefinder_data["bdate"]} (возраст {lovefinder_data["age"]})\n'
+                  f'Дата рождения: {lovefinder_data["bdate"]} (возраст {lovefinder_data["age"]} полных лет)\n'
                   f'Страна и город проживания: {lovefinder_data["country"]["title"]} ({lovefinder_data["city"]["title"]})\n'
                   f'Высшее образование: {lovefinder_data["university_name"]}\n'
                   f'Интересы: {lovefinder_data["interests"]}\n'
@@ -34,10 +35,9 @@ def start_programm():
                   f'Книги: {lovefinder_data["books"]}\n'
                   f'Группы: {len(lovefinder_data["groups_list"])}\n'
                   f'Друзья: {len(lovefinder_data["friends_list"])}\n')
-            #print(f'\nВсего по указанному возрасту, городу найдено: {len(finded_users)}')
-            print(f"Всего по указанным критериям (пол: '{sex[1]}',' возраст: 'от {age_range[0]} до "
-                  f"{age_range[1]}',' город: '{city[1]}') найдено: {len(finded_users)}.\nВыберем из них подходящих "
-                  f"людей по такой логике: друзья -> возраст -> группы -> музыка -> книги -> кино...")
+            print(f"##ПОИСК##\nПоиск по указанным критериям (пол: '{sex[1]}',' возраст: 'от {age_range[0]} до "
+                  f"{age_range[1]}',' город: '{city[1]}')...\nВыберем из них "
+                  f"подходящих людей по такой логике: друзья -> возраст -> группы -> музыка -> книги -> кино...")
             if finded_users:
                 # Сформируем словарь, в котором отображены найденные по критериям (возраст, город, страна)
                 # люди, имеющие общих друзей, группы, музыку, книги, фильмы с тем, для кого ищем
@@ -58,7 +58,8 @@ def start_programm():
                 temp_dict = {}
                 for name, option in pair_by.items():
                     temp_dict[name] = {}
-                    for identificator in ['id', 'common_age', 'common_groups', 'common_friends', 'common_music', 'common_books', 'common_movies', 'photos_url']:
+                    for identificator in ['id', 'common_age', 'common_groups', 'common_friends', 'common_music',
+                                          'common_books', 'common_movies', 'photos_url']:
                         temp_dict[name][identificator] = option[identificator]
                     temp_dict[name]['age_from'] = age_range[0]
                     temp_dict[name]['age_to'] = age_range[1]
@@ -66,7 +67,7 @@ def start_programm():
                     temp_dict[name]['country_id'] = city[2]
                 temp.append(temp_dict)
                 result_data_find = exact_result(temp)
-                ###create_tables()
+                create_tables()
                 # Преждем, чем вставлять данные, получим тех, кто уже есть в базе по введённым критериям поиска
                 result_data_in_db = get_users(lovefinder_data, age_range[0], age_range[1])
                 # Исключим тех, кто есть в базе, из найденных людей
@@ -79,6 +80,7 @@ def start_programm():
                     sys.exit("Ни одного нового человека, удовлетворяющего критериям поиска, не нашли. Только те, "
                              "кто уже попадался в поиск ранее!")
                 # Вставим данные в БД
+                #write_json(temp)
                 insert_users(lovefinder_data, temp, result_data_find)
 
                 print(f"Программа выполнена. Данные записаны в файл в базу.")
