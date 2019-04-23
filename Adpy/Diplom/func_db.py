@@ -82,10 +82,17 @@ def insert_users(lovefinder_data, finded_users, result_data):
         params = config_db()
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
-        for key in result_data[:10]:
-            cur.execute(sql, (lovefinder_data['fullname'], lovefinder_data['id'], finded_users[0][key]['id'], key,
-                              finded_users[0][key]['age_from'], finded_users[0][key]['age_to'], finded_users[0][key]['city_id'],
-                              finded_users[0][key]['country_id']))
+        print("Найденные люди: ")
+        for key in enumerate(result_data[:10], start=1):
+            cur.execute(sql, (lovefinder_data['fullname'], lovefinder_data['id'], finded_users[0][key[1]]['id'], key[1],
+                              finded_users[0][key[1]]['age_from'], finded_users[0][key[1]]['age_to'],
+                              finded_users[0][key[1]]['city_id'], finded_users[0][key[1]]['country_id']))
+            if finded_users[0][key[1]]['photos_url']:
+                links = ', '.join(finded_users[0][key[1]]['photos_url'])
+            else:
+                links = "У пользователя нет фотография"
+            print(f"{key[0]}. Имя: {key[1]} Аккаунт ВК: http://vk.com/id{finded_users[0][key[1]]['id']} "
+                  f"ТОП-3 фото: {links}")
         conn.commit()
         cur.close()
     except (Exception, psycopg2.DatabaseError) as error:

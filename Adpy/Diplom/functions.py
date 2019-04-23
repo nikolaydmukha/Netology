@@ -227,10 +227,10 @@ class VKUser:
                         finded_users[fullname]['age'] = ''
                 finded_users[fullname]['groups_list'] = self.get_groups(finded_users[fullname]['id'])
                 finded_users[fullname]['friends_list'] = self.get_friends_list(finded_users[fullname]['id'])
-                #finded_users[fullname]['photos_url'] = self.get_photos()
+                finded_users[fullname]['photos_url'] = self.get_photos()
         return finded_users
 
-    # Поиск фотографий аватара(=фотографии со стены пользователя)
+    # Поиск фотографий аватара
     def get_photos(self):
         method = "photos.get"
         self.params["count"] = 100
@@ -258,8 +258,10 @@ class VKUser:
             urls = []
             for link in sorted_dict_photos[-3:]:
                 urls.append(link['url'])
+            self.params['extended'] = None
             return urls
         else:
+            self.params['extended'] = None
             return None
 
 
@@ -326,6 +328,8 @@ def compare_users(loverfinder, finded_users, filter_by, result):
                     finded_users[key][result] = loverfinder[filter_by]
                 else:
                     finded_users[key][result] = ''
+            elif data[filter_by] == 'photos_url':
+                finded_users[key]['photos_url'] = data['photos_url']
             else:
                 if set(finded_users[key][filter_by]) & set(loverfinder[filter_by]):
                     finded_users[key][result] = len(set(finded_users[key][filter_by]) & set(loverfinder[filter_by]))
@@ -346,7 +350,6 @@ def regex_compare(loverfinder, finded_users, filter_by, result):
         regexes = list(set(filter(None, parsed_interesrts)))  # удаляем пустые и повторные элементы в списке
         expression = '|'.join('\w*(?:{0})\w*'.format(x) for x in regexes)
         combined_regex = re.compile(expression)
-        print(combined_regex)
         for key, data in finded_users.items():
             if filter_by in data.keys():
                 find_common = combined_regex.findall(data[filter_by])
@@ -389,9 +392,3 @@ def exact_result(finded_users):
     for i in [friends, age, groups, music, books, movies]:
         ordered_users.extend(i)
     return ordered_users
-
-
-# Запись в файл
-def write_json(dump):
-    with open(os.path.abspath('diplom.json'), 'w', encoding='utf-8') as f:
-        json.dump(dump, f, ensure_ascii=False, indent=4)
