@@ -8,7 +8,7 @@ import re
 import sys
 from pprint import pprint
 from tqdm import tqdm
-from constants import ACCESS_TOKEN, REQUEST_URL, CSV_FILE, SEX, RELATION
+from Diplom.constants import ACCESS_TOKEN, REQUEST_URL, CSV_FILE, SEX, RELATION
 
 
 # Класс для пользователя VK, пару которому ищем
@@ -412,6 +412,7 @@ def exact_result(finded_users):
     for i in [friends, age, groups, music, books, movies, all_another]:
         ordered_users.extend(i)
     return ordered_users
+
 
 def write_json(dump):
     with open(os.path.abspath('diplom.json'), 'w', encoding='utf-8') as f:
