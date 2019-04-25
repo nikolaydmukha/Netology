@@ -1,8 +1,8 @@
 import datetime
 import os
 import sys
-from functions import VKUser, set_search_gender, set_search_age, compare_users, regex_compare, exact_result, write_json
-from func_db import create_tables, insert_users, get_users #,connect
+from functions import VKUser, set_search_gender, set_search_age, compare_users, regex_compare, exact_result
+from func_db import create_tables, insert_users, get_users
 from pprint import pprint
 
 
@@ -82,14 +82,13 @@ def start_programm():
                     sys.exit("Ни одного нового человека, удовлетворяющего критериям поиска, не нашли. Только те, "
                              "кто уже попадался в поиск ранее!")
                 # Вставим данные в БД
-                #write_json(temp)
                 insert_users(lovefinder_data, temp, result_data_find)
 
                 print(f"Программа выполнена. Данные записаны  в базу.")
             else:
                 print("Не найдено ни одного человека, удовлетворяющего критериям поиска")
         else:
-            sys.exit(f"Что-то пошло не так :( пользователь удалил свою страницу.")
+            sys.exit(f"Что-то пошло не так :( Пользователь удалил свою страницу.")
     else:
         sys.exit(f"Что-то пошло не так :( {lovefinder_data['error']}")
 

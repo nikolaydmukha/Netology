@@ -11,7 +11,7 @@ class TestDiplom(unittest.TestCase):
         self.test_config_db = config_db
         self.test_get_city = self.test_class.get_city
 
-    # Проверим, что результат функции lovefinder_info - тип dict
+    # Проверим, что результат функции lovefinder_info - нужный нам для дальнейшей работы тип dict
     def test_type_lovefinder(self):
         self.assertIsInstance(self.test_class.lovefinder_info(), dict)
 
@@ -19,7 +19,7 @@ class TestDiplom(unittest.TestCase):
     def test_type_get_city(self):
         self.assertEqual(len(self.test_get_city()), 3)
 
-    # Проверка, что их конфига БД получаем нужные нам данные
+    # Проверка, что из конфига БД получаем нужные нам данные
     def test_config_db(self):
         os.chdir('..')
         filename = os.path.abspath('database.ini')

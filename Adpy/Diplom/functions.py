@@ -413,8 +413,3 @@ def exact_result(finded_users):
     for i in [friends, age, groups, music, books, movies, all_another]:
         ordered_users.extend(i)
     return ordered_users
-
-
-def write_json(dump):
-    with open(os.path.abspath('diplom.json'), 'w', encoding='utf-8') as f:
-        json.dump(dump, f, ensure_ascii=False, indent=4)
