@@ -1,7 +1,7 @@
 import unittest
-from Diplom.functions import VKUser
-from Diplom.func_db import connect, config_db
-import os, sys
+from Diplom.functions import VKUser, set_search_age
+from Diplom.func_db import config_db
+import os, sys, psycopg2
 
 
 class TestDiplom(unittest.TestCase):
@@ -15,9 +15,9 @@ class TestDiplom(unittest.TestCase):
     def test_type_lovefinder(self):
         self.assertIsInstance(self.test_class.lovefinder_info(), dict)
 
-    # Проверим, что результат функции get_city - тип список из 3 элементов
+    # Проверим, что результат функции get_city - тип список из 3 элементов(название города, id города, if страны)
     def test_type_get_city(self):
-        self.assertEqual(len(self.test_get_city()), 4)
+        self.assertEqual(len(self.test_get_city()), 3)
 
     # Проверка, что их конфига БД получаем нужные нам данные
     def test_config_db(self):

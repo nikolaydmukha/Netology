@@ -2,16 +2,18 @@ import datetime
 import os
 import sys
 from functions import VKUser, set_search_gender, set_search_age, compare_users, regex_compare, exact_result, write_json
-from func_db import connect, create_tables, insert_users, get_users
+from func_db import create_tables, insert_users, get_users #,connect
 from pprint import pprint
 
 
 def start_programm():
-    user = VKUser(sys.argv[1])
+    #user = VKUser(sys.argv[1])
+    username = input("Введите айди пользователя:")
+    user = VKUser(username)
     lovefinder_data = user.lovefinder_info()
     if 'error' not in lovefinder_data.keys():
         if 'reason' not in lovefinder_data.keys():
-            print(f'Привет! Сейчас мы будем искать пару пользователю с идентификатором соцсети VK "{sys.argv[1]}".\n'
+            print(f'Привет! Сейчас мы будем искать пару пользователю с идентификатором соцсети VK "{username}".\n'
                   f'Короткая справка о пользователе (может помочь при составлении запроса на поиск пары):')
             print(f'Полное имя: {lovefinder_data["fullname"]}\nПол: {lovefinder_data["sex"]}'
                   f'\nДата рождения: {lovefinder_data["bdate"]} (возраст {lovefinder_data["age"]} полных лет)\n'
@@ -83,7 +85,7 @@ def start_programm():
                 #write_json(temp)
                 insert_users(lovefinder_data, temp, result_data_find)
 
-                print(f"Программа выполнена. Данные записаны в файл в базу.")
+                print(f"Программа выполнена. Данные записаны  в базу.")
             else:
                 print("Не найдено ни одного человека, удовлетворяющего критериям поиска")
         else:

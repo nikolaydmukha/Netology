@@ -48,7 +48,8 @@ class VKUser:
                             name[param]['title'] = ''
                             name[param]['id'] = ''
                     elif param == 'bdate':
-                        if data['response'][0]['bdate']:
+                        #if data['response'][0]['bdate']:
+                        if 'bdate' in data['response'][0].keys():
                             name['bdate'] = data['response'][0]['bdate']
                             birth = data['response'][0]['bdate'].split(".")
                             name['age'] = (datetime.datetime.now() - datetime.datetime(int(birth[2]), int(birth[1]), int(birth[0]))).days // 365

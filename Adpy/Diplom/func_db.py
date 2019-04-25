@@ -22,20 +22,20 @@ def config_db(filename='database.ini', section='postgresql'):
 
 
 # Коннект к БД
-def connect():
-    conn = None
-    try:
-        params = config_db()
-        print('Connecting to the PostgreSQL database...')
-        conn = psycopg2.connect(**params)
-        cur = conn.cursor()
-        cur.close()
-    except (Exception, psycopg2.DatabaseError) as error:
-        print(error)
-    finally:
-        if conn is not None:
-            conn.close()
-            print('Database connection closed.')
+# def connect():
+#     conn = None
+#     try:
+#         params = config_db()
+#         print('Connecting to the PostgreSQL database...')
+#         conn = psycopg2.connect(**params)
+#         cur = conn.cursor()
+#         cur.close()
+#     except (Exception, psycopg2.DatabaseError) as error:
+#         print(error)
+#     finally:
+#         if conn is not None:
+#             conn.close()
+#             print('Database connection closed.')
 
 
 # Создание таблиц
@@ -90,7 +90,7 @@ def insert_users(lovefinder_data, finded_users, result_data):
             if finded_users[0][key[1]]['photos_url']:
                 links = ', '.join(finded_users[0][key[1]]['photos_url'])
             else:
-                links = "У пользователя нет фотография"
+                links = "У пользователя нет фотографий"
             print(f"{key[0]}. Имя: {key[1]} Аккаунт ВК: http://vk.com/id{finded_users[0][key[1]]['id']} "
                   f"ТОП-3 фото: {links}")
         conn.commit()
