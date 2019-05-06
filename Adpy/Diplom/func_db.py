@@ -1,7 +1,5 @@
 import os
 import psycopg2
-import sys
-from pprint import pprint
 from configparser import ConfigParser
 
 
@@ -41,9 +39,6 @@ def config_db(filename='database.ini', section='postgresql'):
 # Создание таблиц
 def create_tables():
     commands = [
-#        """
-#        DROP TABLE users
-#        """,
         """
         CREATE TABLE users (
             id SERIAL PRIMARY KEY,
@@ -75,8 +70,8 @@ def create_tables():
 
 # Втставка данных в БД
 def insert_users(lovefinder_data, finded_users, result_data):
-    sql = "INSERT INTO users(lovefinder_name, lovefinder_vk_id, vk_id, fullname, age_from, age_to, city_id, country_id)" \
-          " VALUES(%s,%s,%s,%s,%s,%s,%s,%s)"
+    sql = "INSERT INTO users(lovefinder_name, lovefinder_vk_id, vk_id, fullname, age_from, age_to, city_id, " \
+          "country_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)"
     conn = None
     try:
         params = config_db()

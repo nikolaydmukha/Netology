@@ -1,7 +1,7 @@
 import unittest
-from Diplom.functions import VKUser, set_search_age
+from Diplom.functions import VKUser
 from Diplom.func_db import config_db
-import os, sys, psycopg2
+import os
 
 
 class TestDiplom(unittest.TestCase):

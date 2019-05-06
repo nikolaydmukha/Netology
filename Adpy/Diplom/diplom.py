@@ -1,15 +1,13 @@
-import datetime
-import os
 import sys
-from functions import VKUser, set_search_gender, set_search_age, compare_users, regex_compare, exact_result
+from functions import set_search_gender, set_search_age, compare_users, regex_compare, exact_result
+from custom_class import VKUser
 from func_db import create_tables, insert_users, get_users
-from pprint import pprint
 
 
 def start_programm():
     user = VKUser(sys.argv[1])
-    #username = input("Введите айди пользователя:")
-    #user = VKUser(username)
+    # username = input("Введите айди пользователя:")
+    # user = VKUser(username)
     lovefinder_data = user.lovefinder_info()
     if 'error' not in lovefinder_data.keys():
         if 'reason' not in lovefinder_data.keys():
@@ -17,20 +15,20 @@ def start_programm():
                   f'Короткая справка о пользователе (может помочь при составлении запроса на поиск пары):')
             print(f'Полное имя: {lovefinder_data["fullname"]}\nПол: {lovefinder_data["sex"]}'
                   f'\nДата рождения: {lovefinder_data["bdate"]} (возраст {lovefinder_data["age"]} полных лет)\n'
-                  f'Страна и город проживания: {lovefinder_data["country"]["title"]} ({lovefinder_data["city"]["title"]})'
-                  f'\nВысшее образование: {lovefinder_data["university_name"]}\n')
+                  f'Страна и город проживания: {lovefinder_data["country"]["title"]} '
+                  f'({lovefinder_data["city"]["title"]})\nВысшее образование: {lovefinder_data["university_name"]}\n')
             print('Давайте сформируем параметры поиска.')
             sex = set_search_gender()
             age_range = set_search_age()
             city = user.get_city()  # city[0] - id города, city[1] - название города, city[2] - id страны
-            search_params = [sex[0], age_range,city]
+            search_params = [sex[0], age_range, city]
             # Поиск людей по городу, диапазону возраста
             finded_users = user.users_search(search_params)
             print(f'\n##СПРАВКА о соискателе##')
             print(f'Полное имя: {lovefinder_data["fullname"]}\nПол: {lovefinder_data["sex"]}\n'
                   f'Дата рождения: {lovefinder_data["bdate"]} (возраст {lovefinder_data["age"]} полных лет)\n'
-                  f'Страна и город проживания: {lovefinder_data["country"]["title"]} ({lovefinder_data["city"]["title"]})\n'
-                  f'Высшее образование: {lovefinder_data["university_name"]}\n'
+                  f'Страна и город проживания: {lovefinder_data["country"]["title"]} '
+                  f'({lovefinder_data["city"]["title"]})\n Высшее образование: {lovefinder_data["university_name"]}\n'
                   f'Интересы: {lovefinder_data["interests"]}\n'
                   f'Музыка: {lovefinder_data["music"]}\n'
                   f'Фильмы: {lovefinder_data["movies"]}\n'
