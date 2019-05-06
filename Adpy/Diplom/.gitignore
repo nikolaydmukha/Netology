@@ -48,3 +48,4 @@ venv.bak/
 
 
 database.ini
+constants.py
