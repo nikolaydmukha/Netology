@@ -1,5 +1,5 @@
 REQUEST_URL = "https://api.vk.com/method/"
-ACCESS_TOKEN = "315b7fffc3cef85faec2e7723495c30d6b26e6d11bbc6a3a6bb58384a8bf853b07f16587335b3853e4fb6"
+ACCESS_TOKEN = "YOUR_ACCESS_TOKEN"
 CSV_FILE = 'files\countries.csv'
 
 SEX = {

@@ -7,13 +7,13 @@ from pprint import pprint
 
 
 def start_programm():
-    #user = VKUser(sys.argv[1])
-    username = input("Введите айди пользователя:")
-    user = VKUser(username)
+    user = VKUser(sys.argv[1])
+    #username = input("Введите айди пользователя:")
+    #user = VKUser(username)
     lovefinder_data = user.lovefinder_info()
     if 'error' not in lovefinder_data.keys():
         if 'reason' not in lovefinder_data.keys():
-            print(f'Привет! Сейчас мы будем искать пару пользователю с идентификатором соцсети VK "{username}".\n'
+            print(f'Привет! Сейчас мы будем искать пару пользователю с идентификатором соцсети VK "{sys.argv[1]}".\n'
                   f'Короткая справка о пользователе (может помочь при составлении запроса на поиск пары):')
             print(f'Полное имя: {lovefinder_data["fullname"]}\nПол: {lovefinder_data["sex"]}'
                   f'\nДата рождения: {lovefinder_data["bdate"]} (возраст {lovefinder_data["age"]} полных лет)\n'

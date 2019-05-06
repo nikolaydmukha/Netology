@@ -8,7 +8,7 @@ import re
 import sys
 from pprint import pprint
 from tqdm import tqdm
-from Diplom.constants import ACCESS_TOKEN, REQUEST_URL, CSV_FILE, SEX, RELATION
+from constants import ACCESS_TOKEN, REQUEST_URL, CSV_FILE, SEX, RELATION
 
 
 # Класс для пользователя VK, пару которому ищем
