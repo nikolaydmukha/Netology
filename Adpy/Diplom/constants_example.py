@@ -1,6 +1,8 @@
+import os
+
 REQUEST_URL = "https://api.vk.com/method/"
 ACCESS_TOKEN = "YOUR_ACCESS_TOKEN"
-CSV_FILE = 'files\countries.csv'
+CSV_FILE = os.path.join("files", "files")
 
 SEX = {
     1: 'женский',
