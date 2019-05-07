@@ -5,7 +5,7 @@ import datetime
 import os
 from tqdm import tqdm
 from constants import ACCESS_TOKEN, REQUEST_URL, CSV_FILE, SEX, RELATION
-
+from functions import retry_on_error
 
 # Класс для пользователя VK, пару которому ищем
 class VKUser:
@@ -18,15 +18,20 @@ class VKUser:
             'user_ids': self.user_id,
         }
 
+    @retry_on_error
+    def send_request(self, method, params):
+        response = requests.get(REQUEST_URL + method, self.params)
+        data = response.json()
+        return data
+
     # Поиск информации о пользователе, для которого будем предлагать варианты знакомства
     def lovefinder_info(self):
         method = 'users.get'
         self.params['fields'] = 'bdate, interests, personal, relation, sex, city, country, interests, education,' \
                                 'music, movies, tv, books'
-        response = requests.get(REQUEST_URL + method, self.params)
-        data = response.json()
+        data = self.send_request(method, self.params)
         name = {}
-        if 'error' not in data.keys():
+        if 'error' not in data:
             if 'deactivated' not in data['response'][0].keys():
                 self.account_id = data['response'][0]['id']  # цифровой id пользователя
                 name['friends_list'] = self.get_friends_list(self.account_id)
@@ -99,8 +104,7 @@ class VKUser:
                 continue
             else:
                 break
-        response = requests.get(REQUEST_URL + method, self.params)
-        data = response.json()
+        data = self.send_request(method, self.params)
         return data['response']['items'][0]['id']  # Возвратим id страны по базе ВК
 
     # Выбор региона города
@@ -108,8 +112,7 @@ class VKUser:
         method = 'database.getRegions'
         self.params['country_id'] = country_id
         self.params['count'] = 1000
-        response = requests.get(REQUEST_URL + method, self.params)
-        data = response.json()
+        data = self.send_request(method, self.params)
         dict_of_region = {}
         print("\nВыберите регион из списка:")
         for row in data['response']['items']:
@@ -134,8 +137,7 @@ class VKUser:
         region_id = self.get_regions(self.params['country_id'])
         self.params['region_id'] = region_id[0]
         self.params['count'] = 1000
-        response = requests.get(REQUEST_URL + method, self.params)
-        data = response.json()
+        data = self.send_request(method, self.params)
         for row in data['response']['items']:
             print(row['title'])
         dict_of_cities = {}
@@ -160,25 +162,23 @@ class VKUser:
 
     # Поиск групп
     def get_groups(self, account_id):
-        time.sleep(1)
         method = 'groups.get'
         self.params['count'] = 1000
         self.params['user_id'] = account_id
-        response = requests.get(REQUEST_URL + method, self.params)
-        data = response.json()
-        if 'error' not in data.keys():
+        # response = requests.get(REQUEST_URL + method, self.params)
+        # data = response.json()
+        data = self.send_request(method, self.params)
+        if 'error' not in data:
             return data['response']['items']
 
     # Поиск списка друзей
     def get_friends_list(self, account_id):
-        time.sleep(1)
         method = "friends.get"
         self.params["count"] = 1000
         self.params["user_id"] = account_id
         self.params['fields'] = ''
-        response = requests.get(REQUEST_URL + method, self.params)
-        data = response.json()
-        if 'error' not in data.keys():
+        data = self.send_request(method, self.params)
+        if 'error' not in data:
             return data['response']['items']
         else:
             return None
@@ -193,7 +193,6 @@ class VKUser:
                 [0] - id города, [1] - название города, [2] - id страны
                 отбрасываем тех, у кого указано в семейном поожении, что они в отношениях
         """
-        time.sleep(1)
         method = 'users.search'
         self.params['sex'] = search_params[0]
         self.params['country'] = search_params[2][2]
@@ -201,13 +200,12 @@ class VKUser:
         self.params['age_from'] = search_params[1][0]
         self.params['age_to'] = search_params[1][1]
         self.params['fields'] = 'relation, books, interests, music, movies, personal, bdate'
-        response = requests.get(REQUEST_URL + method, self.params)
-        data = response.json()
+        data = self.send_request(method, self.params)
         finded_users = {}
         for item in tqdm(data['response']['items']):
             # Сразу отсекаем тех, кто уже имеет пару. При этом считаем, что если пользователь не захотел вообще
             # указывать семейное положение, то по дефолту выставляем 9 - не указано и добавляем в выборку
-            if 'relation' not in item.keys():
+            if 'relation' not in item:
                 item['relation'] = 0
             if item['relation'] in [1, 6, 0]:
                 fullname = item['first_name'] + ' ' + item['last_name']
@@ -244,10 +242,9 @@ class VKUser:
         self.params["count"] = 100
         self.params["album_id"] = 'profile'
         self.params['extended'] = 1
-        response = requests.get(REQUEST_URL + method, self.params)
-        data = response.json()
+        data = self.send_request(method, self.params)
         dict_photos = []
-        if 'error' not in data.keys():
+        if 'error' not in data:
             for photo in data['response']['items']:
                 finded_photos = {}
                 # photo_id = photo['id']
