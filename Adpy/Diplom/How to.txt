@@ -16,3 +16,16 @@
 1. Имя: Khava Khadzhimuradova Аккаунт ВК: http://vk.com/id243779652 ТОП-3 фото: https://pp.userapi.com/H_3QO1VpgUR34DMzsYuT_anJJDDJl0q5Z_xB6g/pRXYpE7WkI4.jpg
 2. Имя: Makka Makushka Аккаунт ВК: http://vk.com/id465964499 ТОП-3 фото: https://pp.userapi.com/c840737/v840737334/4c798/rgqvpDDCGpQ.jpg
 3. Имя: Танзила Магомадова Аккаунт ВК: http://vk.com/id271355798 ТОП-3 фото: У пользователя нет фотографий
+
+В БД информация хранится в виде:
+id  lovefinder_name lovefinder_vk_id    vk_id   fullname        age_from    age_to      city_id     country_id
+1   Николай Дмуха   1111111             22222   Василиса П.     32          35          1           10
+
+lovefinder_name - кому ищем пару
+lovefinder_vk_id - id того, кому ищем пару
+vk_id - id возможной пары
+fullname - имя возмоэной пары
+age_from - условие поиска "возраст от"
+age_to - условие поиска "возраст до"
+city_id - id города согласно базе ВК
+country_id - id страны согласно базе ВК

@@ -8,9 +8,9 @@ def start_programm():
     user = VKUser(sys.argv[1])
     # username = input("Введите айди пользователя:")
     # user = VKUser(username)
-    lovefinder_data = user.lovefinder_info()
-    if 'error' not in lovefinder_data.keys():
-        if 'reason' not in lovefinder_data.keys():
+    lovefinder_data = user.lovefinder_info(sys.argv[1])
+    if 'error' not in lovefinder_data:
+        if 'reason' not in lovefinder_data:
             print(f'Привет! Сейчас мы будем искать пару пользователю с идентификатором соцсети VK "{sys.argv[1]}".\n'
                   f'Короткая справка о пользователе (может помочь при составлении запроса на поиск пары):')
             print(f'Полное имя: {lovefinder_data["fullname"]}\nПол: {lovefinder_data["sex"]}'
@@ -25,14 +25,33 @@ def start_programm():
             # Поиск людей по городу, диапазону возраста
             finded_users = user.users_search(search_params)
             print(f'\n##СПРАВКА о соискателе##')
+            # Если интересы, книги, музыка, фильмы не указаны, то выведем заглушку
+            if not lovefinder_data['music']:
+                music = 'не указано'
+            else:
+                music = lovefinder_data['music']
+            if not lovefinder_data['books']:
+                books = 'не указано'
+            else:
+                books = lovefinder_data['books']
+            if not lovefinder_data['movies']:
+                movies = 'не указано'
+            else:
+                movies = lovefinder_data['movies']
+            if not lovefinder_data['interests']:
+                interests = 'не указано'
+            else:
+                interests = lovefinder_data['interests']
+            if not lovefinder_data['music']:
+                music = 'не указано'
             print(f'Полное имя: {lovefinder_data["fullname"]}\nПол: {lovefinder_data["sex"]}\n'
                   f'Дата рождения: {lovefinder_data["bdate"]} (возраст {lovefinder_data["age"]} полных лет)\n'
                   f'Страна и город проживания: {lovefinder_data["country"]["title"]} '
                   f'({lovefinder_data["city"]["title"]})\n Высшее образование: {lovefinder_data["university_name"]}\n'
-                  f'Интересы: {lovefinder_data["interests"]}\n'
-                  f'Музыка: {lovefinder_data["music"]}\n'
-                  f'Фильмы: {lovefinder_data["movies"]}\n'
-                  f'Книги: {lovefinder_data["books"]}\n'
+                  f'Интересы: {interests}\n'
+                  f'Музыка: {music}\n'
+                  f'Фильмы: {movies}\n'
+                  f'Книги: {books}\n'
                   f'Группы: {len(lovefinder_data["groups_list"])}\n'
                   f'Друзья: {len(lovefinder_data["friends_list"])}\n')
             print(f"##ПОИСК##\nПоиск по указанным критериям (пол: '{sex[1]}',' возраст: 'от {age_range[0]} до "
@@ -55,9 +74,9 @@ def start_programm():
                     else:
                         pair_by = regex_compare(lovefinder_data, finded_users, filter_by, result)
                 temp = []
-                temp_dict = {}
+                temp_dict = dict()
                 for name, option in pair_by.items():
-                    temp_dict[name] = {}
+                    temp_dict[name] = dict()
                     for identificator in ['id', 'common_age', 'common_groups', 'common_friends', 'common_music',
                                           'common_books', 'common_movies', 'photos_url']:
                         temp_dict[name][identificator] = option[identificator]

@@ -1,4 +1,4 @@
-
+import time
 import re
 
 
@@ -136,3 +136,29 @@ def exact_result(finded_users):
     for i in [friends, age, groups, music, books, movies, all_another]:
         ordered_users.extend(i)
     return ordered_users
+
+
+# Деократор для повторения выполнения запросов в случае ошибок
+def retry_on_error(f):
+    def wrapper(*args, **argv):
+        countdown = 5
+        while True:
+            try:
+                print("deco")
+                data = f(*args, **argv)
+                request_exceeded = False
+                if 'error' in data:
+                    if data['error']['error_code'] == 6:
+                        request_exceeded = True
+                    else:
+                        request_exceeded = False
+                assert not request_exceeded, "Too many requests per second. We are waiting for 1 sec"
+                return data
+            except AssertionError:
+                if countdown <= 0:
+                    raise
+                countdown -= 1
+                print("Слишком частые обращения к серверу. Пауза 1 сек...")
+                time.sleep(1)
+                continue
+    return wrapper

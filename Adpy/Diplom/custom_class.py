@@ -16,104 +16,110 @@ class VKUser:
             'access_token': ACCESS_TOKEN,
             'v': '5.95',
             'user_ids': self.user_id,
+            'count': 1000,
         }
 
     @retry_on_error
     def send_request(self, method, params):
-        response = requests.get(REQUEST_URL + method, self.params)
+        query_params = {**self.params, **params}
+        response = requests.get(REQUEST_URL + method, query_params)
         data = response.json()
         return data
 
     # Поиск информации о пользователе, для которого будем предлагать варианты знакомства
-    def lovefinder_info(self):
+    def lovefinder_info(self, used_ids):
         method = 'users.get'
-        self.params['fields'] = 'bdate, interests, personal, relation, sex, city, country, interests, education,' \
-                                'music, movies, tv, books'
-        data = self.send_request(method, self.params)
-        name = {}
+        params = dict()
+        params['fields'] = 'bdate, interests, personal, relation, sex, city, country, interests, education,' \
+                           'music, movies, tv, books'
+        params['user_ids'] = used_ids
+        data = self.send_request(method, params)
+        user_info = dict()
         if 'error' not in data:
-            if 'deactivated' not in data['response'][0].keys():
-                self.account_id = data['response'][0]['id']  # цифровой id пользователя
-                name['friends_list'] = self.get_friends_list(self.account_id)
-                name['fullname'] = " ".join((data['response'][0]['first_name'], data['response'][0]['last_name']))
-                name['id'] = data['response'][0]['id']
+            raw_data = data['response'][0]
+            if 'deactivated' not in raw_data:
+                self.account_id = raw_data['id']  # цифровой id пользователя
+                user_info['friends_list'] = self.get_friends_list(self.account_id)
+                user_info['fullname'] = " ".join((raw_data['first_name'], raw_data['last_name']))
+                user_info['id'] = raw_data['id']
                 fields = ['music', 'university_name', 'interests', 'books', 'movies', 'personal', 'city',
                           'country', 'bdate', 'sex', 'relation']
                 for param in fields:
                     if param in ['city', 'country']:
-                        name[param] = {}
-                        if data['response'][0][param]['title']:
-                            name[param]['title'] = data['response'][0][param]['title']
-                            name[param]['id'] = data['response'][0][param]['id']
+                        user_info[param] = dict()
+                        if raw_data[param]['title']:
+                            user_info[param]['title'] = raw_data[param]['title']
+                            user_info[param]['id'] = raw_data[param]['id']
                         else:
-                            name[param]['title'] = ''
-                            name[param]['id'] = ''
+                            user_info[param]['title'] = ''
+                            user_info[param]['id'] = ''
                     elif param == 'bdate':
-                        if 'bdate' in data['response'][0].keys():
-                            name['bdate'] = data['response'][0]['bdate']
-                            birth = data['response'][0]['bdate'].split(".")
+                        if 'bdate' in raw_data:
+                            user_info['bdate'] = raw_data['bdate']
+                            birth = raw_data['bdate'].split(".")
                             date_now = datetime.datetime.now()
                             date_birth = datetime.datetime(int(birth[2]), int(birth[1]), int(birth[0]))
-                            name['age'] = (date_now - date_birth).days // 365
+                            user_info['age'] = (date_now - date_birth).days // 365
                         else:
-                            name['bdate'] = ''
-                            name['age'] = ''
+                            user_info['bdate'] = ''
+                            user_info['age'] = ''
                     elif param == 'sex':
-                        if data['response'][0][param]:
-                            name[param] = SEX[data['response'][0][param]]
+                        if raw_data[param]:
+                            user_info[param] = SEX[raw_data[param]]
                         else:
-                            name[param] = ''
+                            user_info[param] = ''
                     elif param == 'relation':
-                        if data['response'][0][param]:
-                            name[param] = RELATION[data['response'][0][param]]
+                        if raw_data[param]:
+                            user_info[param] = RELATION[raw_data[param]]
                         else:
-                            name[param] = 0
+                            user_info[param] = 0
                     else:
-                        if data['response'][0][param]:
-                            name[param] = data['response'][0][param]
+                        if raw_data[param]:
+                            user_info[param] = raw_data[param]
                         else:
-                            name[param] = ''
-                name['groups_list'] = self.get_groups(data['response'][0]['id'])
-                name['friends_list'] = self.get_friends_list(data['response'][0]['id'])
-                return name
+                            user_info[param] = ''
+                user_info['groups_list'] = self.get_groups(raw_data['id'])
+                user_info['friends_list'] = self.get_friends_list(raw_data['id'])
+                return user_info
             else:
-                self.account_id = data['response'][0]['id']  # цифровой id пользователя
-                name['fullname'] = ' '.join((data['response'][0]['first_name'], data['response'][0]['last_name']))
-                name['reason'] = "deleted"
-                return name
+                self.account_id = raw_data['id']  # цифровой id пользователя
+                user_info['fullname'] = ' '.join((raw_data['first_name'], raw_data['last_name']))
+                user_info['reason'] = "deleted"
+                return user_info
         else:
-            name['error'] = data['error']['error_msg']
-            return name
+            user_info['error'] = data['error']['error_msg']
+            return user_info
 
     # Поиск идентификатора страны по имени
     def get_country(self):
         method = 'database.getCountries'
-        self.params['need_all'] = 0
+        params = dict()
+        params['need_all'] = 0
         with open(os.path.abspath(CSV_FILE), encoding='utf-8') as csvfile:
             data = csv.reader(csvfile)
-            short_name = {}
+            short_name = dict()
             for row in data:
                 short_name[row[0].strip().lower()] = row[1].strip()
         while True:
             try:
                 country_name = input("Введите страну поиска:").lower().strip()
                 if short_name[country_name]:
-                    self.params['code'] = short_name[country_name]
+                    params['code'] = short_name[country_name]
             except KeyError:
                 print("А-яй, такой страны нет. Повторите ввод.")
                 continue
             else:
                 break
-        data = self.send_request(method, self.params)
+        data = self.send_request(method, params)
         return data['response']['items'][0]['id']  # Возвратим id страны по базе ВК
 
     # Выбор региона города
     def get_regions(self, country_id):
         method = 'database.getRegions'
-        self.params['country_id'] = country_id
-        self.params['count'] = 1000
-        data = self.send_request(method, self.params)
-        dict_of_region = {}
+        params = dict()
+        params['country_id'] = country_id
+        data = self.send_request(method, params)
+        dict_of_region = dict()
         print("\nВыберите регион из списка:")
         for row in data['response']['items']:
             dict_of_region[row['title'].lower()] = row['id']
@@ -133,14 +139,14 @@ class VKUser:
     # Поиск идентификатора города по стране и имени города
     def get_city(self):
         method = 'database.getCities'
-        self.params['country_id'] = self.get_country()
-        region_id = self.get_regions(self.params['country_id'])
-        self.params['region_id'] = region_id[0]
-        self.params['count'] = 1000
-        data = self.send_request(method, self.params)
+        params = dict()
+        params['country_id'] = self.get_country()
+        region_id = self.get_regions(params['country_id'])
+        params['region_id'] = region_id[0]
+        data = self.send_request(method, params)
         for row in data['response']['items']:
             print(row['title'])
-        dict_of_cities = {}
+        dict_of_cities = dict()
         for row in data['response']['items']:
             dict_of_cities[row['title'].lower()] = row['id']
         while True:
@@ -163,21 +169,19 @@ class VKUser:
     # Поиск групп
     def get_groups(self, account_id):
         method = 'groups.get'
-        self.params['count'] = 1000
-        self.params['user_id'] = account_id
-        # response = requests.get(REQUEST_URL + method, self.params)
-        # data = response.json()
-        data = self.send_request(method, self.params)
+        params = dict()
+        params['user_id'] = account_id
+        data = self.send_request(method, params)
         if 'error' not in data:
             return data['response']['items']
 
     # Поиск списка друзей
     def get_friends_list(self, account_id):
         method = "friends.get"
-        self.params["count"] = 1000
-        self.params["user_id"] = account_id
-        self.params['fields'] = ''
-        data = self.send_request(method, self.params)
+        params = dict()
+        params["user_id"] = account_id
+        params['fields'] = ''
+        data = self.send_request(method, params)
         if 'error' not in data:
             return data['response']['items']
         else:
@@ -194,14 +198,15 @@ class VKUser:
                 отбрасываем тех, у кого указано в семейном поожении, что они в отношениях
         """
         method = 'users.search'
-        self.params['sex'] = search_params[0]
-        self.params['country'] = search_params[2][2]
-        self.params['city'] = search_params[2][0]
-        self.params['age_from'] = search_params[1][0]
-        self.params['age_to'] = search_params[1][1]
-        self.params['fields'] = 'relation, books, interests, music, movies, personal, bdate'
-        data = self.send_request(method, self.params)
-        finded_users = {}
+        params = dict()
+        params['sex'] = search_params[0]
+        params['country'] = search_params[2][2]
+        params['city'] = search_params[2][0]
+        params['age_from'] = search_params[1][0]
+        params['age_to'] = search_params[1][1]
+        params['fields'] = 'relation, books, interests, music, movies, personal, bdate'
+        data = self.send_request(method, params)
+        finded_users = dict()
         for item in tqdm(data['response']['items']):
             # Сразу отсекаем тех, кто уже имеет пару. При этом считаем, что если пользователь не захотел вообще
             # указывать семейное положение, то по дефолту выставляем 9 - не указано и добавляем в выборку
@@ -209,12 +214,12 @@ class VKUser:
                 item['relation'] = 0
             if item['relation'] in [1, 6, 0]:
                 fullname = item['first_name'] + ' ' + item['last_name']
-                finded_users[fullname] = {}
+                finded_users[fullname] = dict()
                 finded_users[fullname]['relation'] = item['relation']
                 finded_users[fullname]['id'] = item['id']
                 fields = ['music', 'interests', 'books', 'movies', 'sex', 'personal', 'bdate']
                 for param in fields:
-                    if param in item.keys():
+                    if param in item:
                         if param == 'bdate':
                             if item[param]:
                                 length_age = item[param].split('.')
@@ -239,15 +244,14 @@ class VKUser:
     # Поиск фотографий аватара
     def get_photos(self):
         method = "photos.get"
-        self.params["count"] = 100
-        self.params["album_id"] = 'profile'
-        self.params['extended'] = 1
-        data = self.send_request(method, self.params)
+        params = dict()
+        params["album_id"] = 'profile'
+        params['extended'] = 1
+        data = self.send_request(method, params)
         dict_photos = []
         if 'error' not in data:
             for photo in data['response']['items']:
-                finded_photos = {}
-                # photo_id = photo['id']
+                finded_photos = dict()
                 likes = photo['likes']['count']
                 finded_photos['likes'] = likes
                 finded_photos['url'] = ''
@@ -263,8 +267,6 @@ class VKUser:
             urls = []
             for link in sorted_dict_photos[-3:]:
                 urls.append(link['url'])
-            self.params['extended'] = None
             return urls
         else:
-            self.params['extended'] = None
             return None
