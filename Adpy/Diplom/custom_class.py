@@ -7,6 +7,7 @@ from tqdm import tqdm
 from constants import ACCESS_TOKEN, REQUEST_URL, CSV_FILE, SEX, RELATION
 from functions import retry_on_error
 
+
 # Класс для пользователя VK, пару которому ищем
 class VKUser:
     def __init__(self, user_id):
@@ -184,8 +185,8 @@ class VKUser:
         data = self.send_request(method, params)
         if 'error' not in data:
             return data['response']['items']
-        else:
-            return None
+        # else:
+        #     return None
 
     # Поиск подходящих вариантов для знакомства
     def users_search(self, search_params):
@@ -268,5 +269,5 @@ class VKUser:
             for link in sorted_dict_photos[-3:]:
                 urls.append(link['url'])
             return urls
-        else:
-            return None
+        # else:
+        #     return None

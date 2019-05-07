@@ -144,7 +144,6 @@ def retry_on_error(f):
         countdown = 5
         while True:
             try:
-                print("deco")
                 data = f(*args, **argv)
                 request_exceeded = False
                 if 'error' in data:
