@@ -5,11 +5,11 @@ import datetime
 import os
 from tqdm import tqdm
 from constants import ACCESS_TOKEN, REQUEST_URL, CSV_FILE, SEX, RELATION
-from functions import retry_on_error
+from functions import retry_on_error, RetryException
 
 
-# Класс для пользователя VK, пару которому ищем
 class VKUser:
+    """ Класс для пользователя VK, пару которому ищем """
     def __init__(self, user_id):
         self.user_id = user_id
         self.account_id = None
@@ -25,74 +25,89 @@ class VKUser:
         query_params = {**self.params, **params}
         response = requests.get(REQUEST_URL + method, query_params)
         data = response.json()
+        if 'error' in data:
+            if data['error']['error_code'] == 6:
+                request_exceeded = True
+                raise RetryException
+            else:
+                request_exceeded = False
         return data
 
-    # Поиск информации о пользователе, для которого будем предлагать варианты знакомства
     def lovefinder_info(self, used_ids):
+        """ Поиск информации о пользователе, для которого будем предлагать варианты знакомства """
         method = 'users.get'
         params = dict()
-        params['fields'] = 'bdate, interests, personal, relation, sex, city, country, interests, education,' \
-                           'music, movies, tv, books'
-        params['user_ids'] = used_ids
+        params = {
+            'fields': 'bdate, interests, personal, relation, sex, city, country, interests, education, music, movies, '
+                      'tv, books',
+            'user_ids': used_ids
+        }
         data = self.send_request(method, params)
         user_info = dict()
-        if 'error' not in data:
-            raw_data = data['response'][0]
-            if 'deactivated' not in raw_data:
-                self.account_id = raw_data['id']  # цифровой id пользователя
-                user_info['friends_list'] = self.get_friends_list(self.account_id)
-                user_info['fullname'] = " ".join((raw_data['first_name'], raw_data['last_name']))
-                user_info['id'] = raw_data['id']
-                fields = ['music', 'university_name', 'interests', 'books', 'movies', 'personal', 'city',
-                          'country', 'bdate', 'sex', 'relation']
-                for param in fields:
-                    if param in ['city', 'country']:
-                        user_info[param] = dict()
-                        if raw_data[param]['title']:
-                            user_info[param]['title'] = raw_data[param]['title']
-                            user_info[param]['id'] = raw_data[param]['id']
-                        else:
-                            user_info[param]['title'] = ''
-                            user_info[param]['id'] = ''
-                    elif param == 'bdate':
-                        if 'bdate' in raw_data:
-                            user_info['bdate'] = raw_data['bdate']
-                            birth = raw_data['bdate'].split(".")
-                            date_now = datetime.datetime.now()
-                            date_birth = datetime.datetime(int(birth[2]), int(birth[1]), int(birth[0]))
-                            user_info['age'] = (date_now - date_birth).days // 365
-                        else:
-                            user_info['bdate'] = ''
-                            user_info['age'] = ''
-                    elif param == 'sex':
-                        if raw_data[param]:
-                            user_info[param] = SEX[raw_data[param]]
-                        else:
-                            user_info[param] = ''
-                    elif param == 'relation':
-                        if raw_data[param]:
-                            user_info[param] = RELATION[raw_data[param]]
-                        else:
-                            user_info[param] = 0
-                    else:
-                        if raw_data[param]:
-                            user_info[param] = raw_data[param]
-                        else:
-                            user_info[param] = ''
-                user_info['groups_list'] = self.get_groups(raw_data['id'])
-                user_info['friends_list'] = self.get_friends_list(raw_data['id'])
-                return user_info
-            else:
-                self.account_id = raw_data['id']  # цифровой id пользователя
-                user_info['fullname'] = ' '.join((raw_data['first_name'], raw_data['last_name']))
-                user_info['reason'] = "deleted"
-                return user_info
-        else:
+        if 'error' in data:
             user_info['error'] = data['error']['error_msg']
             return user_info
+        raw_data = data['response'][0]
+        if 'deactivated' in raw_data:
+            self.account_id = raw_data['id']  # цифровой id пользователя
+            user_info = {
+                'fullname': f"{raw_data['first_name']} {raw_data['last_name']}",
+                'reason': "deleted"
+            }
+            return user_info
+        self.account_id = raw_data['id']  # цифровой id пользователя
+        user_info = {
+            'friends_list': self.get_friends_list(self.account_id),
+            'fullname': f"{raw_data['first_name']} {raw_data['last_name']}",
+            'id': raw_data['id']
+        }
+        fields = ['music', 'university_name', 'interests', 'books', 'movies', 'personal', 'city',
+                  'country', 'bdate', 'sex', 'relation']
+        for param in fields:
+            if param in ['city', 'country']:
+                user_info[param] = dict()
+                if raw_data[param]['title']:
+                    user_info[param] = {
+                        'title': raw_data[param]['title'],
+                        'id':  raw_data[param]['id']
+                    }
+                else:
+                    user_info[param] = {
+                        'title': '',
+                        'id': ''
+                    }
+            elif param == 'bdate':
+                if 'bdate' in raw_data:
+                    user_info['bdate'] = raw_data['bdate']
+                    date_now = datetime.datetime.now()
+                    date_birth = datetime.datetime.strptime(raw_data['bdate'], "%d.%m.%Y")
+                    user_info['age'] = (date_now - date_birth).days // 365
+                else:
+                    user_info = {
+                        'bdate': '',
+                        'age': ''
+                    }
+            elif param == 'sex':
+                if raw_data[param]:
+                    user_info[param] = SEX[raw_data[param]]
+                else:
+                    user_info[param] = ''
+            elif param == 'relation':
+                if raw_data[param]:
+                    user_info[param] = RELATION[raw_data[param]]
+                else:
+                    user_info[param] = 0
+            else:
+                if raw_data[param]:
+                    user_info[param] = raw_data[param]
+                else:
+                    user_info[param] = ''
+        user_info['groups_list'] = self.get_groups(raw_data['id'])
+        user_info['friends_list'] = self.get_friends_list(raw_data['id'])
+        return user_info
 
-    # Поиск идентификатора страны по имени
     def get_country(self):
+        """ Поиск идентификатора страны по имени """
         method = 'database.getCountries'
         params = dict()
         params['need_all'] = 0
@@ -114,8 +129,8 @@ class VKUser:
         data = self.send_request(method, params)
         return data['response']['items'][0]['id']  # Возвратим id страны по базе ВК
 
-    # Выбор региона города
     def get_regions(self, country_id):
+        """ Выбор региона города """
         method = 'database.getRegions'
         params = dict()
         params['country_id'] = country_id
@@ -137,8 +152,8 @@ class VKUser:
                 break
         return [dict_of_region[region_name], region_name, country_id]
 
-    # Поиск идентификатора города по стране и имени города
     def get_city(self):
+        """ Поиск идентификатора города по стране и имени города """
         method = 'database.getCities'
         params = dict()
         params['country_id'] = self.get_country()
@@ -167,8 +182,8 @@ class VKUser:
                 break
         return [dict_of_cities[city_name], city_name, region_id[2]]
 
-    # Поиск групп
     def get_groups(self, account_id):
+        """ Поиск групп """
         method = 'groups.get'
         params = dict()
         params['user_id'] = account_id
@@ -176,36 +191,38 @@ class VKUser:
         if 'error' not in data:
             return data['response']['items']
 
-    # Поиск списка друзей
     def get_friends_list(self, account_id):
+        """ Поиск списка друзей """
         method = "friends.get"
         params = dict()
-        params["user_id"] = account_id
-        params['fields'] = ''
+        params = {
+            'user_id': account_id,
+            'fields': ''
+        }
         data = self.send_request(method, params)
         if 'error' not in data:
             return data['response']['items']
-        # else:
-        #     return None
 
-    # Поиск подходящих вариантов для знакомства
-    def users_search(self, search_params):
+    def users_search(self, sex, age_range, city):
         """
+            Поиск подходящих вариантов для знакомства
             Параметры:
-                search_params[0] - sex
-                search_params[1] - age_range
-                search_params[2] - территория поиска:
+                sex - sex(пол)
+                age_range - age_range(дипазаон поиска)
+                city - территория поиска:
                 [0] - id города, [1] - название города, [2] - id страны
                 отбрасываем тех, у кого указано в семейном поожении, что они в отношениях
         """
         method = 'users.search'
         params = dict()
-        params['sex'] = search_params[0]
-        params['country'] = search_params[2][2]
-        params['city'] = search_params[2][0]
-        params['age_from'] = search_params[1][0]
-        params['age_to'] = search_params[1][1]
-        params['fields'] = 'relation, books, interests, music, movies, personal, bdate'
+        params = {
+            'sex': sex,
+            'country': city[2],
+            'city': city[0],
+            'age_from': age_range[0],
+            'age_to': age_range[1],
+            'fields': 'relation, books, interests, music, movies, personal, bdate'
+        }
         data = self.send_request(method, params)
         finded_users = dict()
         for item in tqdm(data['response']['items']):
@@ -214,15 +231,17 @@ class VKUser:
             if 'relation' not in item:
                 item['relation'] = 0
             if item['relation'] in [1, 6, 0]:
-                fullname = item['first_name'] + ' ' + item['last_name']
+                fullname = f"{item['first_name']} {item['last_name']}"
                 finded_users[fullname] = dict()
-                finded_users[fullname]['relation'] = item['relation']
-                finded_users[fullname]['id'] = item['id']
+                finded_users[fullname] = {
+                    'relation': item['relation'],
+                    'id': item['id']
+                }
                 fields = ['music', 'interests', 'books', 'movies', 'sex', 'personal', 'bdate']
                 for param in fields:
                     if param in item:
                         if param == 'bdate':
-                            if item[param]:
+                            if item['bdate']:
                                 length_age = item[param].split('.')
                             else:
                                 length_age = []
@@ -242,8 +261,8 @@ class VKUser:
                 finded_users[fullname]['photos_url'] = self.get_photos()
         return finded_users
 
-    # Поиск фотографий аватара
     def get_photos(self):
+        """ Поиск фотографий аватара """
         method = "photos.get"
         params = dict()
         params["album_id"] = 'profile'
@@ -254,12 +273,14 @@ class VKUser:
             for photo in data['response']['items']:
                 finded_photos = dict()
                 likes = photo['likes']['count']
-                finded_photos['likes'] = likes
-                finded_photos['url'] = ''
+                finded_photos = {
+                    'likes': likes,
+                    'url': ''
+                }
                 # Полагаем, что самый маленький размер есть всегда. А вот фото в среднем или крупном размере - нет
                 # Поэтому сразу сохраним маленькую фотографию, но если встретим среднюю, то сохраним её
                 for size in photo['sizes']:
-                    if (size['type'] == 's') & (not finded_photos['url']):
+                    if size['type'] == 's' and not finded_photos['url']:
                         finded_photos['url'] = size['url']
                     elif size['type'] == 'r':
                         finded_photos['url'] = size['url']
@@ -269,5 +290,3 @@ class VKUser:
             for link in sorted_dict_photos[-3:]:
                 urls.append(link['url'])
             return urls
-        # else:
-        #     return None

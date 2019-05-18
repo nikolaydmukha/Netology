@@ -1,13 +1,11 @@
 import sys
 from functions import set_search_gender, set_search_age, compare_users, regex_compare, exact_result
-from custom_class import VKUser
+from vk_user import VKUser
 from func_db import create_tables, insert_users, get_users
 
 
 def start_programm():
     user = VKUser(sys.argv[1])
-    # username = input("Введите айди пользователя:")
-    # user = VKUser(username)
     lovefinder_data = user.lovefinder_info(sys.argv[1])
     if 'error' not in lovefinder_data:
         if 'reason' not in lovefinder_data:
@@ -21,29 +19,14 @@ def start_programm():
             sex = set_search_gender()
             age_range = set_search_age()
             city = user.get_city()  # city[0] - id города, city[1] - название города, city[2] - id страны
-            search_params = [sex[0], age_range, city]
             # Поиск людей по городу, диапазону возраста
-            finded_users = user.users_search(search_params)
+            finded_users = user.users_search(sex[0], age_range, city)
             print(f'\n##СПРАВКА о соискателе##')
             # Если интересы, книги, музыка, фильмы не указаны, то выведем заглушку
-            if not lovefinder_data['music']:
-                music = 'не указано'
-            else:
-                music = lovefinder_data['music']
-            if not lovefinder_data['books']:
-                books = 'не указано'
-            else:
-                books = lovefinder_data['books']
-            if not lovefinder_data['movies']:
-                movies = 'не указано'
-            else:
-                movies = lovefinder_data['movies']
-            if not lovefinder_data['interests']:
-                interests = 'не указано'
-            else:
-                interests = lovefinder_data['interests']
-            if not lovefinder_data['music']:
-                music = 'не указано'
+            music = lovefinder_data['music'] if lovefinder_data['music'] else 'не указано'
+            books = lovefinder_data['books'] if lovefinder_data['books'] else 'не указано'
+            movies = lovefinder_data['movies'] if lovefinder_data['movies'] else 'не указано'
+            interests = lovefinder_data['interests'] if lovefinder_data['interests'] else 'не указано'
             print(f'Полное имя: {lovefinder_data["fullname"]}\nПол: {lovefinder_data["sex"]}\n'
                   f'Дата рождения: {lovefinder_data["bdate"]} (возраст {lovefinder_data["age"]} полных лет)\n'
                   f'Страна и город проживания: {lovefinder_data["country"]["title"]} '
@@ -89,17 +72,17 @@ def start_programm():
                 create_tables()
                 # Преждем, чем вставлять данные, получим тех, кто уже есть в базе по введённым критериям поиска
                 result_data_in_db = get_users(lovefinder_data, age_range[0], age_range[1])
-                # Исключим тех, кто есть в базе, из найденных людей
+                # Исключим с помощью set() тех, кто есть в базе, из найденных людей
                 # result_data_find - найденные по условиям поиска
                 # result_data_in_db - найденные в базе
-                for x in result_data_in_db:
-                    if x in result_data_find:
-                        result_data_find.remove(x)
-                if not result_data_find:
+                set_result_data_find = set(result_data_find)
+                set_result_data_in_db = set(result_data_in_db)
+                set_result_data_find -= set_result_data_in_db
+                if not set_result_data_find:
                     sys.exit("Ни одного нового человека, удовлетворяющего критериям поиска, не нашли. Только те, "
                              "кто уже попадался в поиск ранее!")
                 # Вставим данные в БД
-                insert_users(lovefinder_data, temp, result_data_find)
+                insert_users(lovefinder_data, temp, list(set_result_data_find))
 
                 print(f"Программа выполнена. Данные записаны  в базу.")
             else:

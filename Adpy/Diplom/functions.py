@@ -2,14 +2,14 @@ import time
 import re
 
 
-# Установка параметров поиска: пол
 def set_search_gender():
+    """ Установка параметров поиска: пол """
     sex = []
     while True:
         try:
             print("Укажите пол:\n    1 - женский, 2 - мужской")
             sex_input = int(input().strip())
-            if (sex_input != 1) & (sex_input != 2):
+            if (sex_input != 1) and (sex_input != 2):
                 print("Вы выбрали не один из предложенных вариантов. Повторите выбор.")
                 continue
         except ValueError:
@@ -18,46 +18,42 @@ def set_search_gender():
         else:
             break
     if sex_input == 1:
-        sex = [sex_input, 'женский']
-    else:
-        sex = [sex_input, 'мужской']
-    return sex
+        return [sex_input, 'женский']
+    return [sex_input, 'мужской']
 
 
-# Установка параметров поиска: диапазон возраста
 def set_search_age():
+    """ Установка параметров поиска: диапазон возраста """
     age = []
     while True:
         try:
             print('Возраст от: ')
             age_from = int(input().strip())
-            if age_from < 0 or age_from == 0 or len(str(age_from)) > 2:
+            if age_from <= 0 or age_from >= 100:
                 print("Возраст не может быть отрицательным, равным 0 и, вероятно, недвузначным.")
                 continue
+            break
         except ValueError:
             print("А-яй, вы ввели не число. Повторите ввод.")
             continue
-        else:
-            age.append(age_from)
-            while True:
-                try:
-                    print('Возраст до: ')
-                    age_to = int(input().strip())
-                    if age_to < age_from or len(str(age_to)) > 2:
-                        print("Возраст 'до' не может быть больше возраста 'от' и, вероятно, недвузначным..")
-                        continue
-                except ValueError:
-                    print("А-яй, вы ввели не число. Повторите ввод.")
-                    continue
-                else:
-                    age.append(age_to)
-                    break
+    age.append(age_from)
+    while True:
+        try:
+            print('Возраст до: ')
+            age_to = int(input().strip())
+            if age_to < age_from or age_to > 100:
+                print("Возраст 'до' не может быть больше возраста 'от' и, вероятно, недвузначным..")
+                continue
+            age.append(age_to)
             break
+        except ValueError:
+            print("А-яй, вы ввели не число. Повторите ввод.")
+            continue
     return age
 
 
-# Поиск пары по критериям: общие друзья, общие группы, общие интересы, общая музыка
 def compare_users(loverfinder, finded_users, filter_by, result):
+    """ Поиск пары по критериям: общие друзья, общие группы, общие интересы, общая музыка """
     for key, data in finded_users.items():
         if data[filter_by]:
             if filter_by == 'age':
@@ -77,8 +73,9 @@ def compare_users(loverfinder, finded_users, filter_by, result):
     return finded_users
 
 
-# Поиск друзей по интересам: музыка, фильмы, книги
+
 def regex_compare(loverfinder, finded_users, filter_by, result):
+    """ Поиск друзей по интересам: музыка, фильмы, книги """
     if filter_by in ['music', 'books', 'movies']:
         parsed_interesrts = []
         interests = loverfinder[filter_by].split(",")  # разделим полученное из запрсоа значение поля на отдельные части
@@ -102,9 +99,9 @@ def regex_compare(loverfinder, finded_users, filter_by, result):
     return finded_users
 
 
-# Функция формирования итоговой выборки
 def exact_result(finded_users):
     """
+    Функция формирования итоговой выборки
     Требуется 10 человек, при этом:
     1. совпадение по возрасту важнее общих групп.
     2. интересы по музыке важнее книг.
@@ -139,6 +136,10 @@ def exact_result(finded_users):
 
 
 # Деократор для повторения выполнения запросов в случае ошибок
+class RetryException(Exception):
+    pass
+
+
 def retry_on_error(f):
     def wrapper(*args, **argv):
         countdown = 5
@@ -146,14 +147,15 @@ def retry_on_error(f):
             try:
                 data = f(*args, **argv)
                 request_exceeded = False
-                if 'error' in data:
-                    if data['error']['error_code'] == 6:
-                        request_exceeded = True
-                    else:
-                        request_exceeded = False
+                # if 'error' in data:
+                #     if data['error']['error_code'] == 6:
+                #         request_exceeded = True
+                #     else:
+                #         request_exceeded = False
                 assert not request_exceeded, "Too many requests per second. We are waiting for 1 sec"
                 return data
-            except AssertionError:
+            #except AssertionError:
+            except RetryException:
                 if countdown <= 0:
                     raise
                 countdown -= 1
