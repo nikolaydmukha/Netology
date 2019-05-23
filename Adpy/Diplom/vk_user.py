@@ -133,6 +133,7 @@ class VKUser:
         """ Выбор региона города """
         method = 'database.getRegions'
         params = dict()
+        params['need_all'] = 0
         params['country_id'] = country_id
         data = self.send_request(method, params)
         dict_of_region = dict()
@@ -156,31 +157,38 @@ class VKUser:
         """ Поиск идентификатора города по стране и имени города """
         method = 'database.getCities'
         params = dict()
+        params['need_all'] = 0
         params['country_id'] = self.get_country()
         region_id = self.get_regions(params['country_id'])
         params['region_id'] = region_id[0]
-        data = self.send_request(method, params)
-        for row in data['response']['items']:
+        params['offset'] = 0
+        params['count'] = 1000
+        all_cities = list()
+        flag = True
+        while flag:
+            data = self.send_request(method, params)
+            if len(data['response']['items']) > 0:
+                all_cities.extend(data['response']['items'])
+                params['offset'] += 1000
+                time.sleep(0.3)
+            else:
+                flag = False
+        for row in all_cities:
             print(row['title'])
         dict_of_cities = dict()
-        for row in data['response']['items']:
+        for row in all_cities:
             dict_of_cities[row['title'].lower()] = row['id']
+
         while True:
-            try:
-                city_name = input("Введите город из списка выше:").lower().strip()
-                if city_name == 'москва':
-                    return [1, city_name, 1]
-                elif city_name == 'санкт-петербург':
-                    return [2, city_name, 1]
-                else:
-                    if dict_of_cities[city_name]:
-                        pass
-            except KeyError:
-                print("А-яй, неправильно ввели регион. Повторите ввод.")
-                continue
+            city_name = input("Введите город из списка выше:").lower().strip()
+            if city_name == 'москва':
+                return [1, city_name, 1]
+            elif city_name == 'санкт-петербург':
+                return [2, city_name, 1]
             else:
-                break
-        return [dict_of_cities[city_name], city_name, region_id[2]]
+                if city_name in dict_of_cities:
+                    return [dict_of_cities[city_name], city_name, region_id[2]]
+            print("А-яй, неправильно ввели регион. Повторите ввод.")
 
     def get_groups(self, account_id):
         """ Поиск групп """
@@ -231,7 +239,7 @@ class VKUser:
             if 'relation' not in item:
                 item['relation'] = 0
             if item['relation'] in [1, 6, 0]:
-                fullname = f"{item['first_name']} {item['last_name']}"
+                fullname = f"{item['first_name']} {item['last_name']}_{item['id']}"
                 finded_users[fullname] = dict()
                 finded_users[fullname] = {
                     'relation': item['relation'],
@@ -258,35 +266,44 @@ class VKUser:
                         finded_users[fullname]['age'] = ''
                 finded_users[fullname]['groups_list'] = self.get_groups(finded_users[fullname]['id'])
                 finded_users[fullname]['friends_list'] = self.get_friends_list(finded_users[fullname]['id'])
-                finded_users[fullname]['photos_url'] = self.get_photos()
+                ###finded_users[fullname]['photos_url'] = self.get_photos(finded_users[fullname]['id'])
+                finded_users[fullname]['photos_url'] = ''
         return finded_users
 
-    def get_photos(self):
-        """ Поиск фотографий аватара """
-        method = "photos.get"
-        params = dict()
-        params["album_id"] = 'profile'
-        params['extended'] = 1
-        data = self.send_request(method, params)
-        dict_photos = []
-        if 'error' not in data:
-            for photo in data['response']['items']:
-                finded_photos = dict()
-                likes = photo['likes']['count']
-                finded_photos = {
-                    'likes': likes,
-                    'url': ''
-                }
-                # Полагаем, что самый маленький размер есть всегда. А вот фото в среднем или крупном размере - нет
-                # Поэтому сразу сохраним маленькую фотографию, но если встретим среднюю, то сохраним её
-                for size in photo['sizes']:
-                    if size['type'] == 's' and not finded_photos['url']:
-                        finded_photos['url'] = size['url']
-                    elif size['type'] == 'r':
-                        finded_photos['url'] = size['url']
-                dict_photos.append(finded_photos)
-            sorted_dict_photos = sorted(dict_photos, key=lambda k: k['likes'])
-            urls = []
-            for link in sorted_dict_photos[-3:]:
-                urls.append(link['url'])
-            return urls
+
+def get_photos(id):
+    """ Поиск фотографий аватара """
+    method = "photos.get"
+    params = {
+        'access_token': ACCESS_TOKEN,
+        'v': '5.95',
+        'owner_id': id,
+        'count': 1000,
+        "album_id": 'profile',
+        'extended': 1
+    }
+    response = requests.get(REQUEST_URL + method, params)
+    data = response.json()
+    dict_photos = []
+    if 'error' not in data:
+        for photo in data['response']['items']:
+            finded_photos = dict()
+            likes = photo['likes']['count']
+            finded_photos = {
+                'likes': likes,
+                'url': ''
+            }
+            # Полагаем, что самый маленький размер есть всегда. А вот фото в среднем или крупном размере - нет
+            # Поэтому сразу сохраним маленькую фотографию, но если встретим среднюю, то сохраним её
+            for size in photo['sizes']:
+                if size['type'] == 's' and not finded_photos['url']:
+                    finded_photos['url'] = size['url']
+                elif size['type'] == 'r':
+                    finded_photos['url'] = size['url']
+            dict_photos.append(finded_photos)
+        sorted_dict_photos = sorted(dict_photos, key=lambda k: k['likes'])
+        urls = []
+        for link in sorted_dict_photos[-3:]:
+            urls.append(link['url'])
+        return urls
+

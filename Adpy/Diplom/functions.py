@@ -73,7 +73,6 @@ def compare_users(loverfinder, finded_users, filter_by, result):
     return finded_users
 
 
-
 def regex_compare(loverfinder, finded_users, filter_by, result):
     """ Поиск друзей по интересам: музыка, фильмы, книги """
     if filter_by in ['music', 'books', 'movies']:
@@ -112,27 +111,26 @@ def exact_result(finded_users):
     ВНИМАНИЕ! Если найденные пользователи не совпадают ни по каким параметрам, то выводим тех, кого нашли в первой
     выборке
     """
-    ordered_users = []
-    friends, age, groups, music, movies, books, all_another = [], [], [], [], [], [], []
+    users_by_id = {}
+    all_another_users_from_db_by_id = {}
     for users in finded_users:
         for key, data in users.items():
             if data['common_friends']:
-                friends.append(key)
+                users_by_id[data['id']] = [key]
             elif data['common_age']:
-                age.append(key)
+                users_by_id[data['id']] = [key]
             elif data['common_groups']:
-                groups.append(key)
+                users_by_id[data['id']] = [key]
             elif data['common_music']:
-                music.append(key)
+                users_by_id[data['id']] = [key]
             elif data['common_books']:
-                books.append(key)
+                users_by_id[data['id']] = [key]
             elif data['common_movies']:
-                movies.append(key)
+                users_by_id[data['id']] = [key]
             else:
-                all_another.append(key)
-    for i in [friends, age, groups, music, books, movies, all_another]:
-        ordered_users.extend(i)
-    return ordered_users
+                all_another_users_from_db_by_id[data['id']] = [key]
+    users_by_id.update((all_another_users_from_db_by_id))
+    return users_by_id
 
 
 # Деократор для повторения выполнения запросов в случае ошибок
