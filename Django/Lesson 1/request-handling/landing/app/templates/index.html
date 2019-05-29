@@ -1,0 +1,22 @@
+{% extends "_base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="section">
+
+    <h3>Спасибо, что посетили наш сайт!</h3>
+
+  </div>
+  Ниже представлены ссылки на лендинг и альтернативный лендинг. Вы можете перейти на них и посмотреть.
+  Если вам понравится лендинг, нажмите кнопку <b>"Перейти на сайт"</b>. Если не понравится, нажмите кнопку <b>"Назад"</b>
+  <p>
+  <div class="row center">
+    <a href="{% url 'landing' %}?ab-test-arg=landing" class="btn-large waves-effect waves-light teal lighten-1">Перейти на <b>Лендинг!</b></a>
+    <a href="{% url 'landing' %}?ab-test-arg=test" class="btn-large waves-effect waves-light teal lighten-1">Перейти на <b>Альтернатиный Лендинг</b>!</a>
+    <a href="{% url 'stats' %}?all={{all}}&original={{original}}&test={{test}}" class="btn-large waves-effect waves-light teal lighten-1"><b>Статистика</b></a>
+  </div>
+</p>
+</div>
+{% endblock %}
