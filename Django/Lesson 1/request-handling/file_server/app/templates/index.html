@@ -16,13 +16,13 @@
           Создан: {% if date == f.ctime.date %}
             {{ f.ctime }}
           {% else %}
-            <a href="{% url 'file_list' date=f.ctime|date:'Y m d'%}">{{ f.ctime.date }}</a> {{ f.mtime.time }}
+            <a href="{% url 'file_list' date=f.ctime|date:'Y-m-d'%}">{{ f.ctime.date }}</a> {{ f.mtime.time }}
           {% endif %}
           <br>
           Изменен: {% if date == f.mtime.date %}
             {{ f.mtime }}
           {% else %}
-            <a href="{% url 'file_list' date=f.mtime|date:'Y m d' %}">{{ f.mtime.date }}</a> {{ f.mtime.time }}
+            <a href="{% url 'file_list' date=f.mtime|date:'Y-m-d' %}">{{ f.mtime.date }}</a> {{ f.mtime.time }}
           {% endif %}
         </p>
       </li>
