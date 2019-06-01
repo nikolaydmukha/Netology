@@ -1,0 +1,66 @@
+<!DOCTYPE html>{% load static %}
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Инфляция в России</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    {% block content %}
+      <div class="row">
+        <h1 class="col s12">Инфляция в России</h1>
+        <div class="col s12 m8">
+          <table>
+            <tr>
+              <td><b>Год</b></td>
+              <td><b>Январь</b></td>
+              <td><b>Февраль</b></td>
+              <td><b>Март</b></td>
+              <td><b>Апрель</b></td>
+              <td><b>Май</b></td>
+              <td><b>Июнь</b></td>
+              <td><b>Июль</b></td>
+              <td><b>Август</b></td>
+              <td><b>Сентябрь</b></td>
+              <td><b>Октябрь</b></td>
+              <td><b>Ноябрь</b></td>
+              <td><b>Декабрь</b></td>
+              <td style="background: grey;"><b>Суммарная</b></td>
+            </tr>
+            {% for year, inflation in data.items %}
+              <tr>
+                <td>{{year}}</td>
+                {% for col_name, data in inflation.items %}
+                  {% if col_name == 'Суммарная' %}
+                     <td style="background: grey;">{{ data }}</td>
+                  {% else %}
+                    {% if data < 0 %}
+                      <td style="background: green;">{{ data }}</td>
+                    {% elif data >= 1 and data < 2 %}
+                      <td style="background: #EB5353;">{{ data }}</td>
+                    {% elif data >= 2 and data < 5 %}
+                      <td style="background: #F03535;">{{ data }}</td>
+                    {% elif data > 5 %}
+                      <td style="background: #FA0101;">{{ data }}</td>
+                    {% else %}
+                      <td style="">{{ data }}</td>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </table>
+
+        </div>
+      </div>
+    {% endblock %}
+
+  </body>
+</html>
