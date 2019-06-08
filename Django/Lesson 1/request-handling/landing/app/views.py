@@ -8,27 +8,25 @@ from django.shortcuts import render_to_response
 # так как при перезапуске приложения они обнулятся
 counter_show = Counter()
 counter_click = Counter()
+events = list()  # число переходов
+events_show = list()  # число показов
+
 
 def index(request):
     # Реализуйте логику подсчета количества переходов с лендига по GET параметру from-landing
-    if 'stat' not in request.GET:
-        if ('from-landing' not in request.GET):
-            counter_click['all'] += 1
-        else:
-            if request.GET['from-landing'] == 'original':
-                counter_show['original'] += 1
-                counter_click['all'] += 1
-            else:
-                counter_show['test'] += 1
-                counter_click['all'] += 1
-        context = {
-            'all': counter_click['all'],
+    if 'from-landing' in request.GET:
+        events.append(request.GET['from-landing'])
+        events_show.append('show')
+    elif 'stat' not in request.GET:
+        events_show.append('show')
+    counter_show = Counter(events)
+    counter_click = Counter(events_show)
+    context = {
+            'all': counter_click['show'],
             'original': counter_show['original'],
             'test': counter_show['test']
         }
-        print("CONTEXT", context)
-        return render_to_response('index.html', context)
-    return render_to_response('index.html')
+    return render_to_response('index.html', context)
 
 
 def landing(request):
@@ -36,12 +34,9 @@ def landing(request):
     # в зависимости от GET параметра ab-test-arg
     # который может принимать значения original и test
     # Так же реализуйте логику подсчета количества показов
-    if 'ab-test-arg' not in request.GET:
-        return render_to_response('stats.html')
-    elif request.GET['ab-test-arg'] == 'landing':
+    if request.GET['ab-test-arg'] == 'landing':
         return render_to_response('landing.html')
-    elif request.GET['ab-test-arg'] == 'test':
-        return render_to_response('landing_alternate.html')
+    return render_to_response('landing_alternate.html')
 
 
 def stats(request):
@@ -50,8 +45,7 @@ def stats(request):
     # проверяйте GET параметр marker который может принимать значения test и original
     # Для вывода результат передайте в следующем формате:
     context = {
-        'test_conversion': round(int(request.GET['test'])/int(request.GET['all']),1),
-        'original_conversion': round(int(request.GET['original'])/int(request.GET['all']),1),
+        'test_conversion': round(int(request.GET['test'])/int(request.GET['all']), 1),
+        'original_conversion': round(int(request.GET['original'])/int(request.GET['all']), 1),
     }
-
     return render_to_response('stats.html', context)

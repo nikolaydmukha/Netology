@@ -10,8 +10,8 @@ def index(request):
 
 
 def bus_stations(request):
-    with open(BUS_STATION_CSV, encoding='cp1251') as file:
-        reader = csv.DictReader(file)
+    with open(BUS_STATION_CSV, encoding='cp1251') as datafile:
+        reader = csv.DictReader(datafile)
         tmp_dict = dict()
         tmp_list = list()
         for raw in reader:
