@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1>Сравнение телефонов</h1>
+        </div>
+        <table>
+            <tr>
+                <td style="width: 200px;"><b>Название:</b></td>
+                {% for item in iphones %}
+                    <td style="width: 150px;"><b>{{item.name__name}}</b></td>
+                {% endfor %}
+                {% for item in samsungs %}
+                    <td style="width: 150px;"><b>{{item.name__name}}</b></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td><b>Тип ОС:</b></td>
+                {% for item in iphones %}
+                    <td>{{item.name__os}}</td>
+                {% endfor %}
+                {% for item in samsungs %}
+                    <td>{{item.name__os}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td><b>Камера(мгп):</b></td>
+                {% for item in iphones %}
+                    <td>{{item.name__cam}}</td>
+                {% endfor %}
+                {% for item in samsungs %}
+                    <td>{{item.name__cam}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td><b>Цена:</b></td>
+                {% for item in iphones %}
+                    <td>{{item.name__price}}</td>
+                {% endfor %}
+                {% for item in samsungs %}
+                    <td>{{item.name__price}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td><b>Диагональ экрана:</b></td>
+                {% for item in iphones %}
+                    <td>{{item.name__display}}</td>
+                {% endfor %}
+                {% for item in samsungs %}
+                    <td>{{item.name__display}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td><b>Вес:</b></td>
+                {% for item in iphones %}
+                    <td>{{item.name__weight}}</td>
+                {% endfor %}
+                {% for item in samsungs %}
+                    <td>{{item.name__weight}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td><b>Face ID:</b></td>
+                {% for item in iphones %}
+                    <td>{% if item.faceid %} {{item.faceid}} {% else %} - {% endif %}</td>
+                {% endfor %}
+                {% for item in samsungs %}
+                    <td>{% if item.faceid %} {{item.faceid}} {% else %} - {% endif %}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td><b>Apple pay:</b></td>
+                {% for item in iphones %}
+                    <td>{% if item.applepay %} {{item.applepay}} {% else %} - {% endif %}</td>
+                {% endfor %}
+                {% for item in samsungs %}
+                    <td>{% if item.applepay %} {{item.applepay}} {% else %} - {% endif %}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td><b>Samsung pay:</b></td>
+                {% for item in iphones %}
+                    <td>{% if item.samsungpay %} {{item.samsungpay}} {% else %} - {% endif %}</td>
+                {% endfor %}
+                {% for item in samsungs %}
+                    <td>{% if item.samsungpay %} {{item.samsungpay}} {% else %} - {% endif %}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td><b>FM:</b></td>
+                {% for item in iphones %}
+                    <td>{% if item.fm %} {{item.fm}} {% else %} - {% endif %}</td>
+                {% endfor %}
+                {% for item in samsungs %}
+                    <td>{% if item.fm %} {{item.fm}} {% else %} - {% endif %}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td><b>ИК-порт:</b></td>
+                {% for item in iphones %}
+                    <td>{% if item.ikport %} {{item.ikport}} {% else %} - {% endif %}</td>
+                {% endfor %}
+                {% for item in samsungs %}
+                    <td>{% if item.ikport %} {{item.ikport}} {% else %} - {% endif %}</td>
+                {% endfor %}
+            </tr>
+
+
+        </table>
+    </div>
+{% endblock %}
