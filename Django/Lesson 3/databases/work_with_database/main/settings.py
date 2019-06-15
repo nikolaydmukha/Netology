@@ -114,6 +114,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+PHONES_CSV = os.path.join(BASE_DIR, 'phones.csv')
 
 try:
     from .settings_local import *

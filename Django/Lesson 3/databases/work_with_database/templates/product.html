@@ -4,11 +4,17 @@
 {% block title %}Телефон{% endblock %}
 {% block content %}
     <div class="container">
+        {% for item in phone_info %}
         <div class="header">
-            <h1>Телефон</h1>
+            <h1><a href="/catalog/{{item.slug}}/">{{item.name}}</a></h1>
+            <a href="/catalog/">Назад</a>
         </div>
+        <div>Цена: {{item.price}}р.</div>
+        <div>Дата редиза: {{item.release_date|date:'Y-m-d'}}</div>
+        <div>Поддержка LTE:{% if item.lte_exists == True %} + {%else%}-{%endif%}</div>
+        <img src="{{item.image}}">
         <div class="content">
-
+        {% endfor %}
         </div>
     </div>
 {% endblock %}
