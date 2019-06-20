@@ -13,6 +13,5 @@ def articles_list(request):
     for item in object_list:
         context['tags'][item.id] = {}
         tags = ArticleTags.objects.all().filter(article=item.id).order_by('-isMain', 'tags__name')
-        print(type(item.id))
         context['tags'][item.id] = tags
     return render(request, template, context)
