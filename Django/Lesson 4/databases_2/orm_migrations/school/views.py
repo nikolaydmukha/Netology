@@ -8,7 +8,6 @@ def students_list(request):
     template = 'school/students_list.html'
     context = {}
     students = Student.objects.all()
-    print(students)
     context = {'students': students, }
 
     return render(request, template, context)
