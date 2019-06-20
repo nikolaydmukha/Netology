@@ -35,10 +35,10 @@ class Article(models.Model):
     published_at = models.DateTimeField(verbose_name='Дата публикации')
     image = models.ImageField(null=True, blank=True, verbose_name='Изображение',)
 
-
     class Meta:
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
+        ordering = ('-published_at',)
 
     def __str__(self):
         return self.title
