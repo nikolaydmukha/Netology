@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Заголовок статьи{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        {% for item in article %}
+        <div class="header">
+            <h3>{{item.headline}}</h3>
+            {% if paid %}
+                <div style="color:red"> {{paid}}</div>
+                <form action="{{request.path}}" method="post" id="activate">
+                    {%csrf_token%}
+                    <input type="submit" value="Подписаться" onclick="alert('Вы успешно подписаны!'); window.opener.document.location.reload();">
+                </form>
+            {% else %}
+                <div style="float:left"><img src="{{MEDIA_URL}}{{item.image.url}}"/></div>
+                <div > {{item.content}}</div>
+            </div>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+{% endblock %}
