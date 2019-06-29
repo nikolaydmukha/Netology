@@ -6,7 +6,6 @@ def show_home(request):
     context = {}
     request.session.modified = True
     request.session["player_id"] = request.session.session_key  # player_id = идентификатору сессии(session_key)
-
     # Если пришло число, то надо создать игру
     if request.method == 'POST' and 'number' in request.POST:
         request.session["game_id"] = request.POST['number']
@@ -47,25 +46,27 @@ def show_home(request):
             # Пометим игру, как завершенную
             update_game = Game.objects.filter(isActive=True)
             update_game.update(isActive=False)
-            # Обнулим счётчик
+            # Обнулим счётчик попыток для следующей игры игрока
             request.session['attempts'] = 0
     else:
         # Выясним, есть ли активные игры
         active_game = Game.objects.filter(isActive=True)
         if not active_game:
+            # Получим информацию об игре, которую отгадали, и выведем инф. о ней автору
+            finished_game = PlayerGameInfo.objects.filter(game=Game.objects.filter(author=request.session["player_id"]).order_by('-id')[:1])
+            print("OPAOPAOPAOPAOAP====> ", finished_game)
+            # if finished_game:
             context = {
                 'active_game': False,
+                'finished_game': finished_game,
             }
         else:
             for act_game in active_game:
                 # Если player_id == id создателя игры, то для него должны вывести загулшку "Вы загадали.."
                 if request.session["player_id"] == act_game.author:
-                    # Получим информацию об игре, которую отгадали, и выведеёс инф. о ней автору
-                    finished_game = PlayerGameInfo.objects.filter(game__author=request.session["player_id"],
-                                                                  game__number=request.session["game_id"])
-                    print("OPAOPAOPAOPAOAP====> ", finished_game)
                     context = {
                         'game_id': act_game.number,
+                        'attempt': "Ваше число ещё не угадали!"
                     }
                 else:
                     context = {

@@ -9,6 +9,14 @@
             <h1>Игра "Угадай число"</h1>
         </div>
         {% if active_game == False %}
+            {% if finished_game %}
+                {% for game in finished_game %}
+                <div style="color: green">В прошлый раз вы загадали число <b>{{game.game.number}}</b>.
+                    Его отгадали за <b>{{game.attempt}}</b> попыток
+                </div>
+                {% endfor %}
+
+            {% endif %}
         <form action="{{request.path}}" method="post">
             {%csrf_token%}
             <label for="number">Введите число(от 0 до 100):</label><br>
@@ -19,6 +27,7 @@
             {% if game_id %}
                 <h5>Вы загадали число: <b>{{game_id}}</b></h5>
                 Другой игрок будет его отгадывать!
+                <div style="color: green">{{attempt}}</div>
             {% else %}
                 <form action="{{request.path}}" method="post">
                     {%csrf_token%}
