@@ -4,9 +4,19 @@
 {% block title %}Главная страница{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="header"></div>
-            Привет, <b>гость</b>.<br>
-            Пожалуйста, <a href="/signup">зарегистрируйся</a> или <a href="/login">авторизуйся</a>!
-    </div>
+    {% if user.is_anonymous %}
+        <div class="container">
+            <div class="header"></div>
+                Привет, <b>Гость.</b><br>
+                Пожалуйста, <a href="/signup">зарегистрируйся</a> или <a href="/login">авторизуйся</a>!
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="header"></div>
+                Привет, <b>{{user}}</b>.<br>
+                <a href="/login">Войти по другим пользователем</a><br>
+                <a href="/signup">Зарегистрировать нового пользователя</a><br>
+                <a href="/logout">Выйти</a>
+        </div>
+    {% endif %}
 {% endblock %}
